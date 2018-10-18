@@ -1,32 +1,64 @@
-.App {
-  text-align: center;
+body {
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+#app {
+  background: rgb(179, 203, 242);
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+li {
+  margin: 8px 0;
 }
 
-.App-link {
-  color: #61dafb;
+h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.done {
+  color: rgba(0, 0, 0, 0.3);
+  text-decoration: line-through;
+}
+
+input {
+  margin-right: 5px;
+}
+
+.hex {
+    float: left;
+    margin-left: 3px;
+    margin-bottom: 0px;
+}
+.hex .top {
+    width: 0;
+    border-bottom: 60px solid #6C6;
+    border-left: 108px solid transparent;
+    border-right: 108px solid transparent;
+}
+.hex .middle {
+    width: 186px;
+    height: 140px;
+    background: #6C6;
+    padding-left: 30px;
+    position: relative;
+    top: -20px;
+}
+.hex .bottom {
+    width: 0;
+    border-top: 60px solid #6C6;
+    border-left: 108px solid transparent;
+    border-right: 108px solid transparent;
+    position: relative;
+    top: -20px;
+}
+.hex-row {
+    clear: left;
+}
+.hex-row.even {
+    margin-left: 106px;
 }
