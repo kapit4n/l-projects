@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import HexView from './HexView'
 class App extends Component {
 
   constructor(props) {
@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       projects: [
         {
-          name: "Football-two",
+          name: "football-two",
           dir: "https://github.com/kapit4n/football-two",
           features: [
             { text: "Championships", done: false },
@@ -69,30 +69,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.projects.map(project => (
-          <div className="hex">
-            <div className="top"></div>
-            <div className="middle">
-              <h2>{project.name}</h2>
-              <ul>
-                {project.features.map(feature => (
-                  <li key={feature.id}>
-                    <label>
-                      <span>{feature.text}</span>
-                    </label>
-                  </li>
-                ))}
-                <li><a href={project.dir}>open</a></li>
-              </ul>
-            </div>
-            <div className="bottom"></div>
-
-
-          </div>
-        ))
-
-        }
-
+        <HexView projects={this.state.projects}></HexView>
       </div>
     )
   }
