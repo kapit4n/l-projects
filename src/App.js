@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import HexView from './HexView'
+import CardView from './CardView'
 class App extends Component {
 
   constructor(props) {
@@ -11,6 +11,7 @@ class App extends Component {
         {
           name: "football-two",
           dir: "https://github.com/kapit4n/football-two",
+          img: "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
           features: [
             { text: "Championships", done: false },
             { text: "Teams", done: false },
@@ -20,6 +21,7 @@ class App extends Component {
         {
           name: "ng-vendei",
           dir: "https://github.com/kapit4n/ng-vendei",
+          img: "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
           features: [
             { text: "Shopping cart", done: false },
             { text: "Products List", done: false },
@@ -29,6 +31,7 @@ class App extends Component {
         {
           name: "react-2seller",
           dir: "https://github.com/kapit4n/react-2seller",
+          img: "https://raw.githubusercontent.com/kapit4n/react-2seller/develop/mockups/react2-seller-home02.png",
           features: [
             { text: "Shopping cart", done: false },
             { text: "Products List", done: false },
@@ -38,6 +41,7 @@ class App extends Component {
         {
           name: "l-projects",
           dir: "https://github.com/kapit4n/l-projects",
+          img: "https://attcom.com.br/front/img/services/projeto.jpg",
           features: [
             { text: "Projects view", done: false },
             { text: "Project planning", done: false },
@@ -47,6 +51,7 @@ class App extends Component {
         {
           name: "time-tracker",
           dir: "https://github.com/kapit4n/l-tracker",
+          img: "http://rainer.jagdkommando.org/wp-content/uploads/2008/08/timetracker4.png",
           features: [
             { text: "Register start", done: false },
             { text: "Register end", done: false },
@@ -56,6 +61,7 @@ class App extends Component {
         {
           name: "t-stock",
           dir: "https://github.com/kapit4n/t-stock",
+          img: "https://github.com/kapit4n/t-stock/raw/master/mockups/t-stock-cart.png",
           features: [
             { text: "Shopping cart", done: false },
             { text: "Products List", done: false },
@@ -69,7 +75,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HexView projects={this.state.projects}></HexView>
+        <CardView projects={this.state.projects}></CardView>
       </div>
     )
   }
