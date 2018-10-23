@@ -23,8 +23,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <div className="container-projects">
         <CardView projects={this.state.projects}></CardView>
+        </div>
       </div>
     )
   }
