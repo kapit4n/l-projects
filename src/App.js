@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import CardView from './comps/CardView'
 import axios from 'axios';
 import CategoryComp from './comps/CategoryComp';
+import SkillsComp from './comps/SkillsComp';
 
 class App extends Component {
 
@@ -11,7 +11,8 @@ class App extends Component {
     super(props)
     this.state = {
       projects: [],
-      categories: []
+      categories: [],
+      skills: []
     }
   }
 
@@ -27,6 +28,13 @@ class App extends Component {
         const categories = res.data;
         this.setState({ categories });
       })
+      
+    axios.get(`http://localhost:3000/data/skills.json`)
+      .then(res => {
+        const skills = res.data;
+        this.setState({ skills });
+      })
+
   }
 
   filterIt() {
@@ -38,6 +46,7 @@ class App extends Component {
       <div className="container">
         <div className="container-projects">
         <CategoryComp categories={this.state.categories}></CategoryComp>
+        <SkillsComp skills={this.state.categories}></SkillsComp>
         <CardView projects={this.state.projects}></CardView>
         </div>
       </div>
