@@ -54,7 +54,7 @@
     {
           "name": "time-tracker",
           "dir": "https://github.com/kapit4n/l-tracker",
-          "img": "http://rainer.jagdkommando.org/wp-content/uploads/2008/08/timetracker4.png",
+          "img": "https://raw.githubusercontent.com/kapit4n/l-tracking/master/mockups/done-it-home.png",
           "features": [
             { "text": "Register start", "done": false
             },

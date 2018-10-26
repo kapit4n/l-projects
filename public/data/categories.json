@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "e-commerce"
+    },
+    {
+        "id": 2,
+          "name": "sports"
+    },
+    {
+        "id": 3,
+        "name": "tips"
+    },
+    {
+        "id": 4,
+        "name": "accounting"
+    },
+    {
+        "id": 5,
+        "name": "business"
+    }
+]
