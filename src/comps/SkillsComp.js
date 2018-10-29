@@ -1,10 +1,8 @@
 import React, { Component, Fragment }  from 'react';
-import { FormGroup } from 'react-bootstrap';
-import Control from './Control'
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
-class SkillsComp extends React.Component {
+class SkillsComp extends Component {
     state = {
         multiple: true,
     };
@@ -17,7 +15,7 @@ class SkillsComp extends React.Component {
                 <Typeahead
                     labelKey="name"
                     multiple={multiple}
-                    options={["java", "javascript", "vue"]}
+                    options={this.props.skills}
                     placeholder="Choose a state..."
                 />
                 

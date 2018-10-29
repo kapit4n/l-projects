@@ -46,7 +46,7 @@ class App extends Component {
       <div className="container">
         <div className="container-projects">
         <CategoryComp categories={this.state.categories}></CategoryComp>
-        <SkillsComp skills={this.state.categories}></SkillsComp>
+        <SkillsComp skills={this.state.skills}></SkillsComp>
         <CardView projects={this.state.projects}></CardView>
         </div>
       </div>

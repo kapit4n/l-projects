@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
 class CardView extends Component {
-    constructor(props) {
-        super(props);
-    }
+    
     render() {
         return (
             <div>
                 {this.props.projects.map(project =>
-                    <div className="card-view">
+                    <div className="card-view" key={project.id}>
                         <figure>
                             <img src={project.img} alt="Avatar" style={{width: '100%'}} />
                         </figure>
