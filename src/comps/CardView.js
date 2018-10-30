@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PullCount from './PullCount'
+import MomentProject from './MomentProject'
 
 class CardView extends Component {
     
@@ -12,7 +13,7 @@ class CardView extends Component {
                             <img src={project.img} alt="Avatar" style={{width: '100%'}} />
                         </figure>
                         <h2>{project.name} (<PullCount projectName={project.name}></PullCount>)</h2>
-                        
+                        <MomentProject momDate={project.startDate}></MomentProject>   
                         <ul>
                             {project.features.map(feature => (
                                 <li key={feature.id}>

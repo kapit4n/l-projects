@@ -34,7 +34,6 @@ class App extends Component {
         const skills = res.data;
         this.setState({ skills });
       })
-
   }
 
   filterIt() {
