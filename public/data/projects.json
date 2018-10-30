@@ -41,7 +41,7 @@
         ]
     },  {
       "id":5, 
-      "name":"time-tracker", 
+      "name":"l-tracking", 
           "dir":"https://github.com/kapit4n/l-tracker",
 "img":"https://raw.githubusercontent.com/kapit4n/l-tracking/master/mockups/done-it-home.png",
 "features":[ {"id":13, "text":"Register start", "done":false

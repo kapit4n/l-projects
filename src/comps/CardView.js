@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PullCount from './PullCount'
 
 class CardView extends Component {
     
@@ -10,7 +11,8 @@ class CardView extends Component {
                         <figure>
                             <img src={project.img} alt="Avatar" style={{width: '100%'}} />
                         </figure>
-                        <h2>{project.name}</h2>
+                        <h2>{project.name} (<PullCount projectName={project.name}></PullCount>)</h2>
+                        
                         <ul>
                             {project.features.map(feature => (
                                 <li key={feature.id}>
