@@ -37,7 +37,7 @@
       "startDate": "2018-02-25",
       "name":"l-projects", 
           "dir":"https://github.com/kapit4n/l-projects",
-"img":"https://attcom.com.br/front/img/services/projeto.jpg",
+"img":"https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-001.png",
 "features":[ {"id":10, "text":"Projects view", "done":false
             },  {"id":11, "text":"Project planning", "done":false
             },  {"id":12, "text":"Project features", "done":false

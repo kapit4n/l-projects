@@ -10,9 +10,9 @@ class CardView extends Component {
                 {this.props.projects.map(project =>
                     <div className="card-view" key={project.id}>
                         <figure>
-                            <img src={project.img} alt="Avatar" style={{width: '100%'}} />
+                            <img className="img-rounded" src={project.img} alt="Avatar" style={{width: '100%'}} />
                         </figure>
-                        <h2>{project.name} (<PullCount projectName={project.name}></PullCount>)</h2>
+                        <h3>{project.name} (<PullCount projectName={project.name}></PullCount>)</h3>
                         <MomentProject momDate={project.startDate}></MomentProject>   
                         <ul>
                             {project.features.map(feature => (
