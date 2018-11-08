@@ -80,6 +80,30 @@
         ]
     },
     {
+        "id": 101,
+        "startDate": "2018-11-08",
+        "name": "football-two-adm",
+        "dir": "https://github.com/kapit4n/football-two-adm",
+        "img": "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
+        "features": [
+            {
+                "id": 1,
+                "text": "Register championship",
+                "done": false
+            },
+            {
+                "id": 2,
+                "text": "Register Teams",
+                "done": false
+            },
+            {
+                "id": 3,
+                "text": "Register Matches",
+                "done": false
+            }
+        ]
+    },
+    {
         "id": 3,
         "startDate": "2018-05-23",
         "name": "react-2seller",
