@@ -248,6 +248,30 @@
         ]
     },
     {
+        "id": 91,
+        "startDate": "2017-5-23",
+        "name": "react-seller",
+        "dir": "https://github.com/kapit4n/react-seller",
+        "img": "https://raw.githubusercontent.com/kapit4n/react-seller/master/mockups/react_seller_card_item_add.png",
+        "features": [
+            {
+                "id": 16,
+                "text": "Shopping cart",
+                "done": false
+            },
+            {
+                "id": 17,
+                "text": "Products List",
+                "done": false
+            },
+            {
+                "id": 18,
+                "text": "Orders",
+                "done": false
+            }
+        ]
+    },
+    {
         "id": 9,
         "startDate": "2017-5-23",
         "name": "store-review-ionic",
