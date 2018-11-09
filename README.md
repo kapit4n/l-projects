@@ -1,7 +1,5 @@
 Projects management system.
 
-![Projects](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-003.png)
-
 ## Available Scripts
 
 In the project directory, you can run:

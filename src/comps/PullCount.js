@@ -7,8 +7,12 @@ class PullCount extends Component {
         this.state = { countData: 0}
         axios.get(`https://api.github.com/repos/kapit4n/${props.projectName}/contributors`)
             .then(res => {
-                const countData = res.data[0].contributions;
-                this.setState({ countData });
+                if (res.data[0] && res.data[0].contributions) {
+                    const countData = res.data[0].contributions;
+                    this.setState({ countData });
+                } else {
+                    this.setState({ countData: 0 });
+                }
             })
     }
     render() {
