@@ -2,6 +2,25 @@
     {
         "id": 2,
         "startDate": "2018-09-10",
+        "name": "ng-vendei-full",
+        "dir": "https://github.com/kapit4n/ng-vendei-full",
+        "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
+        "features": [
+            {
+                "id": 4,
+                "text": "Shopping cart",
+                "done": false
+            },
+            {
+                "id": 6,
+                "text": "Submit Order",
+                "done": false
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "startDate": "2018-09-10",
         "name": "ng-vendei",
         "dir": "https://github.com/kapit4n/ng-vendei",
         "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
@@ -56,11 +75,35 @@
         ]
     },
     {
-        "id": 1,
+        "id": 101,
         "startDate": "2017-12-04",
         "name": "football-two",
         "dir": "https://github.com/kapit4n/football-two",
         "img": "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
+        "features": [
+            {
+                "id": 1,
+                "text": "Championships",
+                "done": false
+            },
+            {
+                "id": 2,
+                "text": "Teams",
+                "done": false
+            },
+            {
+                "id": 3,
+                "text": "Matches",
+                "done": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "startDate": "2017-12-04",
+        "name": "angular-ball",
+        "dir": "https://github.com/kapit4n/angular-ball",
+        "img": "https://raw.githubusercontent.com/kapit4n/angular-ball/master/mockups/home_1.png",
         "features": [
             {
                 "id": 1,
@@ -122,6 +165,30 @@
             },
             {
                 "id": 9,
+                "text": "Orders",
+                "done": false
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "startDate": "2017-5-23",
+        "name": "react-seller",
+        "dir": "https://github.com/kapit4n/react-seller",
+        "img": "https://raw.githubusercontent.com/kapit4n/react-seller/master/mockups/react_seller_card_item_add.png",
+        "features": [
+            {
+                "id": 16,
+                "text": "Shopping cart",
+                "done": false
+            },
+            {
+                "id": 17,
+                "text": "Products List",
+                "done": false
+            },
+            {
+                "id": 18,
                 "text": "Orders",
                 "done": false
             }
@@ -200,30 +267,6 @@
         ]
     },
     {
-        "id": 7,
-        "startDate": "2017-5-23",
-        "name": "to-buy-it",
-        "dir": "https://github.com/kapit4n/to-buy-it",
-        "img": "https://raw.githubusercontent.com/kapit4n/to-buy-it/master/mockups/todobuy_home.png",
-        "features": [
-            {
-                "id": 16,
-                "text": "Shopping cart",
-                "done": false
-            },
-            {
-                "id": 17,
-                "text": "Products List",
-                "done": false
-            },
-            {
-                "id": 18,
-                "text": "Orders",
-                "done": false
-            }
-        ]
-    },
-    {
         "id": 8,
         "startDate": "2017-5-23",
         "name": "top-news",
@@ -232,41 +275,74 @@
         "features": [
             {
                 "id": 16,
-                "text": "Shopping cart",
+                "text": "Display top news",
                 "done": false
             },
             {
                 "id": 17,
-                "text": "Products List",
-                "done": false
-            },
-            {
-                "id": 18,
-                "text": "Orders",
+                "text": "Scrap news",
                 "done": false
             }
         ]
     },
     {
-        "id": 91,
+        "id": 901,
         "startDate": "2017-5-23",
-        "name": "react-seller",
-        "dir": "https://github.com/kapit4n/react-seller",
-        "img": "https://raw.githubusercontent.com/kapit4n/react-seller/master/mockups/react_seller_card_item_add.png",
+        "name": "ng-school-events",
+        "dir": "https://github.com/kapit4n/ng-school-events",
+        "img": "https://raw.githubusercontent.com/kapit4n/ng-school-events/master/mockups/ionix_stock_check_home.png",
         "features": [
             {
                 "id": 16,
-                "text": "Shopping cart",
+                "text": "Review inventory",
+                "done": false
+            }
+        ]
+    },
+    {
+        "id": 902,
+        "startDate": "2017-5-23",
+        "name": "mockupero",
+        "dir": "https://github.com/kapit4n/mockupero",
+        "img": "https://raw.githubusercontent.com/kapit4n/mockupero/develop/mockups/mockupero_project_view.png",
+        "features": [
+            {
+                "id": 16,
+                "text": "Register a project",
+                "done": false
+            },
+            {
+                "id": 16,
+                "text": "Register a mockup",
+                "done": false
+            },
+            {
+                "id": 16,
+                "text": "Design a mockup",
+                "done": false
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "startDate": "2017-5-23",
+        "name": "to-buy-it",
+        "dir": "https://github.com/kapit4n/to-buy-it",
+        "img": "https://raw.githubusercontent.com/kapit4n/to-buy-it/master/mockups/todobuy_home.png",
+        "features": [
+            {
+                "id": 16,
+                "text": "Register a todo buy",
                 "done": false
             },
             {
                 "id": 17,
-                "text": "Products List",
+                "text": "DONE it",
                 "done": false
             },
             {
                 "id": 18,
-                "text": "Orders",
+                "text": "Display products to buy",
                 "done": false
             }
         ]
@@ -280,17 +356,17 @@
         "features": [
             {
                 "id": 16,
-                "text": "Shopping cart",
+                "text": "Review inventory",
                 "done": false
             },
             {
-                "id": 17,
-                "text": "Products List",
+                "id": 16,
+                "text": "Product Information",
                 "done": false
             },
             {
-                "id": 18,
-                "text": "Orders",
+                "id": 16,
+                "text": "Update inventory",
                 "done": false
             }
         ]
