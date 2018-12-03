@@ -15,13 +15,12 @@ class App extends Component {
       skills: []
     };
     this.changedElement = this.changedElement.bind(this);
-    this.filterIt = this.filterIt.bind(this);
   }
 
   componentDidMount() {
     axios.get(`http://localhost:3000/data/projects.json`).then(res => {
-      const projects = res.data;
-      const projectsOriginal = res.data;
+      const projects = res.data.slice();
+      const projectsOriginal = res.data.slice();
       this.setState({ projects, projectsOriginal });
     });
 
@@ -39,35 +38,38 @@ class App extends Component {
   changedElement(selected) {
     console.log(selected);
     if (selected.length > 0) {
-      this.setState({
-        projects: this.state.projectsOriginal.filter(project =>
-          this.filterIt(selected, project)
-        )
+      let projects = this.state.projectsOriginal.filter(project => {
+        let i = 0;
+        let j = 0;
+        while (i < selected.length) {
+          j = 0;
+          while (j < project.skills.length) {
+            if (
+              selected[i].name.toLowerCase() ===
+              project.skills[j].name.toLowerCase()
+            ) {
+              return true;
+            }
+            j++;
+          }
+          i++;
+        }
+        return false;
       });
+      console.log(this.state.projects);
+      console.log(projects);
+      this.setState({
+        projects: []
+      });
+      this.setState({
+        projects
+      });
+      console.log(this.state.projects);
     } else {
       this.setState({
         projects: this.state.projectsOriginal
       });
     }
-  }
-
-  filterIt(selected, project) {
-    let i = 0;
-    let j = 0;
-    while (i < selected.length) {
-      j = 0;
-      while (j < project.skills.length) {
-        if (
-          selected[i].name.toLowerCase() ===
-          project.skills[j].name.toLowerCase()
-        ) {
-          return true;
-        }
-        j++;
-      }
-      i++;
-    }
-    return false;
   }
 
   render() {
