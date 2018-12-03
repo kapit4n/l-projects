@@ -1,22 +1,22 @@
 [
-    {
-        "id": 1,
-        "name": "javascript"
-    },
-    {
-        "id": 2,
-          "name": "typescript"
-    },
-    {
-        "id": 3,
-        "name": "angular"
-    },
-    {
-        "id": 4,
-        "name": "react"
-    },
-    {
-        "id": 5,
-        "name": "scala"
-    }
+  {
+    "id": 1,
+    "name": "JavaScript"
+  },
+  {
+    "id": 2,
+    "name": "TypeScript"
+  },
+  {
+    "id": 3,
+    "name": "Angular"
+  },
+  {
+    "id": 4,
+    "name": "ReactJS"
+  },
+  {
+    "id": 5,
+    "name": "scala"
+  }
 ]
