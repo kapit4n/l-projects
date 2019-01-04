@@ -1,29 +1,46 @@
 [
+  
   {
-    "id": 2,
-    "startDate": "2018-09-10",
-    "name": "ng-vendei",
-    "dir": "https://github.com/kapit4n/ng-vendei",
-    "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
+    "id": 1,
+    "startDate": "2018-11-08",
+    "name": "football-two-adm",
+    "dir": "https://github.com/kapit4n/football-two-adm",
+    "img": "https://github.com/kapit4n/football-two-adm/raw/develop/mockups/football-two-adm-championship-info.png",
     "features": [
       {
         "id": 1,
-        "text": "Shopping cart",
+        "text": "Register championship",
         "done": true
       },
       {
         "id": 2,
-        "text": "Submit Order",
-        "done": false
-      }
-    ],
-    "categories": [{ "id": 1, "name": "Shopping Cart" }],
-    "skills": [
-      { "id": 1, "name": "TypeScript" },
-      { "id": 2, "name": "Angular" },
+        "text": "Register Teams",
+        "done": true
+      },
       {
         "id": 3,
-        "name": "RestFul"
+        "text": "Register Matches",
+        "done": true
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -61,41 +78,30 @@
   },
   {
     "id": 3,
-    "startDate": "2018-05-23",
-    "name": "react-2seller",
-    "dir": "https://github.com/kapit4n/react-2seller",
-    "img": "https://raw.githubusercontent.com/kapit4n/react-2seller/develop/mockups/react2-seller-home02.png",
+    "startDate": "2017-12-04",
+    "name": "football-two-api",
+    "dir": "https://github.com/kapit4n/football-two-api",
+    "img": "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
     "features": [
-      {
-        "id": 7,
-        "text": "Shopping cart",
-        "done": false
-      },
-      {
-        "id": 8,
-        "text": "Products List",
-        "done": false
-      },
-      {
-        "id": 9,
-        "text": "Orders",
-        "done": false
-      }
+      { "id": 1, "text": "Championships", "done": false },
+      { "id": 2, "text": "Teams", "done": false },
+      { "id": 2, "text": "Players", "done": false },
+      { "id": 3, "text": "Matches", "done": false }
     ],
     "categories": [
       {
         "id": 1,
-        "name": "e-commerce"
+        "name": "Sports"
       }
     ],
     "skills": [
       {
         "id": 1,
-        "name": "JavaScript"
+        "name": "Loopback"
       },
       {
         "id": 2,
-        "name": "ReactJS"
+        "name": "API"
       }
     ]
   }
