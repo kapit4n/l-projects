@@ -17,6 +17,18 @@
   },
   {
     "id": 5,
-    "name": "scala"
+    "name": "Scala"
+  },
+  {
+    "id": 6,
+    "name": "Loopback"
+  },
+  {
+    "id": 7,
+    "name": "API"
+  },
+  {
+    "id": 8,
+    "name": "Bootstrap"
   }
 ]
