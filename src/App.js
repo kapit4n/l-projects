@@ -18,18 +18,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/data/projects.json`).then(res => {
+    axios.get(`/data/projects.json`).then(res => {
       const projects = res.data.slice();
       const projectsOriginal = res.data.slice();
       this.setState({ projects, projectsOriginal });
     });
 
-    axios.get(`http://localhost:3000/data/categories.json`).then(res => {
+    axios.get(`/data/categories.json`).then(res => {
       const categories = res.data;
       this.setState({ categories });
     });
 
-    axios.get(`http://localhost:3000/data/skills.json`).then(res => {
+    axios.get(`/data/skills.json`).then(res => {
       const skills = res.data;
       this.setState({ skills });
     });
