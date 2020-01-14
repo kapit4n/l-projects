@@ -16,6 +16,26 @@
         "text": "Submit Order",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -34,6 +54,26 @@
         "id": 6,
         "text": "Submit Order",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -54,6 +94,26 @@
         "text": "Register Category",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -73,10 +133,30 @@
         "text": "Update Inventory",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
-    "id": 22,
+    "id": 220,
     "startDate": "2018-11-04",
     "name": "inventory-core",
     "dir": "https://github.com/kapit4n/inventory-core",
@@ -91,6 +171,26 @@
         "id": 5,
         "text": "Update Inventory",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -116,6 +216,26 @@
         "text": "Matches",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -139,6 +259,26 @@
         "id": 3,
         "text": "Matches",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -164,6 +304,26 @@
         "text": "Register Matches",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -187,6 +347,26 @@
         "id": 9,
         "text": "Orders",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -212,6 +392,26 @@
         "text": "Orders",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -235,6 +435,26 @@
         "id": 18,
         "text": "Orders",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -260,6 +480,26 @@
         "text": "Project features",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -283,6 +523,26 @@
         "id": 15,
         "text": "Calculate",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -308,6 +568,26 @@
         "text": "Orders",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -327,6 +607,26 @@
         "text": "Scrap news",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -340,6 +640,26 @@
         "id": 16,
         "text": "Review inventory",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -365,6 +685,26 @@
         "text": "Design a mockup",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -388,6 +728,26 @@
         "id": 16,
         "text": "Design a mockup",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   },
@@ -413,6 +773,26 @@
         "text": "Display products to buy",
         "done": false
       }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
+      }
     ]
   },
   {
@@ -436,6 +816,26 @@
         "id": 16,
         "text": "Update inventory",
         "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Football"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Angular"
+      },
+      {
+        "id": 2,
+        "name": "TypeScript"
+      },
+      {
+        "id": 3,
+        "name": "Bootstrap"
       }
     ]
   }

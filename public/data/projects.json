@@ -1,26 +1,20 @@
 [
-  
   {
-    "id": 1,
-    "startDate": "2018-11-08",
-    "name": "football-two-adm",
-    "dir": "https://github.com/kapit4n/football-two-adm",
-    "img": "https://github.com/kapit4n/football-two-adm/raw/develop/mockups/football-two-adm-championship-info.png",
+    "id": 208,
+    "startDate": "2018-09-10",
+    "name": "ng-vendei",
+    "dir": "https://github.com/kapit4n/ng-vendei",
+    "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
     "features": [
       {
-        "id": 1,
-        "text": "Register championship",
-        "done": true
+        "id": 4,
+        "text": "Shopping cart",
+        "done": false
       },
       {
-        "id": 2,
-        "text": "Register Teams",
-        "done": true
-      },
-      {
-        "id": 3,
-        "text": "Register Matches",
-        "done": true
+        "id": 6,
+        "text": "Submit Order",
+        "done": false
       }
     ],
     "categories": [
@@ -73,35 +67,6 @@
       {
         "id": 3,
         "name": "Material Design"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "startDate": "2017-12-04",
-    "name": "football-two-api",
-    "dir": "https://github.com/kapit4n/football-two-api",
-    "img": "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
-    "features": [
-      { "id": 1, "text": "Championships", "done": false },
-      { "id": 2, "text": "Teams", "done": false },
-      { "id": 2, "text": "Players", "done": false },
-      { "id": 3, "text": "Matches", "done": false }
-    ],
-    "categories": [
-      {
-        "id": 1,
-        "name": "Sports"
-      }
-    ],
-    "skills": [
-      {
-        "id": 1,
-        "name": "Loopback"
-      },
-      {
-        "id": 2,
-        "name": "API"
       }
     ]
   }
