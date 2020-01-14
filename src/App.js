@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   changedElement(selected) {
-    console.log(selected);
     if (selected.length > 0) {
       let projects = this.state.projectsOriginal.filter(project => {
         let i = 0;

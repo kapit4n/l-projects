@@ -25,12 +25,12 @@ class CardView extends Component {
       <div>
         {this.props.projects.map(project => (
           <div className="card-view" key={project.id}>
-            <figure>
+            <figure style={{width: '100%', height: '200px'}}>
               <img
                 className="img-rounded"
                 src={project.img}
                 alt="Avatar"
-                style={{ width: "100%" }}
+                style={{ objectFit: 'fill', width: '100%' }}
               />
             </figure>
             <h3>
