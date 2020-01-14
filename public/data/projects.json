@@ -60,11 +60,31 @@
     "dir": "https://github.com/kapit4n/football-two",
     "img": "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
     "features": [
-      { "id": 1, "text": "Championships", "done": false },
-      { "id": 2, "text": "Teams", "done": false },
-      { "id": 3, "text": "Matches", "done": false },
-      { "id": 4, "text": "Sports", "done": false },
-      { "id": 5, "text": "Players", "done": false }
+      {
+        "id": 1,
+        "text": "Championships",
+        "done": false
+      },
+      {
+        "id": 2,
+        "text": "Teams",
+        "done": false
+      },
+      {
+        "id": 3,
+        "text": "Matches",
+        "done": false
+      },
+      {
+        "id": 4,
+        "text": "Sports",
+        "done": false
+      },
+      {
+        "id": 5,
+        "text": "Players",
+        "done": false
+      }
     ],
     "categories": [
       {
@@ -90,15 +110,35 @@
   {
     "id": 3,
     "startDate": "2020-01-14",
-    "name": "",
+    "name": "next challenge",
     "dir": "https://github.com/kapit4n/ng-next-chall",
     "img": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUTEhIWERUXGBgVGBUVGBMXGRcYHhodGBgYGBkaHzQiGholJxgbIjElJSkrLi4uHR8zODMtNygtLisBCgoKDQ0NGg0NDisZHxkrKysrKysrKysrKysrNysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcEBQgDAgH/xABHEAABBAECAggDBQUFAw0AAAABAAIDEQQSIQUxBgcTIkFRYXEygZEIFEKhsSMzkqLBFSRSYvBTguEXJUNUY2Ryc6OywtHS/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKNREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARZGPhSPrQxzrNWBtfvyXrxLhc0GgSsLNbdbbrduotsV6tKDCREQEREBERAREQEREBERAREQEREBERAREQERb3g3RDNyRqhgcW1eog1Xnfl6oNEitfhHUfmPozvZED4WCar/LdraQ9AcHF4phYjwMgSsmdIZOTjoGjS38NEOI8bPtQUzBjPf8AA1zvYE0pJwfq/wCIZB/ZwOq61cx9Rt9SF03i8AwYG6mY0Q0Am2xtLh47ULtbiLkDQF+23j4IKD4L1Jykg5ErK8WtduPcAG/kVOOEdUPD4mt1DtXg2XOB0n0oHUK/8SsNwDgbN+1ggehG6xZp44InyOLy1g1OIEkjq9ALcfYIPPh/B8eENEEMcfq1ov6nf81R32jm3mYz/Awlv0ef/wBKWcU68cOMHsMeWV3+fTE3583fy7qpOsHptJxSSN8jGxmMOaAy6DTRAs7k7HfbmgiSIiAiIgIiICIiAiIgIiICIszA4XNMQ2KNzyeQHj7Wgw0U74D1WZ2Ru5hibdd4Ufo8jb1Fqe8H6jYqueayRQDQ52/O77o+SCiAFssLgGRJIyMROa6Q03WC0HYnx9Gn3rZdO8I6uuHQUY4A4+JcSb9xy/JRLr2L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",
     "features": [
-      { "id": 1, "text": "Challenge", "done": false },
-      { "id": 2, "text": "Tasks", "done": false },
-      { "id": 3, "text": "Projects", "done": false },
-      { "id": 4, "text": "Motivation", "done": false },
-      { "id": 5, "text": "Workout", "done": false }
+      {
+        "id": 1,
+        "text": "Challenge",
+        "done": false
+      },
+      {
+        "id": 2,
+        "text": "Tasks",
+        "done": false
+      },
+      {
+        "id": 3,
+        "text": "Projects",
+        "done": false
+      },
+      {
+        "id": 4,
+        "text": "Motivation",
+        "done": false
+      },
+      {
+        "id": 5,
+        "text": "Workout",
+        "done": false
+      }
     ],
     "categories": [
       {
@@ -118,6 +158,56 @@
       {
         "id": 3,
         "name": "Material Design"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "startDate": "2018-02-25",
+    "name": "l-projects",
+    "dir": "https://github.com/kapit4n/l-projects",
+    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-006.png",
+    "features": [
+      {
+        "id": 10,
+        "text": "Projects view",
+        "done": false
+      },
+      {
+        "id": 11,
+        "text": "Planning",
+        "done": false
+      },
+      {
+        "id": 12,
+        "text": "Features",
+        "done": false
+      },
+      {
+        "id": 13,
+        "text": "Skills",
+        "done": false
+      },
+      {
+        "id": 14,
+        "text": "Strategy",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "projects"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "Javascript"
       }
     ]
   }
