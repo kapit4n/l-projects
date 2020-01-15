@@ -36,6 +36,14 @@
       {
         "id": 1,
         "name": "e-commerce"
+      },
+      {
+        "id": 2,
+        "name": "accounting"
+      },
+      {
+        "id": 3,
+        "name": "business"
       }
     ],
     "skills": [
@@ -90,6 +98,10 @@
       {
         "id": 1,
         "name": "sports"
+      },
+      {
+        "id": 2,
+        "name": "skills"
       }
     ],
     "skills": [
@@ -144,6 +156,10 @@
       {
         "id": 1,
         "name": "skills"
+      },
+      {
+        "id": 2,
+        "name": "business"
       }
     ],
     "skills": [

@@ -54,7 +54,7 @@ class App extends Component {
   applyFilters(filters) {
     let projects = this.state.projectsOriginal;
     if (filters.length > 0) {
-      projects = this.state.projectsOriginal.filter(x => filters.find(y => y.name == x.categories[0].name));
+      projects = this.state.projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.name === y.name)));
     }
     this.setState({ projects })
   }
