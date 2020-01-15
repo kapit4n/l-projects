@@ -35,7 +35,7 @@
     "categories": [
       {
         "id": 1,
-        "name": "E-Commerce"
+        "name": "e-commerce"
       }
     ],
     "skills": [
@@ -89,7 +89,7 @@
     "categories": [
       {
         "id": 1,
-        "name": "Football"
+        "name": "sports"
       }
     ],
     "skills": [
@@ -143,7 +143,7 @@
     "categories": [
       {
         "id": 1,
-        "name": "Workout"
+        "name": "skills"
       }
     ],
     "skills": [

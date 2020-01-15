@@ -12,9 +12,12 @@ class App extends Component {
       projects: [],
       projectsOriginal: [],
       categories: [],
-      skills: []
+      skills: [],
+      selectedCats: []
     };
     this.changedElement = this.changedElement.bind(this);
+    this.addCategory = this.addCategory.bind(this);
+    this.dropCategory = this.dropCategory.bind(this);
   }
 
   componentDidMount() {
@@ -31,8 +34,29 @@ class App extends Component {
 
     axios.get(`/data/skills.json`).then(res => {
       const skills = res.data;
+      const projectsOriginal = res.data.slice();
       this.setState({ skills });
     });
+  }
+
+  addCategory(category) {
+    const filters = [...this.state.selectedCats, category];
+    this.setState({ selectedCats: filters })
+    this.applyFilters(filters);
+  }
+
+  dropCategory(category) {
+    const filters = [...this.state.selectedCats.filter(x => x.name !== category.name)];
+    this.setState({ selectedCats: filters })
+    this.applyFilters(filters);
+  }
+
+  applyFilters(filters) {
+    let projects = this.state.projectsOriginal;
+    if (filters.length > 0) {
+      projects = this.state.projectsOriginal.filter(x => filters.find(y => y.name == x.categories[0].name));
+    }
+    this.setState({ projects })
   }
 
   changedElement(selected) {
@@ -55,15 +79,12 @@ class App extends Component {
         }
         return false;
       });
-      console.log(this.state.projects);
-      console.log(projects);
       this.setState({
         projects: []
       });
       this.setState({
         projects
       });
-      console.log(this.state.projects);
     } else {
       this.setState({
         projects: this.state.projectsOriginal
@@ -75,7 +96,10 @@ class App extends Component {
     return (
       <div className="container">
         <div className="container-projects">
-          <CategoryComp categories={this.state.categories} />
+          <CategoryComp categories={this.state.categories} selectedCats={this.state.selectedCats}
+            addCategory={this.addCategory}
+            dropCategory={this.dropCategory}
+          />
           <SkillsComp
             skills={this.state.skills}
             changedElement={this.changedElement}
