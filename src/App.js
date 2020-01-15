@@ -13,7 +13,8 @@ class App extends Component {
       projectsOriginal: [],
       categories: [],
       skills: [],
-      selectedCats: []
+      selectedCats: [],
+      selectedSkills: [],
     };
     this.changedElement = this.changedElement.bind(this);
     this.addCategory = this.addCategory.bind(this);
@@ -41,62 +42,47 @@ class App extends Component {
 
   addCategory(category) {
     const filters = [...this.state.selectedCats, category];
-    this.setState({ selectedCats: filters })
-    this.applyFilters(filters);
+    this.setState({ selectedCats: filters });
+    const result = this.applyFilterCategories(filters, this.applyFilterSkills(this.state.selectedSkills, this.state.projectsOriginal));
+    this.setState({ projects: result });
   }
 
   dropCategory(category) {
     const filters = [...this.state.selectedCats.filter(x => x.name !== category.name)];
     this.setState({ selectedCats: filters })
-    this.applyFilters(filters);
+    const result = this.applyFilterCategories(filters, this.applyFilterSkills(this.state.selectedSkills, this.state.projectsOriginal));
+    this.setState({ projects: result });
+
   }
 
-  applyFilters(filters) {
-    let projects = this.state.projectsOriginal;
+  applyFilterCategories(filters, projectsOriginal) {
+    let projects = projectsOriginal;
     if (filters.length > 0) {
-      projects = this.state.projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.name === y.name)));
+      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.name === y.name)));
     }
-    this.setState({ projects })
+    return projects;
+  }
+
+  applyFilterSkills(filters, projectsOriginal) {
+    let projects = projectsOriginal;
+    if (filters.length > 0) {
+      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.name === y.name)));
+    }
+    this.setState({ selectedSkills: filters });
+    return projects;
   }
 
   changedElement(selected) {
-    if (selected.length > 0) {
-      let projects = this.state.projectsOriginal.filter(project => {
-        let i = 0;
-        let j = 0;
-        while (i < selected.length) {
-          j = 0;
-          while (j < project.skills.length) {
-            if (
-              selected[i].name.toLowerCase() ===
-              project.skills[j].name.toLowerCase()
-            ) {
-              return true;
-            }
-            j++;
-          }
-          i++;
-        }
-        return false;
-      });
-      this.setState({
-        projects: []
-      });
-      this.setState({
-        projects
-      });
-    } else {
-      this.setState({
-        projects: this.state.projectsOriginal
-      });
-    }
+    this.setState({ selectedSkills: selected });
+    const result = this.applyFilterCategories(this.state.selectedCats, this.applyFilterSkills(selected, this.state.projectsOriginal));
+    this.setState({ projects: result });
   }
 
   render() {
     return (
       <div className="container">
         <div className="container-projects">
-          <CategoryComp categories={this.state.categories} 
+          <CategoryComp categories={this.state.categories}
             selectedCats={this.state.selectedCats}
             addCategory={this.addCategory}
             dropCategory={this.dropCategory}
