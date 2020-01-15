@@ -96,7 +96,8 @@ class App extends Component {
     return (
       <div className="container">
         <div className="container-projects">
-          <CategoryComp categories={this.state.categories} selectedCats={this.state.selectedCats}
+          <CategoryComp categories={this.state.categories} 
+            selectedCats={this.state.selectedCats}
             addCategory={this.addCategory}
             dropCategory={this.dropCategory}
           />

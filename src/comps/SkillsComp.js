@@ -11,7 +11,7 @@ class SkillsComp extends Component {
     const { multiple } = this.state;
 
     return (
-      <Fragment>
+      <div style={{ padding: '1rem 2rem', display: 'inline-flex' }}>
         <Typeahead
           labelKey="name"
           multiple={multiple}
@@ -19,7 +19,7 @@ class SkillsComp extends Component {
           placeholder="Choose a skill..."
           onChange={this.props.changedElement}
         />
-      </Fragment>
+      </div>
     );
   }
 }
