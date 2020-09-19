@@ -72,30 +72,35 @@ export default function List() {
   }
 
   return (
-    <div>
-      {categories.map(category => {
-        if (selectedCats.find(cat => cat.name === category.name)) {
-          return <button style={{ background: 'green' }} className="category-view" key={category.id}
-            onClick={() => dropCategory(category)} >
-            {category.name}
-          </button>
-        } else {
-          return <button className="category-view" key={category.id}
-            onClick={() => addCategory(category)}>
-            {category.name}
-          </button>
+    <div style={{ width: '100%' }}>
+      <div style={{ color: 'white' }} className='category-view'>
+        {categories.map(category => {
+          if (selectedCats.find(cat => cat.name === category.name)) {
+            return <button className="category-button" key={category.id}
+              onClick={() => dropCategory(category)} >
+              {category.name}
+            </button>
+          } else {
+            return <button className="category-button-selected" key={category.id}
+              onClick={() => addCategory(category)}>
+              {category.name}
+            </button>
+          }
         }
-      }
-      )
-      }
+        )
+        }
+      </div>
+      <div>
+        <SkillsComp
+          skills={skills}
+          changedElement={changedElement}
+        />
+      </div>
 
-      <SkillsComp
-        skills={skills}
-        changedElement={changedElement}
-      />
+      <div>
+        <CardView projects={projects} />
 
-
-      <CardView projects={projects} />
+      </div>
     </div>
   )
 }

@@ -11,13 +11,15 @@ class SkillsComp extends Component {
     const { multiple } = this.state;
 
     return (
-      <div style={{ padding: '1rem 2rem', display: 'inline-flex' }}>
+      <div style={{ width: '100%', margin: '1rem 0' }}>
+
         <Typeahead
           labelKey="name"
           multiple={multiple}
           options={this.props.skills}
           placeholder="Choose a skill..."
           onChange={this.props.changedElement}
+          style={{ width: '100%' }}
         />
       </div>
     );

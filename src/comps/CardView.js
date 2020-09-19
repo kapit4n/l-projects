@@ -22,10 +22,10 @@ class CardView extends Component {
 
   render() {
     return (
-      <div>
+      <div  >
         {this.props.projects.map(project => (
-          <div className="card-view" key={project.id}>
-            <figure style={{width: '100%', height: '200px'}}>
+          <div className="card-view" style={{ margin: '1rem' }} key={project.id}>
+            <figure style={{ width: '100%', height: '200px' }}>
               <img
                 className="img-rounded"
                 src={project.img}
@@ -36,10 +36,10 @@ class CardView extends Component {
             <h3>
               {project.name} (<PullCount projectName={project.name} />)
             </h3>
-            {project.categories.map(cat => (
+            {project.categories.slice(0, 2).map(cat => (
               <span className="chip-category">{cat.name}</span>
             ))}
-            {project.skills.map(ski => (
+            {project.skills.slice(0, 2).map(ski => (
               <span className="chip-skill">{ski.name}</span>
             ))}
             <br />
@@ -49,7 +49,7 @@ class CardView extends Component {
               <PullDescription projectName={project.name} />
             </p>
             <ul>
-              {project.features.map(feature => (
+              {project.features.slice(0, 2).map(feature => (
                 <li key={feature.id}>{this.renderInputField(feature)}</li>
               ))}
             </ul>

@@ -16,26 +16,21 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <div className="container-projects">
-            <h2>Welcome to projects in progress</h2>
+          <h2>Welcome to projects in progress</h2>
+          <div style={{ width: '100%' }}>
             <ul className="navbar-nav mr-auto">
               <li><Link to={'/'}>List</Link></li>
             </ul>
-            <Switch>
-              <Route exact path="/" component={List} />
-              <Route path="/details" component={Details} />
-              <Route path="/Add" component={Add} />
-            </Switch>
-            {/* <CategoryComp categories={this.state.categories}
-              selectedCats={this.state.selectedCats}
-              addCategory={this.addCategory}
-              dropCategory={this.dropCategory}
-            />
-            <SkillsComp
-              skills={this.state.skills}
-              changedElement={this.changedElement}
-            />
-            <CardView projects={this.state.projects} /> */}
+          </div>
+          <div className="container-projects">
+            <div style={{ width: '100%' }}>
+              <Switch>
+                <Route exact path="/" component={List} />
+                <Route path="/details" component={Details} />
+                <Route path="/Add" component={Add} />
+              </Switch>
+
+            </div>
           </div>
         </div>
       </Router>
