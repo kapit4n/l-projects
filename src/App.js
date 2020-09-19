@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import "./App.css";
-import CardView from "./comps/CardView";
-import CategoryComp from "./comps/CategoryComp";
-import SkillsComp from "./comps/SkillsComp";
-
 
 import List from './projects/List';
 import Details from './projects/Details';
