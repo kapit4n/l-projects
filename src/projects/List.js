@@ -4,6 +4,8 @@ import axios from "axios";
 import CardView from '../comps/CardView'
 import SkillsComp from "../comps/SkillsComp";
 
+import './List.css'
+
 export default function List() {
 
   const [projects, setProjects] = React.useState([]);
@@ -72,8 +74,8 @@ export default function List() {
   }
 
   return (
-    <div style={{ width: '100%' }}>
-      <div style={{ color: 'white' }} className='category-view'>
+    <div className="container">
+      <div className='category-view'>
         {categories.map(category => {
           if (selectedCats.find(cat => cat.name === category.name)) {
             return <button className="category-button" key={category.id}
