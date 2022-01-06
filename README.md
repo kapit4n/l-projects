@@ -1,6 +1,6 @@
 Projects management system.
 
-![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-project0022.png)
+![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-008.png)
 
 ## Available Scripts
 
