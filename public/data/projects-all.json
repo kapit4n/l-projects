@@ -1,6 +1,130 @@
 [
   {
     "id": 2,
+    "startDate": "2020-10-04",
+    "name": "v-video",
+    "dir": "https://github.com/kapit4n/v-video",
+    "img": "https://github.com/kapit4n/v-video/raw/master/screenshots/home.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "Social Network",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "social network"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Vue js"
+      },
+      {
+        "id": 2,
+        "name": "Node js"
+      }
+    ]
+  },
+  {
+    "id": 204,
+    "startDate": "2020-10-04",
+    "name": "project-two-client",
+    "dir": "https://github.com/kapit4n/project-two-client",
+    "img": "https://github.com/kapit4n/project-two-client/raw/master/screenshots/home.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "Social Network",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "social network"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "graphql"
+      }
+    ]
+  },
+  {
+    "id": 203,
+    "startDate": "2020-10-04",
+    "name": "react-go-users",
+    "dir": "https://github.com/kapit4n/react-go-users",
+    "img": "https://raw.githubusercontent.com/kapit4n/react-go-users/master/screenshots/users.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "Information",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Users"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "Golang"
+      }
+    ]
+  },
+  {
+    "id": 202,
+    "startDate": "2021-03-14",
+    "name": "denti-code",
+    "dir": "https://github.com/kapit4n/denti-code",
+    "img": "https://raw.githubusercontent.com/kapit4n/denti-code/master/screenshots/main3.gif",
+    "features": [
+      {
+        "id": 4,
+        "text": "Billing",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Health"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "Javascript"
+      },
+      {
+        "id": 3,
+        "name": "Node js"
+      }
+    ]
+  },
+  {
+    "id": 201,
     "startDate": "2018-09-10",
     "name": "ng-vendei-full",
     "dir": "https://github.com/kapit4n/ng-vendei-full",
@@ -14,123 +138,6 @@
       {
         "id": 6,
         "text": "Submit Order",
-        "done": false
-      }
-    ],
-    "categories": [
-      {
-        "id": 1,
-        "name": "Football"
-      }
-    ],
-    "skills": [
-      {
-        "id": 1,
-        "name": "Angular"
-      },
-      {
-        "id": 2,
-        "name": "TypeScript"
-      },
-      {
-        "id": 3,
-        "name": "Bootstrap"
-      }
-    ]
-  },
-  {
-    "id": 208,
-    "startDate": "2018-09-10",
-    "name": "ng-vendei",
-    "dir": "https://github.com/kapit4n/ng-vendei",
-    "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
-    "features": [
-      {
-        "id": 4,
-        "text": "Shopping cart",
-        "done": false
-      },
-      {
-        "id": 6,
-        "text": "Submit Order",
-        "done": false
-      }
-    ],
-    "categories": [
-      {
-        "id": 1,
-        "name": "Football"
-      }
-    ],
-    "skills": [
-      {
-        "id": 1,
-        "name": "Angular"
-      },
-      {
-        "id": 2,
-        "name": "TypeScript"
-      },
-      {
-        "id": 3,
-        "name": "Bootstrap"
-      }
-    ]
-  },
-  {
-    "id": 21,
-    "startDate": "2018-11-04",
-    "name": "ng-vendei-reg",
-    "dir": "https://github.com/kapit4n/ng-vendei-reg",
-    "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
-    "features": [
-      {
-        "id": 4,
-        "text": "Register Products",
-        "done": false
-      },
-      {
-        "id": 5,
-        "text": "Register Category",
-        "done": false
-      }
-    ],
-    "categories": [
-      {
-        "id": 1,
-        "name": "Football"
-      }
-    ],
-    "skills": [
-      {
-        "id": 1,
-        "name": "Angular"
-      },
-      {
-        "id": 2,
-        "name": "TypeScript"
-      },
-      {
-        "id": 3,
-        "name": "Bootstrap"
-      }
-    ]
-  },
-  {
-    "id": 22,
-    "startDate": "2018-11-04",
-    "name": "ng-vendei-inventory",
-    "dir": "https://github.com/kapit4n/ng-vendei-inventory",
-    "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
-    "features": [
-      {
-        "id": 5,
-        "text": "Inventory table",
-        "done": false
-      },
-      {
-        "id": 5,
-        "text": "Update Inventory",
         "done": false
       }
     ],
@@ -200,50 +207,6 @@
     "name": "football-two",
     "dir": "https://github.com/kapit4n/football-two",
     "img": "https://github.com/kapit4n/football-two/raw/master/mockups/football_two_championship_info_matches.png",
-    "features": [
-      {
-        "id": 1,
-        "text": "Championships",
-        "done": false
-      },
-      {
-        "id": 2,
-        "text": "Teams",
-        "done": false
-      },
-      {
-        "id": 3,
-        "text": "Matches",
-        "done": false
-      }
-    ],
-    "categories": [
-      {
-        "id": 1,
-        "name": "Football"
-      }
-    ],
-    "skills": [
-      {
-        "id": 1,
-        "name": "Angular"
-      },
-      {
-        "id": 2,
-        "name": "TypeScript"
-      },
-      {
-        "id": 3,
-        "name": "Bootstrap"
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "startDate": "2017-12-04",
-    "name": "angular-ball",
-    "dir": "https://github.com/kapit4n/angular-ball",
-    "img": "https://raw.githubusercontent.com/kapit4n/angular-ball/master/mockups/home_1.png",
     "features": [
       {
         "id": 1,
@@ -373,8 +336,8 @@
   {
     "id": 31,
     "startDate": "2018-05-23",
-    "name": "react-2reg",
-    "dir": "https://github.com/kapit4n/react-2reg",
+    "name": "react-seller-admin",
+    "dir": "https://github.com/kapit4n/react-seller-admin",
     "img": "https://raw.githubusercontent.com/kapit4n/react-2seller/develop/mockups/react2-seller-home02.png",
     "features": [
       {
@@ -463,7 +426,7 @@
     "startDate": "2018-02-25",
     "name": "l-projects",
     "dir": "https://github.com/kapit4n/l-projects",
-    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-001.png",
+    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-project0022.png",
     "features": [
       {
         "id": 10,

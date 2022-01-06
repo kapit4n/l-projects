@@ -16,7 +16,7 @@ export default function List() {
   const [selectedSkills, setSelectedSkills] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`/data/projects.json`).then(res => {
+    axios.get(`/data/projects-all.json`).then(res => {
       const projects = res.data.slice();
       const projectsOriginal = res.data.slice();
       setProjects(projects)
