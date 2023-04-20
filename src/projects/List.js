@@ -15,6 +15,14 @@ export default function List() {
   const [selectedCats, setSelectedCats] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
 
+  const totalProjects = React.useMemo(() => {
+    return projects.length
+  }, [projects])
+
+  const totalCommits = React.useMemo(() => {
+    return projects.length
+  }, [projects])
+
   React.useEffect(() => {
     axios.get(`/data/projects-all.json`).then(res => {
       const projects = res.data.slice();
@@ -100,8 +108,11 @@ export default function List() {
       </div>
 
       <div>
+        <div>
+          Total Projects: {totalProjects}
+          Total commits: {totalCommits}
+        </div>
         <CardView projects={projects} />
-
       </div>
     </div>
   )
