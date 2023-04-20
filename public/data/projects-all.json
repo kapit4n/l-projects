@@ -1,6 +1,235 @@
 [
   {
     "id": 2,
+    "startDate": "2019-07-18",
+    "lastUpdate": "2020-07-18",
+    "name": "chatboot-stock",
+    "dir": "https://github.com/kapit4n/chatboot-stock",
+    "img": "https://github.com/kapit4n/chatboot-stock/raw/main/view/main-page.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "Real time",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Chatboot"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Websockets"
+      },
+      {
+        "id": 2,
+        "name": "Golang"
+      },
+      {
+        "id": 3,
+        "name": "Dockers"
+      },
+      {
+        "id": 4,
+        "name": "rabbitmq"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "startDate": "2019-07-18",
+    "lastUpdate": "2020-07-18",
+    "name": "python-schools",
+    "dir": "https://github.com/kapit4n/python-schools",
+    "img": "https://i0.wp.com/apnnic.net/wp-content/uploads/2020/10/15-School-System-01.jpg?fit=1504%2C1476&ssl=1",
+    "features": [
+      {
+        "id": 4,
+        "text": "API",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "School"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Django"
+      },
+      {
+        "id": 2,
+        "name": "Python"
+      },
+      {
+        "id": 3,
+        "name": "Dockers"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "startDate": "2019-07-18",
+    "lastUpdate": "2020-07-18",
+    "name": "logic-board",
+    "dir": "https://github.com/kapit4n/logic-board",
+    "img": "https://github.com/kapit4n/logic-board/blob/master/ui-versions/version-001.png?raw=true",
+    "features": [
+      {
+        "id": 4,
+        "text": "websockets",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Logic"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "Typescript"
+      }
+    ]
+  },
+  {
+    "id": 214,
+    "startDate": "2020-07-01",
+    "lastUpdate": "2023-04-01",
+    "name": "products-view-rn",
+    "dir": "https://github.com/kapit4n/products-view-rn",
+    "img": "https://raw.githubusercontent.com/kapit4n/products-view-rn/develop/assets/images/reactn-products-view.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "Inventory",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Inventory"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React native"
+      },
+      {
+        "id": 2,
+        "name": "Pages"
+      }
+    ]
+  },
+  {
+    "id": 213,
+    "startDate": "2020-07-01",
+    "lastUpdate": "2023-04-01",
+    "name": "sport-new-react-native",
+    "dir": "https://github.com/kapit4n/sport-new-react-native",
+    "img": "https://github.com/kapit4n/sport-new-react-native/raw/main/screenshots/home.png?raw=true",
+    "features": [
+      {
+        "id": 4,
+        "text": "News",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Sports"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React native"
+      },
+      {
+        "id": 2,
+        "name": "Sports"
+      }
+    ]
+  },
+  {
+    "id": 212,
+    "startDate": "2018-07-01",
+    "lastUpdate": "2023-01-01",
+    "name": "react-code-x1",
+    "dir": "https://github.com/kapit4n/react-code-x1",
+    "img": "https://user-images.githubusercontent.com/277572/189780154-b5a9e3a9-ed08-4089-a221-fd37cb5afe22.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "React",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "react"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "Maps"
+      }
+    ]
+  },
+  {
+    "id": 211,
+    "startDate": "2018-07-01",
+    "lastUpdate": "2023-01-01",
+    "name": "l-tracking",
+    "dir": "https://github.com/kapit4n/l-tracking",
+    "img": "https://raw.githubusercontent.com/kapit4n/l-tracking/master/mockups/done-it-home.png",
+    "features": [
+      {
+        "id": 4,
+        "text": "Tracking",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "tracking"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Vue js"
+      },
+      {
+        "id": 2,
+        "name": "javascript"
+      }
+    ]
+  },
+  {
+    "id": 210,
     "startDate": "2018-07-01",
     "lastUpdate": "2022-11-01",
     "name": "react-research",
