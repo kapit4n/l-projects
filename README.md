@@ -2,39 +2,41 @@ Projects management system.
 
 ![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-008.png)
 
-## Available Scripts
+# Description
+This project has all the projects worked in open source way.
+Have some kind of track all the project where you worked
+can help you to see where you are and with that you can 
+see where you are like software developer on my case
+because when I see the project where I worked I could 
+say that I have some progress with some technology 
+and have some kind of diary of your software development
+skills and have some kind of stats and mark some goals for 
+next steps.
 
-In the project directory, you can run:
+# Features
+## Projects list page
+This is the main page where is all the project worked, there can be related to 
+open source project or projects where you worked for the companies where 
+you worked like full time job.
 
-### `npm start`
+## Stats page
+These stats will show us the progress of each technology or project
+that we want to see like a chart and analyse it for future desicions
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Project details
+Project detail is the information displayed to the user to review 
+how was the progress of the project, which goals where been successed and 
+if there is something to analyze there to continue with the progress of the 
+project.
 
-### `npm test`
+## Configurations
+Themes, Priorities.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](#deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Tasks
+[] Create details page
+[] Analyze the stats ideas for the projects
+[] Add the last updated date to sort them by recent updated
+[] Add priorities to projects
+[] 

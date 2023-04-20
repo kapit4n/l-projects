@@ -1,7 +1,171 @@
 [
   {
     "id": 2,
+    "startDate": "2018-07-01",
+    "lastUpdate": "2022-11-01",
+    "name": "react-research",
+    "dir": "https://github.com/kapit4n/react-research",
+    "img": "https://github.com/kapit4n/react-research/raw/develop/mockups/react-research-list-light.png?raw=true",
+    "features": [
+      {
+        "id": 4,
+        "text": "Research",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "research"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "react js"
+      },
+      {
+        "id": 2,
+        "name": "javascript"
+      }
+    ]
+  },
+  {
+    "id": 209,
+    "startDate": "2022-10-03",
+    "lastUpdate": "2023-02-15",
+    "name": "focus-point",
+    "dir": "https://github.com/kapit4n/focus-point",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd29wpWiNmEqC0uxb35bkLwRJK4PDNwc6Ljg&usqp=CAU",
+    "features": [
+      {
+        "id": 4,
+        "text": "Productivity",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "habits"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Next js"
+      },
+      {
+        "id": 2,
+        "name": "React js"
+      }
+    ]
+  },
+  {
+    "id": 208,
+    "startDate": "2020-06-01",
+    "lastUpdate": "2023-02-07",
+    "name": "project-one",
+    "dir": "https://github.com/kapit4n/project-one",
+    "img": "https://github.com/kapit4n/project-one/raw/develop/ui/ui-progress/v1-dashboard.png?raw=true",
+    "features": [
+      {
+        "id": 4,
+        "text": "Tasks",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "habits"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Python Django"
+      },
+      {
+        "id": 2,
+        "name": "Angular Material"
+      },
+      {
+        "id": 3,
+        "name": "Rest API, Client API"
+      }
+    ]
+  },
+  {
+    "id": 207,
+    "startDate": "2023-04-24",
+    "lastUpdate": "2023-04-27",
+    "name": "ts-node-books",
+    "dir": "https://github.com/kapit4n/ts-node-books",
+    "img": "https://media.istockphoto.com/id/1222563369/photo/bookstore-shop-exterior-with-books-and-textbooks-in-showcase.jpg?s=612x612&w=0&k=20&c=nvfvNWLiP6LKfhfTUVYppVRmzlpH8-ujIxk5jOtDcCE=",
+    "features": [
+      {
+        "id": 4,
+        "text": "Books",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "habits"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "Node js"
+      },
+      {
+        "id": 2,
+        "name": "Typescript"
+      },
+      {
+        "id": 3,
+        "name": "Rest API"
+      }
+    ]
+  },
+  {
+    "id": 206,
+    "startDate": "2023-04-24",
+    "lastUpdate": "2023-04-27",
+    "name": "ts-books",
+    "dir": "https://github.com/kapit4n/ts-books",
+    "img": "https://media.istockphoto.com/id/1222563369/photo/bookstore-shop-exterior-with-books-and-textbooks-in-showcase.jpg?s=612x612&w=0&k=20&c=nvfvNWLiP6LKfhfTUVYppVRmzlpH8-ujIxk5jOtDcCE=",
+    "features": [
+      {
+        "id": 4,
+        "text": "Books",
+        "done": false
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "habits"
+      }
+    ],
+    "skills": [
+      {
+        "id": 1,
+        "name": "React js"
+      },
+      {
+        "id": 2,
+        "name": "Typescript"
+      }
+    ]
+  },
+  {
+    "id": 205,
     "startDate": "2020-10-04",
+    "lastUpdate": "2020-10-04",
     "name": "v-video",
     "dir": "https://github.com/kapit4n/v-video",
     "img": "https://github.com/kapit4n/v-video/raw/master/screenshots/home.png",
