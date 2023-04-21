@@ -1,8 +1,11 @@
 import React from 'react';
 import axios from "axios";
 
-import CardView from '../comps/CardView'
-import SkillsComp from "../comps/SkillsComp";
+import CardView from '../components/CardView'
+import SkillsComp from "../components/SkillsComp";
+import ProjectService from '../services/projects-service'
+import CategoriesService from '../services/categories-service'
+import SkillsService from '../services/skills-service'
 
 import './List.css'
 
@@ -14,6 +17,9 @@ export default function List() {
   const [skills, setSkills] = React.useState([]);
   const [selectedCats, setSelectedCats] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
+  const projectService = new ProjectService()
+  const categoriesService = new CategoriesService()
+  const skillsService = new SkillsService()
 
   const totalProjects = React.useMemo(() => {
     return projects.length
@@ -24,19 +30,19 @@ export default function List() {
   }, [projects])
 
   React.useEffect(() => {
-    axios.get(`/data/projects-all.json`).then(res => {
+    projectService.getProjects().then(res => {
       const projects = res.data.slice();
       const projectsOriginal = res.data.slice();
       setProjects(projects)
       setProjectsOriginal(projectsOriginal);
     });
 
-    axios.get(`/data/categories.json`).then(res => {
+    categoriesService.getCategories().then(res => {
       const categories = res.data;
       setCategories(categories);
     });
 
-    axios.get(`/data/skills.json`).then(res => {
+    skillsService.getSkills().then(res => {
       const skills = res.data;
       setSkills(skills);
     });
@@ -108,9 +114,9 @@ export default function List() {
       </div>
 
       <div>
-        <div>
-          Total Projects: {totalProjects}
-          Total commits: {totalCommits}
+        <div className="projects-list-totals">
+          <span>Total Projects: {totalProjects}</span>
+          <span>Total commits: {totalCommits}</span>
         </div>
         <CardView projects={projects} />
       </div>

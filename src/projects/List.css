@@ -38,3 +38,8 @@
   border-width: 10px;
   margin-left: 5px;
 }
+
+.projects-list-totals {
+  display: flex;
+  gap: 1rem;
+}
