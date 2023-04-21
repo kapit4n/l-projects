@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import PullCount from "./PullCount";
-import PullDescription from "./PullDescription";
 import MomentProject from "./MomentProject";
 
 class CardView extends Component {
@@ -43,10 +41,11 @@ class CardView extends Component {
               <span className="chip-skill">{ski.name}</span>
             ))}
             <br />
-            <MomentProject momDate={project.startDate} />,{" "}
+            Created At: <MomentProject momDate={project.startDate} />
             <a href={project.dir}>Open</a>
             <p>
               {project.description}
+              Last Updated At: <MomentProject momDate={project.updatedDate} />
             </p>
             <ul>
               {project.features.slice(0, 2).map(feature => (

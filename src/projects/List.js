@@ -40,13 +40,13 @@ export default function List() {
 
     // make another call for all the projects with PromiseAll
 
-    const pullData = true
+    const pullData = false
     if (pullData) {
       const projectsContributions = []
       const projectsDescription = []
+      const projectsCommits = []
 
       projects.forEach(p => {
-        //const fetchAxios = axios.get(`https://api.github.com/repos/kapit4n/${p.name}/contributors`)
         const fetchDescription = axios.get(`https://api.github.com/repos/kapit4n/${p.name}`)
         const fetchContributions = axios.get(`https://api.github.com/repos/kapit4n/${p.name}/contributors`)
         projectsContributions.push(fetchContributions)
@@ -70,7 +70,11 @@ export default function List() {
         const description = allDescriptions[i]
         if (description.data && description.data.description) {
           const resultDescription = description.data.description;
+          const pushedAt = description.data.pushed_at;
+          const createdAt = description.data.created_at
           projects[i].description = resultDescription
+          projects[i].startDate = createdAt
+          projects[i].updatedDate = pushedAt
         }
       }
     }
