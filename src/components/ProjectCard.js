@@ -34,7 +34,7 @@ class CardView extends Component {
               />
             </figure>
             <h3>
-              {project.name} (<PullCount projectName={project.name} />)
+              {project.name} ({project.contributions})
             </h3>
             {project.categories.slice(0, 2).map(cat => (
               <span className="chip-category">{cat.name}</span>
@@ -46,7 +46,7 @@ class CardView extends Component {
             <MomentProject momDate={project.startDate} />,{" "}
             <a href={project.dir}>Open</a>
             <p>
-              <PullDescription projectName={project.name} />
+              {project.description}
             </p>
             <ul>
               {project.features.slice(0, 2).map(feature => (

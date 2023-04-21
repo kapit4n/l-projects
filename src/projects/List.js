@@ -1,7 +1,7 @@
 import React from 'react';
-import axios from "axios";
+import axios from 'axios'
 
-import CardView from '../components/CardView'
+import CardView from '../components/ProjectCard'
 import SkillsComp from "../components/SkillsComp";
 import ProjectService from '../services/projects-service'
 import CategoriesService from '../services/categories-service'
@@ -11,14 +11,17 @@ import './List.css'
 
 export default function List() {
 
+  // move project to another place
   const [projects, setProjects] = React.useState([]);
   const [projectsOriginal, setProjectsOriginal] = React.useState([]);
-  const [categories, setCategories] = React.useState([]);
-  const [skills, setSkills] = React.useState([]);
-  const [selectedCats, setSelectedCats] = React.useState([]);
-  const [selectedSkills, setSelectedSkills] = React.useState([]);
   const projectService = new ProjectService()
+
+  const [categories, setCategories] = React.useState([]);
+  const [selectedCats, setSelectedCats] = React.useState([]);
   const categoriesService = new CategoriesService()
+
+  const [skills, setSkills] = React.useState([]);
+  const [selectedSkills, setSelectedSkills] = React.useState([]);
   const skillsService = new SkillsService()
 
   const totalProjects = React.useMemo(() => {
@@ -29,13 +32,51 @@ export default function List() {
     return projects.length
   }, [projects])
 
-  React.useEffect(() => {
-    projectService.getProjects().then(res => {
-      const projects = res.data.slice();
-      const projectsOriginal = res.data.slice();
-      setProjects(projects)
-      setProjectsOriginal(projectsOriginal);
-    });
+  React.useEffect(async () => {
+    const res = await projectService.getProjects()
+    const size = 1
+    const projects = res.data.slice(0, size);
+    const projectsOriginal = res.data.slice(0, size);
+
+    // make another call for all the projects with PromiseAll
+
+    const pullData = true
+    if (pullData) {
+      const projectsContributions = []
+      const projectsDescription = []
+
+      projects.forEach(p => {
+        //const fetchAxios = axios.get(`https://api.github.com/repos/kapit4n/${p.name}/contributors`)
+        const fetchDescription = axios.get(`https://api.github.com/repos/kapit4n/${p.name}`)
+        const fetchContributions = axios.get(`https://api.github.com/repos/kapit4n/${p.name}/contributors`)
+        projectsContributions.push(fetchContributions)
+        projectsDescription.push(fetchDescription)
+      })
+
+      const resultAllContributions = Promise.all(projectsContributions)
+      const resultAllDescription = Promise.all(projectsDescription)
+      
+      const allContributions = await resultAllContributions
+      for (let i = 0; i < allContributions.length; i++) {
+        const contribution = allContributions[i]
+        if (contribution.data[0] && contribution.data[0].contributions) {
+          const countData = contribution.data[0].contributions;
+          projects[i].contributions = countData
+        }
+      }
+      
+      const allDescriptions = await resultAllDescription
+      for (let i = 0; i < allDescriptions.length; i++) {
+        const description = allDescriptions[i]
+        if (description.data && description.data.description) {
+          const resultDescription = description.data.description;
+          projects[i].description = resultDescription
+        }
+      }
+    }
+
+    setProjects(projects)
+    setProjectsOriginal(projectsOriginal);
 
     categoriesService.getCategories().then(res => {
       const categories = res.data;
@@ -67,7 +108,7 @@ export default function List() {
   const applyFilterCategories = (filters, projectsOriginal) => {
     let projects = projectsOriginal;
     if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.name === y.name)));
+      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.name.toLowerCase().includes(y.name.toLowerCase()))));
     }
     return projects;
   }
@@ -75,7 +116,7 @@ export default function List() {
   const applyFilterSkills = (filters, projectsOriginal) => {
     let projects = projectsOriginal;
     if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.name === y.name)));
+      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.name.toLowerCase().includes(y.name.toLowerCase()))));
     }
     setSelectedSkills(filters);
     return projects;
@@ -94,16 +135,15 @@ export default function List() {
           if (selectedCats.find(cat => cat.name === category.name)) {
             return <button className="category-button" key={category.id}
               onClick={() => dropCategory(category)} >
-              {category.name}
+              {category.name}XX
             </button>
           } else {
             return <button className="category-button-selected" key={category.id}
               onClick={() => addCategory(category)}>
-              {category.name}
+              {category.name}YY
             </button>
           }
-        }
-        )
+        })
         }
       </div>
       <div>

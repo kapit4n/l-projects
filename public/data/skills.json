@@ -13,11 +13,19 @@
   },
   {
     "id": 4,
-    "name": "ReactJS"
+    "name": "React"
+  },
+  {
+    "id": 4,
+    "name": "Vue"
   },
   {
     "id": 5,
     "name": "Scala"
+  },
+  {
+    "id": 5,
+    "name": "Java"
   },
   {
     "id": 6,
