@@ -77,8 +77,8 @@ export default function List() {
   React.useEffect(async () => {
     async function fetchData() {
       const res = await projectService.getProjects()
-      const startSlice = 6 + 10
-      const size = startSlice + 10
+      const startSlice = 0
+      const size = startSlice + 10 + 6 + 10 + 10
       const projects = res.data.slice(startSlice, size);
       const projectsOriginal = res.data.slice(startSlice, size);
 
