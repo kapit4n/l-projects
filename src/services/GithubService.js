@@ -2,8 +2,9 @@ import axios from 'axios'
 
 export default class GithubService {
 
+
   constructor() {
-    if (process.env.REACT_APP_IS_MOCKED) {
+    if (process.env.REACT_APP_IS_MOCKED == 'true') {
       this.url = ``
     } else {
       this.url = `https://api.github.com/repos/kapit4n`
