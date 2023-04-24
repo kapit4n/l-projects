@@ -77,16 +77,14 @@ export default function List() {
   React.useEffect(async () => {
     async function fetchData() {
       const res = await projectService.getProjects()
-      const size = 1
+      const size = 4
       const projects = res.data.slice(0, size);
       const projectsOriginal = res.data.slice(0, size);
 
       // make another call for all the projects with PromiseAll
-
-      const { projectsContributions, projectsDescription } = buildFetchData(projects)
-
       const pullData = false
       if (pullData) {
+        const { projectsContributions, projectsDescription } = buildFetchData(projects)
         const resultAllContributions = Promise.all(projectsContributions)
         const resultAllDescription = Promise.all(projectsDescription)
 
@@ -99,7 +97,7 @@ export default function List() {
 
       setProjects(projects)
       console.log(projects)
-      setProjectsOriginal(projectsOriginal);
+      setProjectsOriginal(projectsOriginal)
 
       const resCategories = await categoriesService.getCategories()
       const categories = resCategories.data;
