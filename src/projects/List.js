@@ -3,9 +3,10 @@ import axios from 'axios'
 
 import CardView from '../components/ProjectCard'
 import SkillsComp from "../components/SkillsComp";
-import ProjectService from '../services/projects-service'
-import CategoriesService from '../services/categories-service'
-import SkillsService from '../services/skills-service'
+import ProjectService from '../services/ProjectsService'
+import CategoriesService from '../services/CategoriesService'
+import SkillsService from '../services/SkillsService'
+import GithubService from '../services/GithubService'
 
 import './List.css'
 
@@ -23,75 +24,93 @@ export default function List() {
   const [skills, setSkills] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
   const skillsService = new SkillsService()
+  const githubService = new GithubService()
 
   const totalProjects = React.useMemo(() => {
     return projects.length
   }, [projects])
 
   const totalCommits = React.useMemo(() => {
-    return projects.length
+    return projects.reduce((prev, curr) => prev + curr.contributions, 0)
   }, [projects])
 
-  React.useEffect(async () => {
-    const res = await projectService.getProjects()
-    const size = 1
-    const projects = res.data.slice(0, size);
-    const projectsOriginal = res.data.slice(0, size);
-
-    // make another call for all the projects with PromiseAll
-
-    const pullData = false
-    if (pullData) {
-      const projectsContributions = []
-      const projectsDescription = []
-      const projectsCommits = []
-
-      projects.forEach(p => {
-        const fetchDescription = axios.get(`https://api.github.com/repos/kapit4n/${p.name}`)
-        const fetchContributions = axios.get(`https://api.github.com/repos/kapit4n/${p.name}/contributors`)
-        projectsContributions.push(fetchContributions)
-        projectsDescription.push(fetchDescription)
-      })
-
-      const resultAllContributions = Promise.all(projectsContributions)
-      const resultAllDescription = Promise.all(projectsDescription)
-      
-      const allContributions = await resultAllContributions
-      for (let i = 0; i < allContributions.length; i++) {
-        const contribution = allContributions[i]
-        if (contribution.data[0] && contribution.data[0].contributions) {
-          const countData = contribution.data[0].contributions;
-          projects[i].contributions = countData
-        }
-      }
-      
-      const allDescriptions = await resultAllDescription
-      for (let i = 0; i < allDescriptions.length; i++) {
-        const description = allDescriptions[i]
-        if (description.data && description.data.description) {
-          const resultDescription = description.data.description;
-          const pushedAt = description.data.pushed_at;
-          const createdAt = description.data.created_at
-          projects[i].description = resultDescription
-          projects[i].startDate = createdAt
-          projects[i].updatedDate = pushedAt
-        }
+  const assignDescriptions = (projects, allDescriptions) => {
+    for (let i = 0; i < allDescriptions.length; i++) {
+      const description = allDescriptions[i]
+      if (description.data && description.data.description) {
+        const resultDescription = description.data.description;
+        const pushedAt = description.data.pushed_at;
+        const createdAt = description.data.created_at
+        projects[i].description = resultDescription
+        projects[i].startDate = createdAt
+        projects[i].updatedDate = pushedAt
       }
     }
+  }
 
-    setProjects(projects)
-    setProjectsOriginal(projectsOriginal);
+  const assignContributions = (projects, allContributions) => {
+    for (let i = 0; i < allContributions.length; i++) {
+      const contribution = allContributions[i]
+      if (contribution.data[0] && contribution.data[0].contributions) {
+        const countData = contribution.data[0].contributions;
+        projects[i].contributions = countData
+      }
+    }
+  }
 
-    categoriesService.getCategories().then(res => {
-      const categories = res.data;
+  const buildFetchData = (projects) => {
+
+    const projectsContributions = []
+    const projectsDescription = []
+
+    projects.forEach(p => {
+      // Move this to a service object
+      const fetchDescription = githubService.getDescriptions(p.name)
+      const fetchContributions = githubService.getContributions(p.name)
+      projectsContributions.push(fetchContributions)
+      projectsDescription.push(fetchDescription)
+    })
+
+    return { projectsDescription, projectsContributions }
+  }
+
+  React.useEffect(async () => {
+    async function fetchData() {
+      const res = await projectService.getProjects()
+      const size = 1
+      const projects = res.data.slice(0, size);
+      const projectsOriginal = res.data.slice(0, size);
+
+      // make another call for all the projects with PromiseAll
+
+      const { projectsContributions, projectsDescription } = buildFetchData(projects)
+
+      const pullData = false
+      if (pullData) {
+        const resultAllContributions = Promise.all(projectsContributions)
+        const resultAllDescription = Promise.all(projectsDescription)
+
+        const allContributions = await resultAllContributions
+        assignContributions(projects, allContributions)
+
+        const allDescriptions = await resultAllDescription
+        assignDescriptions(projects, allDescriptions)
+      }
+
+      setProjects(projects)
+      console.log(projects)
+      setProjectsOriginal(projectsOriginal);
+
+      const resCategories = await categoriesService.getCategories()
+      const categories = resCategories.data;
       setCategories(categories);
-    });
 
-    skillsService.getSkills().then(res => {
-      const skills = res.data;
+      const resSkills = await skillsService.getSkills()
+      const skills = resSkills.data;
       setSkills(skills);
-    });
+    }
 
+    fetchData()
   }, [])
 
   const addCategory = (category) => {
@@ -139,12 +158,12 @@ export default function List() {
           if (selectedCats.find(cat => cat.name === category.name)) {
             return <button className="category-button" key={category.id}
               onClick={() => dropCategory(category)} >
-              {category.name}XX
+              {category.name}
             </button>
           } else {
             return <button className="category-button-selected" key={category.id}
               onClick={() => addCategory(category)}>
-              {category.name}YY
+              {category.name}
             </button>
           }
         })
