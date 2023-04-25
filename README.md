@@ -1,6 +1,6 @@
 Projects management system.
 
-![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home-3-008.png)
+![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png)
 
 # Description
 This project has all the projects worked in open source way.
