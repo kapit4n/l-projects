@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MomentProject from "./MomentProject";
+import MomentProject from "../components/MomentProject";
 
 class CardView extends Component {
   renderInputField(feature) {
@@ -38,6 +38,8 @@ class CardView extends Component {
             <p>
               {project.description}
               Last Updated At: <MomentProject momDate={project.updatedDate} />
+              <br />
+              {project.updatedDate}
             </p>
             <ul>
               {project.features.slice(0, 2).map(feature => (

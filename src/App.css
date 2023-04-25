@@ -27,44 +27,7 @@ input {
   margin-right: 5px;
 }
 
-.hex {
-  float: left;
-  margin-left: 3px;
-  margin-bottom: 0px;
-}
 
-.hex .top {
-  width: 0;
-  border-bottom: 60px solid #6c6;
-  border-left: 108px solid transparent;
-  border-right: 108px solid transparent;
-}
-
-.hex .middle {
-  width: 186px;
-  height: 140px;
-  background: #6c6;
-  padding-left: 30px;
-  position: relative;
-  top: -20px;
-}
-
-.hex .bottom {
-  width: 0;
-  border-top: 60px solid #6c6;
-  border-left: 108px solid transparent;
-  border-right: 108px solid transparent;
-  position: relative;
-  top: -20px;
-}
-
-.hex-row {
-  clear: left;
-}
-
-.hex-row.even {
-  margin-left: 106px;
-}
 
 .container {
   justify-content: center;

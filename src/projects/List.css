@@ -1,19 +1,13 @@
-.container {
-  width: 100%;
-}
-
 .category-view {
   color: white;
-  background-color: #31006e;
 }
 
 .category-view:hover {
-  background-color: #421475;
 }
 
 .category-view.active {
-  background-color: #666;
   color: white;
+  
 }
 
 
@@ -26,6 +20,7 @@
   display: inline-block;
   border-width: 10px;
   margin-left: 5px;
+  margin-top: 5px;
 }
 
 .category-button-selected {

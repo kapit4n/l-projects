@@ -1,6 +1,7 @@
 import React from 'react';
 
-import CardView from '../components/ProjectCard'
+import HexView from './HexView'
+import CardView from './ProjectCard'
 import SkillsComp from "../components/SkillsComp";
 import ProjectService from '../services/ProjectsService'
 import CategoriesService from '../services/CategoriesService'
@@ -13,6 +14,7 @@ export default function List() {
 
   // move project to another place
   const [projects, setProjects] = React.useState([]);
+  const [viewMode, setViewMode] = React.useState("card")
   const [projectsOriginal, setProjectsOriginal] = React.useState([]);
   const projectService = new ProjectService()
 
@@ -76,7 +78,6 @@ export default function List() {
   const exportProjects = () => {
 
     let toExportProjects = [...projects]
-    toExportProjects = toExportProjects.map(p => ({...p, skills: p.skills.map(s => s.name), features: p.features.map(s => s.text), categories: p.categories.map(s => s.name)}))
 
     const jsonProjects = `data:text/json;chatset=utf-8,${encodeURIComponent(
       JSON.stringify(toExportProjects)
@@ -87,6 +88,66 @@ export default function List() {
     link.download = "projects.json"
 
     link.click()
+  }
+
+
+
+  const addCategory = (category) => {
+    const filters = [...selectedCats, category];
+    setSelectedCats(filters);
+    const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
+    setProjects(result);
+  }
+
+  const dropCategory = (category) => {
+    const filters = [...selectedCats.filter(x => x !== category)];
+    setSelectedCats(filters)
+    const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
+    setProjects(result);
+
+  }
+
+  const applyFilterCategories = (filters, projectsOriginal) => {
+    let projects = projectsOriginal;
+    if (filters.length > 0) {
+      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.toUpperCase().includes(y.toUpperCase()))));
+    }
+    return projects;
+  }
+
+  const applyFilterSkills = (filters, projectsOriginal) => {
+    let projects = projectsOriginal;
+    if (filters.length > 0) {
+      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.toUpperCase().includes(y.toUpperCase()))));
+    }
+    setSelectedSkills(filters);
+    return projects;
+  }
+
+  const changedElement = (selected) => {
+    setSelectedSkills(selected);
+    const result = applyFilterCategories(selectedCats, applyFilterSkills(selected, projectsOriginal));
+    setProjects(result);
+  }
+
+  const sortAsc = () => {
+    const sortedProjects = [...projects]
+    sortedProjects.sort((a, b) => new Date(b.updatedDate) > new Date(a.updatedDate) ? -1 : 1)
+    setProjects(sortedProjects)
+  }
+
+  const sortDesc = () => {
+    const sortedProjects = [...projects]
+    // sortedProjects.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate))
+    sortedProjects.sort((a, b) => new Date(a.updatedDate) > new Date(b.updatedDate) ? -1 : 1)
+    setProjects(sortedProjects)
+  }
+
+  const loadFilters = (projects) => {
+    const categoriesSet = new Set(projects.map(p => p.categories).flat().map(cat => cat.toUpperCase()))
+    const skillsSet = new Set(projects.map(p => p.skills).flat().map(fet => fet.toUpperCase()))
+    setCategories([...categoriesSet])
+    setSkills([...skillsSet])
   }
 
   React.useEffect(async () => {
@@ -115,86 +176,20 @@ export default function List() {
       setProjectsOriginal(projectsOriginal)
       console.log(projects)
       
+      /*
       const resCategories = await categoriesService.getCategories()
       const categories = resCategories.data.map(cat => cat.name.toUpperCase());
       setCategories(categories);
 
       const resSkills = await skillsService.getSkills()
       const skills = resSkills.data.map(sk => sk.name.toUpperCase());
-      setSkills(skills);
+      setSkills(skills);\
+      */
+     loadFilters(projects)
     }
 
     fetchData()
   }, [])
-
-  const addCategory = (category) => {
-    const filters = [...selectedCats, category];
-    setSelectedCats(filters);
-    const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
-    setProjects(result);
-  }
-
-  const dropCategory = (category) => {
-    const filters = [...selectedCats.filter(x => x !== category)];
-    setSelectedCats(filters)
-    const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
-    setProjects(result);
-
-  }
-
-  const applyFilterCategories = (filters, projectsOriginal) => {
-    let projects = projectsOriginal;
-    if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.includes(y.toLowerCase()))));
-    }
-    return projects;
-  }
-
-  const applyFilterSkills = (filters, projectsOriginal) => {
-    let projects = projectsOriginal;
-    if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.toLowerCase().includes(y.toLowerCase()))));
-    }
-    setSelectedSkills(filters);
-    return projects;
-  }
-
-  const changedElement = (selected) => {
-    setSelectedSkills(selected);
-    const result = applyFilterCategories(selectedCats, applyFilterSkills(selected, projectsOriginal));
-    setProjects(result);
-  }
-
-  const sortAsc = () => {
-    const sortedProjects = [...projects]
-    sortedProjects.sort((a, b) => {
-      console.log(a.updatedDate, b.updatedDate)
-      console.log(new Date(a.updatedDate), new Date(b.updatedDate))
-      return new Date(a.updatedDate) - new Date(b.updatedDate)
-    })
-    setProjects(sortedProjects)
-  }
-
-  const sortDesc = () => {
-    const sortedProjects = [...projects]
-    sortedProjects.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate))
-    setProjects(sortedProjects)
-  }
-
-  const findDuplicates = () => {
-    const projectsSet = new Set(projects.map(p => p.name))
-
-    const categoriesSet = new Set(projects.map(p => p.categories).flat().map(cat => cat.toUpperCase()))
-    const featuresSet = new Set(projects.map(p => p.features).flat().map(fet => fet.toUpperCase()))
-    const skillsSet = new Set(projects.map(p => p.skills).flat().map(fet => fet.toUpperCase()))
-    console.log(projectsSet)
-    console.log(categoriesSet)
-    console.log(featuresSet)
-    console.log(skillsSet)
-    setCategories([...categoriesSet])
-    setSkills([...skillsSet])
-    
-  }
 
   return (
     <div className="container">
@@ -228,9 +223,15 @@ export default function List() {
           <button onClick={exportProjects}>Export Projects</button>
           <button onClick={sortAsc}>Sort Asc</button>
           <button onClick={sortDesc}>Sort Desc</button>
-          <button onClick={findDuplicates}>Find Duplicates</button>
+          <button onClick={() => setViewMode("card")}>CardView</button>
+          <button onClick={() => setViewMode("hex")}>HexView</button>
         </div>
-        <CardView projects={projects} />
+        {viewMode === 'card' && (
+          <CardView projects={projects} />
+        )}
+        {viewMode === 'hex' && (
+          <HexView projects={projects} />
+        )}
       </div>
     </div>
   )
