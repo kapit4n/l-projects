@@ -2,6 +2,7 @@ import React from 'react';
 
 import HexView from './HexView'
 import CardView from './ProjectCard'
+import StatsView from './StatsView'
 import SkillsComp from "../components/SkillsComp";
 import ProjectService from '../services/ProjectsService'
 import CategoriesService from '../services/CategoriesService'
@@ -175,7 +176,7 @@ export default function List() {
       setProjects(projects)
       setProjectsOriginal(projectsOriginal)
       console.log(projects)
-      
+
       /*
       const resCategories = await categoriesService.getCategories()
       const categories = resCategories.data.map(cat => cat.name.toUpperCase());
@@ -185,7 +186,7 @@ export default function List() {
       const skills = resSkills.data.map(sk => sk.name.toUpperCase());
       setSkills(skills);\
       */
-     loadFilters(projects)
+      loadFilters(projects)
     }
 
     fetchData()
@@ -225,12 +226,16 @@ export default function List() {
           <button onClick={sortDesc}>Sort Desc</button>
           <button onClick={() => setViewMode("card")}>CardView</button>
           <button onClick={() => setViewMode("hex")}>HexView</button>
+          <button onClick={() => setViewMode("stats")}>Stats</button>
         </div>
         {viewMode === 'card' && (
           <CardView projects={projects} />
         )}
         {viewMode === 'hex' && (
           <HexView projects={projects} />
+        )}
+        {viewMode === 'stats' && (
+          <StatsView projects={projects} />
         )}
       </div>
     </div>
