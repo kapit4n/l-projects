@@ -2,12 +2,12 @@
   {
     "id": 4,
     "startDate": "2018-10-18T15:25:04Z",
-    "updatedDate": "2023-04-24T20:29:56Z",
-    "contributions": 76,
+    "updatedDate": "2023-04-25T20:29:56Z",
+    "contributions": 86,
     "description": "Researching and projects on development with the traditional and top technologies (react, angular, vue, play, bootstrap).",
     "name": "l-projects",
     "dir": "https://github.com/kapit4n/l-projects",
-    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-project0022.png",
+    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png",
     "features": [
       "Projects view",
       "Project planning",
