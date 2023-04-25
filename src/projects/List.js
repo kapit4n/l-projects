@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios'
 
 import CardView from '../components/ProjectCard'
 import SkillsComp from "../components/SkillsComp";
@@ -74,6 +73,22 @@ export default function List() {
     return { projectsDescription, projectsContributions }
   }
 
+  const exportProjects = () => {
+
+    let toExportProjects = [...projects]
+    toExportProjects = toExportProjects.map(p => ({...p, skills: p.skills.map(s => s.name), features: p.features.map(s => s.text), categories: p.categories.map(s => s.name)}))
+
+    const jsonProjects = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify(toExportProjects)
+    )}`
+
+    const link = document.createElement("a")
+    link.href = jsonProjects
+    link.download = "projects.json"
+
+    link.click()
+  }
+
   React.useEffect(async () => {
     async function fetchData() {
       const res = await projectService.getProjects()
@@ -101,11 +116,11 @@ export default function List() {
       console.log(projects)
       
       const resCategories = await categoriesService.getCategories()
-      const categories = resCategories.data;
+      const categories = resCategories.data.map(cat => cat.name.toUpperCase());
       setCategories(categories);
 
       const resSkills = await skillsService.getSkills()
-      const skills = resSkills.data;
+      const skills = resSkills.data.map(sk => sk.name.toUpperCase());
       setSkills(skills);
     }
 
@@ -120,7 +135,7 @@ export default function List() {
   }
 
   const dropCategory = (category) => {
-    const filters = [...selectedCats.filter(x => x.name !== category.name)];
+    const filters = [...selectedCats.filter(x => x !== category)];
     setSelectedCats(filters)
     const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
     setProjects(result);
@@ -130,7 +145,7 @@ export default function List() {
   const applyFilterCategories = (filters, projectsOriginal) => {
     let projects = projectsOriginal;
     if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.name.toLowerCase().includes(y.name.toLowerCase()))));
+      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.includes(y.toLowerCase()))));
     }
     return projects;
   }
@@ -138,7 +153,7 @@ export default function List() {
   const applyFilterSkills = (filters, projectsOriginal) => {
     let projects = projectsOriginal;
     if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.name.toLowerCase().includes(y.name.toLowerCase()))));
+      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.toLowerCase().includes(y.toLowerCase()))));
     }
     setSelectedSkills(filters);
     return projects;
@@ -150,19 +165,50 @@ export default function List() {
     setProjects(result);
   }
 
+  const sortAsc = () => {
+    const sortedProjects = [...projects]
+    sortedProjects.sort((a, b) => {
+      console.log(a.updatedDate, b.updatedDate)
+      console.log(new Date(a.updatedDate), new Date(b.updatedDate))
+      return new Date(a.updatedDate) - new Date(b.updatedDate)
+    })
+    setProjects(sortedProjects)
+  }
+
+  const sortDesc = () => {
+    const sortedProjects = [...projects]
+    sortedProjects.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate))
+    setProjects(sortedProjects)
+  }
+
+  const findDuplicates = () => {
+    const projectsSet = new Set(projects.map(p => p.name))
+
+    const categoriesSet = new Set(projects.map(p => p.categories).flat().map(cat => cat.toUpperCase()))
+    const featuresSet = new Set(projects.map(p => p.features).flat().map(fet => fet.toUpperCase()))
+    const skillsSet = new Set(projects.map(p => p.skills).flat().map(fet => fet.toUpperCase()))
+    console.log(projectsSet)
+    console.log(categoriesSet)
+    console.log(featuresSet)
+    console.log(skillsSet)
+    setCategories([...categoriesSet])
+    setSkills([...skillsSet])
+    
+  }
+
   return (
     <div className="container">
       <div className='category-view'>
         {categories.map(category => {
-          if (selectedCats.find(cat => cat.name === category.name)) {
-            return <button className="category-button" key={category.id}
+          if (selectedCats.find(cat => cat === category)) {
+            return <button className="category-button" key={category}
               onClick={() => dropCategory(category)} >
-              {category.name}
+              {category}
             </button>
           } else {
-            return <button className="category-button-selected" key={category.id}
+            return <button className="category-button-selected" key={category}
               onClick={() => addCategory(category)}>
-              {category.name}
+              {category}
             </button>
           }
         })
@@ -179,6 +225,10 @@ export default function List() {
         <div className="projects-list-totals">
           <span>Total Projects: {totalProjects}</span>
           <span>Total commits: {totalCommits}</span>
+          <button onClick={exportProjects}>Export Projects</button>
+          <button onClick={sortAsc}>Sort Asc</button>
+          <button onClick={sortDesc}>Sort Desc</button>
+          <button onClick={findDuplicates}>Find Duplicates</button>
         </div>
         <CardView projects={projects} />
       </div>

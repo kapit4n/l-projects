@@ -3,26 +3,18 @@ import MomentProject from "./MomentProject";
 
 class CardView extends Component {
   renderInputField(feature) {
-    if (feature.done) {
-      return (
-        <label>
-          <span style={{ color: "#b3c6ff" }}>{feature.text}</span>
-        </label>
-      );
-    } else {
-      return (
-        <label>
-          <span>{feature.text}</span>
-        </label>
-      );
-    }
+    return (
+      <label>
+        <span style={{ color: "#b3c6ff" }}>{feature}</span>
+      </label>
+    );
   }
 
   render() {
     return (
-      <div  >
+      <div>
         {this.props.projects.map(project => (
-          <div className="card-view" style={{ margin: '1rem' }} key={project.id}>
+          <div className="card-view" style={{ margin: '1rem' }} key={project.projectName}>
             <figure style={{ width: '100%', height: '200px' }}>
               <img
                 className="img-rounded"
@@ -35,10 +27,10 @@ class CardView extends Component {
               {project.name} ({project.contributions})
             </h3>
             {project.categories.slice(0, 2).map(cat => (
-              <span className="chip-category">{cat.name}</span>
+              <span className="chip-category">{cat}</span>
             ))}
             {project.skills.slice(0, 2).map(ski => (
-              <span className="chip-skill">{ski.name}</span>
+              <span className="chip-skill">{ski}</span>
             ))}
             <br />
             Created At: <MomentProject momDate={project.startDate} />
@@ -49,7 +41,7 @@ class CardView extends Component {
             </p>
             <ul>
               {project.features.slice(0, 2).map(feature => (
-                <li key={feature.id}>{this.renderInputField(feature)}</li>
+                <li key={feature}>{this.renderInputField(feature)}</li>
               ))}
             </ul>
           </div>

@@ -1,28 +1,51 @@
 import React, { Component } from "react";
-import { Typeahead } from "react-bootstrap-typeahead"; // ES2015
+import {
+  Typeahead,
+  Highlighter,
+  Menu,
+  MenuItem,
+} from 'react-bootstrap-typeahead';
+import List from 'react-tiny-virtual-list';
+
 import "react-bootstrap-typeahead/css/Typeahead.css";
 
-class SkillsComp extends Component {
-  state = {
-    multiple: true
-  };
+export function SkillsComp({skills, changedElement}) {
 
-  render() {
-    const { multiple } = this.state;
+  const renderMenu = React.useCallback((results, menuProps, props) => {
+    const itemHeight = 32;
 
     return (
-      <div style={{ width: '100%', margin: '1rem 0' }}>
-        <Typeahead
-          labelKey="name"
-          multiple={multiple}
-          options={this.props.skills}
-          placeholder="Choose a skill..."
-          onChange={this.props.changedElement}
-          style={{ width: '100%' }}
+      <Menu {...menuProps}>
+        <List
+          scrollToIndex={props.activeIndex || 0}
+          scrollToAlignment="auto"
+          height={results.length < 5 ? results.length * itemHeight : 300}
+          itemCount={results.length}
+          itemSize={itemHeight}
+          renderItem={({ index, style }) => {
+            const item = results[index];
+            return (
+              <MenuItem key={item} option={item} position={index} style={style}>
+                <Highlighter search={props.text}>{item}</Highlighter>
+              </MenuItem>
+            );
+          }}
         />
-      </div>
+      </Menu>
     );
-  }
+  });
+
+  return (
+    <div style={{ width: '100%', margin: '1rem 1rem' }}>
+      <Typeahead
+        multiple
+        options={skills}
+        placeholder="Choose a skill..."
+        onChange={changedElement}
+        renderMenu={renderMenu}
+      />
+    </div>
+  );
 }
 
 export default SkillsComp;
