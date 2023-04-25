@@ -3,13 +3,12 @@ import React from 'react';
 import HexView from './HexView'
 import CardView from './ProjectCard'
 import StatsView from './StatsView'
-import SkillsComp from "../components/SkillsComp";
+import SkillsComp from "./ProjectSkills";
 import ProjectService from '../services/ProjectsService'
-import CategoriesService from '../services/CategoriesService'
-import SkillsService from '../services/SkillsService'
 import GithubService from '../services/GithubService'
 
 import './List.css'
+import ProjectCategory from './ProjectCategory';
 
 export default function List() {
 
@@ -21,11 +20,9 @@ export default function List() {
 
   const [categories, setCategories] = React.useState([]);
   const [selectedCats, setSelectedCats] = React.useState([]);
-  const categoriesService = new CategoriesService()
 
   const [skills, setSkills] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
-  const skillsService = new SkillsService()
   const githubService = new GithubService()
 
   const totalProjects = React.useMemo(() => {
@@ -66,7 +63,6 @@ export default function List() {
     const projectsDescription = []
 
     projects.forEach(p => {
-      // Move this to a service object
       const fetchDescription = githubService.getDescriptions(p.name)
       const fetchContributions = githubService.getContributions(p.name)
       projectsContributions.push(fetchContributions)
@@ -91,8 +87,6 @@ export default function List() {
     link.click()
   }
 
-
-
   const addCategory = (category) => {
     const filters = [...selectedCats, category];
     setSelectedCats(filters);
@@ -105,7 +99,6 @@ export default function List() {
     setSelectedCats(filters)
     const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
     setProjects(result);
-
   }
 
   const applyFilterCategories = (filters, projectsOriginal) => {
@@ -139,7 +132,6 @@ export default function List() {
 
   const sortDesc = () => {
     const sortedProjects = [...projects]
-    // sortedProjects.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate))
     sortedProjects.sort((a, b) => new Date(a.updatedDate) > new Date(b.updatedDate) ? -1 : 1)
     setProjects(sortedProjects)
   }
@@ -177,15 +169,6 @@ export default function List() {
       setProjectsOriginal(projectsOriginal)
       console.log(projects)
 
-      /*
-      const resCategories = await categoriesService.getCategories()
-      const categories = resCategories.data.map(cat => cat.name.toUpperCase());
-      setCategories(categories);
-
-      const resSkills = await skillsService.getSkills()
-      const skills = resSkills.data.map(sk => sk.name.toUpperCase());
-      setSkills(skills);\
-      */
       loadFilters(projects)
     }
 
@@ -194,22 +177,7 @@ export default function List() {
 
   return (
     <div className="container">
-      <div className='category-view'>
-        {categories.map(category => {
-          if (selectedCats.find(cat => cat === category)) {
-            return <button className="category-button" key={category}
-              onClick={() => dropCategory(category)} >
-              {category}
-            </button>
-          } else {
-            return <button className="category-button-selected" key={category}
-              onClick={() => addCategory(category)}>
-              {category}
-            </button>
-          }
-        })
-        }
-      </div>
+      <ProjectCategory {...{categories, addCategory, dropCategory, selectedCats}}/>
       <div>
         <SkillsComp
           skills={skills}
@@ -221,9 +189,9 @@ export default function List() {
         <div className="projects-list-totals">
           <span>Total Projects: {totalProjects}</span>
           <span>Total commits: {totalCommits}</span>
-          <button onClick={exportProjects}>Export Projects</button>
-          <button onClick={sortAsc}>Sort Asc</button>
-          <button onClick={sortDesc}>Sort Desc</button>
+          <button onClick={exportProjects}>Export</button>
+          <button onClick={sortAsc}>Asc</button>
+          <button onClick={sortDesc}>Desc</button>
           <button onClick={() => setViewMode("card")}>CardView</button>
           <button onClick={() => setViewMode("hex")}>HexView</button>
           <button onClick={() => setViewMode("stats")}>Stats</button>

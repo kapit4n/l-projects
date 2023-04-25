@@ -9,7 +9,7 @@ import List from 'react-tiny-virtual-list';
 
 import "react-bootstrap-typeahead/css/Typeahead.css";
 
-export function SkillsComp({skills, changedElement}) {
+export function ProjectSkills({ skills, changedElement }) {
 
   const renderMenu = React.useCallback((results, menuProps, props) => {
     const itemHeight = 32;
@@ -36,7 +36,7 @@ export function SkillsComp({skills, changedElement}) {
   });
 
   return (
-    <div style={{ width: '100%', margin: '1rem 1rem' }}>
+    <div style={{ width: '100%', margin: '1rem 0' }}>
       <Typeahead
         multiple
         options={skills}
@@ -48,4 +48,4 @@ export function SkillsComp({skills, changedElement}) {
   );
 }
 
-export default SkillsComp;
+export default ProjectSkills;

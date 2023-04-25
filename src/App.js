@@ -12,11 +12,6 @@ class App extends Component {
     return (
       <div className="container">
         <h2>Welcome to projects in progress</h2>
-        <div style={{ width: '100%' }}>
-          <ul className="navbar-nav mr-auto">
-            <li><Link to={'/'}>List</Link></li>
-          </ul>
-        </div>
         <div className="container-projects">
           <div style={{ width: '100%' }}>
             <Routes>

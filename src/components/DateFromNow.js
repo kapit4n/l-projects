@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 
-const MomentProject = (props) => {
+const MomentProject = ({ date }) => {
     return (
         <span>
-            {moment(new Date(props.momDate)).fromNow()}
+            {moment(new Date(date)).fromNow()}
         </span>
     )
 }

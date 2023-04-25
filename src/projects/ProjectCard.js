@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import MomentProject from "../components/MomentProject";
+import Chip from "../components/Chip";
+import DateFromNow from "../components/DateFromNow";
 
-class CardView extends Component {
-  renderInputField(feature) {
+import './ProjectCard.css'
+
+class ProjectCard extends Component {
+  renderFeature(feature) {
     return (
       <label>
         <span style={{ color: "#b3c6ff" }}>{feature}</span>
@@ -12,9 +15,9 @@ class CardView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="project-list-card">
         {this.props.projects.map(project => (
-          <div className="card-view" style={{ margin: '1rem' }} key={project.projectName}>
+          <div className="card-view" key={project.projectName}>
             <figure style={{ width: '100%', height: '200px' }}>
               <img
                 className="img-rounded"
@@ -26,24 +29,26 @@ class CardView extends Component {
             <h3>
               {project.name} ({project.contributions})
             </h3>
-            {project.categories.slice(0, 2).map(cat => (
-              <span className="chip-category">{cat}</span>
-            ))}
-            {project.skills.slice(0, 2).map(ski => (
-              <span className="chip-skill">{ski}</span>
-            ))}
+            <div className="chips-container">
+              {project.categories.slice(0, 2).map(cat => (
+                <span className="chip-category">{cat}</span>
+              ))}
+              {project.skills.slice(0, 2).map(ski => (
+                <Chip value={ski} />
+              ))}
+            </div>
             <br />
-            Created At: <MomentProject momDate={project.startDate} />
+            Created At: <DateFromNow date={project.startDate} />
             <a href={project.dir}>Open</a>
             <p>
               {project.description}
-              Last Updated At: <MomentProject momDate={project.updatedDate} />
+              Last Updated At: <DateFromNow date={project.updatedDate} />
               <br />
               {project.updatedDate}
             </p>
             <ul>
               {project.features.slice(0, 2).map(feature => (
-                <li key={feature}>{this.renderInputField(feature)}</li>
+                <li key={feature}>{this.renderFeature(feature)}</li>
               ))}
             </ul>
           </div>
@@ -52,4 +57,4 @@ class CardView extends Component {
     );
   }
 }
-export default CardView;
+export default ProjectCard;

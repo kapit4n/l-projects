@@ -1,6 +1,6 @@
 .hex-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 
@@ -23,7 +23,27 @@
   background: #6c6;
   padding-left: 30px;
   position: relative;
-  top: -20px;
+  top: -11px;
+}
+
+.hex .middle ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 7rem;
+}
+
+
+.hex .middle li {
+  margin: 0;
+}
+
+.hex .middle a {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+padding: 2px 4px;
 }
 
 .hex .bottom {
@@ -32,7 +52,7 @@
   border-left: 108px solid transparent;
   border-right: 108px solid transparent;
   position: relative;
-  top: -20px;
+  top: -11px;
 }
 
 .hex-row {

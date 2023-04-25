@@ -80,7 +80,7 @@
       "habits"
     ],
     "skills": [
-      "React js",
+      "React",
       "Typescript"
     ]
   },
@@ -98,9 +98,9 @@
       "habits"
     ],
     "skills": [
-      "Python Django",
-      "Angular Material",
-      "Rest API, Client API"
+      "Python", "Django",
+      "Material UI",
+      "Rest API", "Client API"
     ],
     "contributions": 113,
     "description": "full stack application to register tasks in progress .Angular, python, django, task register.",
@@ -141,11 +141,11 @@
       "research"
     ],
     "skills": [
-      "react js",
+      "react",
       "javascript"
     ],
     "contributions": 85,
-    "description": "react js, material ui.",
+    "description": "react, material ui.",
     "updatedDate": "2023-03-15T08:25:55Z"
   },
   {
@@ -228,7 +228,7 @@
       "Health"
     ],
     "skills": [
-      "React js",
+      "React",
       "Javascript",
       "Node js"
     ],
@@ -253,7 +253,7 @@
     ],
     "skills": [
       "Next js",
-      "React js"
+      "React"
     ]
   },
   {
@@ -263,13 +263,13 @@
     "dir": "https://github.com/kapit4n/project-two-client",
     "img": "https://github.com/kapit4n/project-two-client/raw/master/screenshots/home.png",
     "features": [
-      "Social Network"
+      "Social"
     ],
     "categories": [
-      "social network"
+      "social"
     ],
     "skills": [
-      "React js",
+      "React",
       "graphql"
     ],
     "contributions": 27,
@@ -334,7 +334,7 @@
       "Users"
     ],
     "skills": [
-      "React js",
+      "React",
       "Golang"
     ],
     "contributions": 88,
@@ -354,7 +354,7 @@
       "Health"
     ],
     "skills": [
-      "React js",
+      "React",
       "Javascript",
       "Node js"
     ],
@@ -393,10 +393,10 @@
     "dir": "https://github.com/kapit4n/v-video",
     "img": "https://github.com/kapit4n/v-video/raw/master/screenshots/home.png",
     "features": [
-      "Social Network"
+      "Network"
     ],
     "categories": [
-      "social network"
+      "Network"
     ],
     "skills": [
       "Vue js",
@@ -485,11 +485,11 @@
       "Logic"
     ],
     "skills": [
-      "React js",
+      "React",
       "Typescript"
     ],
     "contributions": 16,
-    "description": "React js, python, django, machine learning, typescript",
+    "description": "React, python, django, machine learning, typescript",
     "updatedDate": "2020-07-18T05:02:00Z"
   },
   {
@@ -557,7 +557,7 @@
       "Bootstrap"
     ],
     "contributions": 19,
-    "description": "react js app, register products.",
+    "description": "react app, register products.",
     "updatedDate": "2019-06-04T05:44:23Z"
   },
   {
@@ -689,7 +689,7 @@
       "react"
     ],
     "skills": [
-      "React js",
+      "React",
       "Maps"
     ],
     "contributions": 39

@@ -1,0 +1,44 @@
+.category-view {
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(12, auto);
+  font-size: 11px;
+  gap: 0.5rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  /*Tablets [601px -> 1200px]*/
+  .category-view {
+    grid-template-columns: repeat(6, auto);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+  .category-view {
+    grid-template-columns: repeat(2, auto);
+    background-color: blue;
+  }
+}
+
+
+.category-button {
+  border: none;
+  outline: none;
+  padding: 8px 8px;
+  background-color: #31006e;
+  cursor: pointer;
+  display: inline-block;
+  border-width: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.category-button-selected {
+  border: none;
+  outline: none;
+  padding: 8px 8px;
+  background-color: #712cc7;
+  cursor: pointer;
+  display: inline-block;
+}
