@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import HexView from './HexView'
 import CardView from './ProjectCard'
@@ -143,7 +144,7 @@ export default function List() {
     setSkills([...skillsSet])
   }
 
-  React.useEffect(async () => {
+  React.useEffect(() => {
     async function fetchData() {
       const res = await projectService.getProjects()
       const startSlice = 0
@@ -151,7 +152,6 @@ export default function List() {
       const projects = res.data.slice(startSlice, size);
       const projectsOriginal = res.data.slice(startSlice, size);
 
-      // make another call for all the projects with PromiseAll
       const pullData = false
       if (pullData) {
         const { projectsContributions, projectsDescription } = buildFetchData(projects)
@@ -167,8 +167,6 @@ export default function List() {
 
       setProjects(projects)
       setProjectsOriginal(projectsOriginal)
-      console.log(projects)
-
       loadFilters(projects)
     }
 
@@ -177,7 +175,7 @@ export default function List() {
 
   return (
     <div className="container">
-      <ProjectCategory {...{categories, addCategory, dropCategory, selectedCats}}/>
+      <ProjectCategory {...{ categories, addCategory, dropCategory, selectedCats }} />
       <div>
         <SkillsComp
           skills={skills}
@@ -195,6 +193,9 @@ export default function List() {
           <button onClick={() => setViewMode("card")}>CardView</button>
           <button onClick={() => setViewMode("hex")}>HexView</button>
           <button onClick={() => setViewMode("stats")}>Stats</button>
+        </div>
+        <div className="projects-list-totals">
+          <Link to="/add">Add</Link>
         </div>
         {viewMode === 'card' && (
           <CardView projects={projects} />
