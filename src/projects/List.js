@@ -151,20 +151,6 @@ export default function List() {
       const size = startSlice + 10 + 6 + 10 + 10
       const projects = res.data.slice(startSlice, size);
       const projectsOriginal = res.data.slice(startSlice, size);
-
-      const pullData = false
-      if (pullData) {
-        const { projectsContributions, projectsDescription } = buildFetchData(projects)
-        const resultAllContributions = Promise.all(projectsContributions)
-        const resultAllDescription = Promise.all(projectsDescription)
-
-        const allContributions = await resultAllContributions
-        assignContributions(projects, allContributions)
-
-        const allDescriptions = await resultAllDescription
-        assignDescriptions(projects, allDescriptions)
-      }
-
       setProjects(projects)
       setProjectsOriginal(projectsOriginal)
       loadFilters(projects)
@@ -172,6 +158,23 @@ export default function List() {
 
     fetchData()
   }, [])
+
+  const syncGithub = async () => {
+    const lastN = 10
+    const fromN = 0
+    const syncProjects = projects.slice(fromN, lastN)
+    const { projectsContributions, projectsDescription } = buildFetchData(syncProjects)
+    const resultAllContributions = Promise.all(projectsContributions)
+    const resultAllDescription = Promise.all(projectsDescription)
+
+    const allContributions = await resultAllContributions
+    assignContributions(syncProjects, allContributions)
+
+    const allDescriptions = await resultAllDescription
+    assignDescriptions(syncProjects, allDescriptions)
+    const mergedProjects = [...syncProjects, ...projects.slice(fromN + lastN)]
+    setProjects(mergedProjects)
+  }
 
   return (
     <div className="container">
@@ -193,6 +196,7 @@ export default function List() {
           <button onClick={() => setViewMode("card")}>CardView</button>
           <button onClick={() => setViewMode("hex")}>HexView</button>
           <button onClick={() => setViewMode("stats")}>Stats</button>
+          <button onClick={syncGithub}>Sync</button>
         </div>
         <div className="projects-list-totals">
           <Link to="/add">Add</Link>
