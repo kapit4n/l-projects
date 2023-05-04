@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import "./App.css";
 
-import List from './projects/List';
-import Details from './projects/Details';
-import Add from './projects/Add';
+import List from './projects/list/List';
+import Details from './projects/details/Details';
+import Add from './projects/add/Add';
 
 class App extends Component {
   render() {

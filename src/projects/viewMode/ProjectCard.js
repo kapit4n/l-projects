@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Chip from "../components/Chip";
-import DateFromNow from "../components/DateFromNow";
+import Chip from "../../components/Chip";
+import DateFromNow from "../../components/DateFromNow";
 
 import './ProjectCard.css'
 

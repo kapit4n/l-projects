@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import HexView from './HexView'
-import CardView from './ProjectCard'
-import StatsView from './StatsView'
+import HexView from '../viewMode/HexView'
+import CardView from '../viewMode/ProjectCard'
+import StatsView from '../viewMode/StatsView'
 import SkillsComp from "./ProjectSkills";
-import ProjectService from '../services/ProjectsService'
-import GithubService from '../services/GithubService'
+import ProjectService from '../../services/ProjectsService'
+import GithubService from '../../services/GithubService'
 
 import './List.css'
 import ProjectCategory from './ProjectCategory';
+import ListActions from './ListActions';
 
 export default function List() {
 
@@ -21,7 +22,7 @@ export default function List() {
 
   const [categories, setCategories] = React.useState([]);
   const [selectedCats, setSelectedCats] = React.useState([]);
-
+  
   const [skills, setSkills] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
   const githubService = new GithubService()
@@ -180,38 +181,24 @@ export default function List() {
     <div className="container">
       <ProjectCategory {...{ categories, addCategory, dropCategory, selectedCats }} />
       <div>
-        <SkillsComp
-          skills={skills}
-          changedElement={changedElement}
-        />
+        <SkillsComp skills={skills} changedElement={changedElement} />
       </div>
-
       <div>
-        <div className="projects-list-totals">
-          <span>Total Projects: {totalProjects}</span>
-          <span>Total commits: {totalCommits}</span>
-          <button onClick={exportProjects}>Export</button>
-          <button onClick={sortAsc}>Asc</button>
-          <button onClick={sortDesc}>Desc</button>
-          <button onClick={() => setViewMode("card")}>CardView</button>
-          <button onClick={() => setViewMode("hex")}>HexView</button>
-          <button onClick={() => setViewMode("stats")}>Stats</button>
-          <button onClick={syncGithub}>Sync</button>
-        </div>
+        <ListActions {...{ setViewMode, exportProjects, sortAsc, sortDesc, syncGithub, totalProjects, totalCommits }} />
         <div className="projects-list-totals">
           <Link to="/add">Add</Link>
-        </div>
-        {viewMode === 'card' && (
-          <CardView projects={projects} />
-        )}
-        {viewMode === 'hex' && (
-          <HexView projects={projects} />
-        )}
-        {viewMode === 'stats' && (
-          <StatsView projects={projects} />
-        )}
       </div>
+      {viewMode === 'card' && (
+        <CardView projects={projects} />
+      )}
+      {viewMode === 'hex' && (
+        <HexView projects={projects} />
+      )}
+      {viewMode === 'stats' && (
+        <StatsView projects={projects} />
+      )}
     </div>
+    </div >
   )
 }
 

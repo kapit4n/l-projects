@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import ProjectService from '../services/ProjectsService';
+import ProjectService from '../../services/ProjectsService';
 
 import './Details.css'
 
