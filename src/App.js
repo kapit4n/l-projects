@@ -16,8 +16,8 @@ class App extends Component {
           <div style={{ width: '100%' }}>
             <Routes>
               <Route exact path="/" element={<List />} />
-              <Route path="/details" element={<Details />} />
-              <Route path="/Add" element={<Add />} />
+              <Route path="/details/:id" element={<Details />} />
+              <Route path="/add" element={<Add />} />
             </Routes>
           </div>
         </div>
