@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Chip from "../components/Chip";
 import DateFromNow from "../components/DateFromNow";
 
@@ -19,12 +20,15 @@ class ProjectCard extends Component {
         {this.props.projects.map(project => (
           <div className="card-view" key={project.projectName}>
             <figure style={{ width: '100%', height: '200px' }}>
-              <img
-                className="img-rounded"
-                src={project.img}
-                alt="Avatar"
-                style={{ objectFit: 'fill', width: '100%' }}
-              />
+              <Link to={`details/${project.id}`}
+              >
+                <img
+                  className="img-rounded"
+                  src={project.img}
+                  alt="Avatar"
+                  style={{ objectFit: 'fill', width: '100%' }}
+                />
+              </Link>
             </figure>
             <h3>
               {project.name} ({project.contributions})
