@@ -22,7 +22,7 @@ export default function List() {
 
   const [categories, setCategories] = React.useState([]);
   const [selectedCats, setSelectedCats] = React.useState([]);
-  
+
   const [skills, setSkills] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
   const githubService = new GithubService()
@@ -42,9 +42,21 @@ export default function List() {
         const resultDescription = description.data.description;
         const pushedAt = description.data.pushed_at;
         const createdAt = description.data.created_at
+
+        const topics = description.data.topics
+        const language = description.data.language
+        const size = description.data.size
+        const openIssues = description.data.open_issues
+
         projects[i].description = resultDescription
         projects[i].startDate = createdAt
         projects[i].updatedDate = pushedAt
+
+        projects[i].topics = topics
+        projects[i].language = language
+        projects[i].size = size
+        projects[i].openIssues = openIssues
+
       }
     }
   }
@@ -161,7 +173,7 @@ export default function List() {
   }, [])
 
   const syncGithub = async () => {
-    const lastN = 10
+    const lastN = 2
     const fromN = 0
     const syncProjects = projects.slice(fromN, lastN)
     const { projectsContributions, projectsDescription } = buildFetchData(syncProjects)
@@ -177,6 +189,16 @@ export default function List() {
     setProjects(mergedProjects)
   }
 
+  const topTen = () => {
+    const topTen = projectsOriginal.slice(0, 10)
+    setProjects(topTen)
+  }
+
+  const moveUp = (project) => {
+    const movedProjects = [project, ...projects.filter(p => p.id !== project.id)]
+    setProjects(movedProjects)
+  }
+
   return (
     <div className="container">
       <ProjectCategory {...{ categories, addCategory, dropCategory, selectedCats }} />
@@ -184,20 +206,20 @@ export default function List() {
         <SkillsComp skills={skills} changedElement={changedElement} />
       </div>
       <div>
-        <ListActions {...{ setViewMode, exportProjects, sortAsc, sortDesc, syncGithub, totalProjects, totalCommits }} />
+        <ListActions {...{ setViewMode, exportProjects, sortAsc, sortDesc, syncGithub, totalProjects, totalCommits, topTen }} />
         <div className="projects-list-totals">
           <Link to="/add">Add</Link>
+        </div>
+        {viewMode === 'card' && (
+          <CardView projects={projects} moveUp={moveUp} />
+        )}
+        {viewMode === 'hex' && (
+          <HexView projects={projects} />
+        )}
+        {viewMode === 'stats' && (
+          <StatsView projects={projects} />
+        )}
       </div>
-      {viewMode === 'card' && (
-        <CardView projects={projects} />
-      )}
-      {viewMode === 'hex' && (
-        <HexView projects={projects} />
-      )}
-      {viewMode === 'stats' && (
-        <StatsView projects={projects} />
-      )}
-    </div>
     </div >
   )
 }

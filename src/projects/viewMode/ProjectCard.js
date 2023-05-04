@@ -31,7 +31,7 @@ class ProjectCard extends Component {
               </Link>
             </figure>
             <h3>
-              {project.name} ({project.contributions})
+              {project.name} ({project.contributions}) <button className="move-up" onClick={() => this.props.moveUp(project)}>Up</button>
             </h3>
             <div className="chips-container">
               {project.categories.slice(0, 2).map(cat => (
