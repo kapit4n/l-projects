@@ -193,7 +193,7 @@ export default function List() {
   }, [])
 
   const syncGithub = async () => {
-    const lastN = 10
+    const lastN = 1
     const fromN = 0
     const syncProjects = projects.slice(fromN, lastN)
     const { projectsContributions, projectsDescription, projectsLanguages } = buildFetchData(syncProjects)

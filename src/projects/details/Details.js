@@ -20,30 +20,26 @@ export default function Details() {
         }
       })
     }
-
     loadProject()
-
-    return () => {
-      console.log("This will be logged on unount")
-    }
-  },
-    [])
+  }, [])
 
   return (
     <div>
       <Link to="/">List</Link>
       <h1>{project.name}</h1>
-      <figure style={{ width: '400px' }}>
-        <img
-          className="img-rounded"
+      <figure>
+        <img className="img-rounded details-img"
           src={project.img}
           alt="Avatar"
-          style={{ objectFit: 'fill', width: '100%' }}
         />
       </figure>
       <p className="description">
         {project.description}
       </p>
+      <h3>Languages</h3>
+      <ul>
+        {project?.languages && Object.entries(project.languages).map((en) => (<li key={en[0]}>{en[0]}({en[1]})</li>))}
+      </ul>
       <h3>Skills</h3>
       <ul>
         {project?.skills?.map(sk => (<li key={sk}>{sk}</li>))}
