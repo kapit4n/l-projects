@@ -18,4 +18,12 @@ export default class GithubService {
   getContributions(projectName) {
     return axios.get(`https://api.github.com/repos/kapit4n/${projectName}/contributors`)
   }
+
+  getLanguages(projectName) {
+    return axios.get(`https://api.github.com/repos/kapit4n/${projectName}/languages`)
+  }
+  
+  getCommits(projectName) {
+    return axios.get(`https://api.github.com/repos/kapit4n/${projectName}/commits`)
+  }
 }

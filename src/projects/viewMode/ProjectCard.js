@@ -31,24 +31,22 @@ class ProjectCard extends Component {
               </Link>
             </figure>
             <h3>
-              {project.name} ({project.contributions}) <button className="move-up" onClick={() => this.props.moveUp(project)}>Up</button>
+              {project.name} ({project.contributions}) <button className="move-up" onClick={() => this.props.moveUp(project)}>Up</button> <a href={project.dir}>github</a>
             </h3>
             <div className="chips-container">
-              {project.categories.slice(0, 2).map(cat => (
+              {project.languageKeys.map(cat => (
                 <span className="chip-category">{cat}</span>
               ))}
-              {project.skills.slice(0, 2).map(ski => (
+              {project.skills.map(ski => (
                 <Chip value={ski} />
               ))}
             </div>
             <br />
             Created At: <DateFromNow date={project.startDate} />
-            <a href={project.dir}>Open</a>
             <p>
               {project.description}
-              Last Updated At: <DateFromNow date={project.updatedDate} />
               <br />
-              {project.updatedDate}
+              Last Updated At: <DateFromNow date={project.updatedDate} />
             </p>
             <ul>
               {project.features.slice(0, 2).map(feature => (

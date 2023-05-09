@@ -1,6 +1,7 @@
 .chips-container {
-  display: flex;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 0.3rem;
 }
 
 .project-list-card {

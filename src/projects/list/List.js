@@ -52,7 +52,7 @@ export default function List() {
         projects[i].startDate = createdAt
         projects[i].updatedDate = pushedAt
 
-        projects[i].topics = topics
+        projects[i].skills = topics
         projects[i].language = language
         projects[i].size = size
         projects[i].openIssues = openIssues
@@ -71,24 +71,38 @@ export default function List() {
     }
   }
 
+  const assignLanguages = (projects, allLanguages) => {
+    for (let i = 0; i < allLanguages.length; i++) {
+      const contribution = allLanguages[i]
+      if (contribution.data) {
+        const languages = contribution.data;
+        projects[i].languages = languages
+      }
+    }
+  }
+
   const buildFetchData = (projects) => {
 
     const projectsContributions = []
     const projectsDescription = []
+    const projectsLanguages = []
 
     projects.forEach(p => {
       const fetchDescription = githubService.getDescriptions(p.name)
       const fetchContributions = githubService.getContributions(p.name)
+      const fetchLanguages = githubService.getLanguages(p.name)
       projectsContributions.push(fetchContributions)
       projectsDescription.push(fetchDescription)
+      projectsLanguages.push(fetchLanguages)
     })
 
-    return { projectsDescription, projectsContributions }
+    return { projectsDescription, projectsContributions, projectsLanguages }
   }
 
   const exportProjects = () => {
 
     let toExportProjects = [...projects]
+    toExportProjects = [...toExportProjects.map(p => ({ ...p, languageKeys: p.languages ? Object.keys(p.languages) : [] }))]
 
     const jsonProjects = `data:text/json;chatset=utf-8,${encodeURIComponent(
       JSON.stringify(toExportProjects)
@@ -118,7 +132,7 @@ export default function List() {
   const applyFilterCategories = (filters, projectsOriginal) => {
     let projects = projectsOriginal;
     if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.categories.find(z => z.toUpperCase().includes(y.toUpperCase()))));
+      projects = projectsOriginal.filter(x => filters.find(y => x.languageKeys.find(z => z.toUpperCase().includes(y.toUpperCase()))));
     }
     return projects;
   }
@@ -151,7 +165,13 @@ export default function List() {
   }
 
   const loadFilters = (projects) => {
-    const categoriesSet = new Set(projects.map(p => p.categories).flat().map(cat => cat.toUpperCase()))
+    const categoriesSet = new Set(projects.map(p => {
+
+      if (p.languageKeys) {
+        return p.languageKeys
+      }
+      return []
+    }).flat().map(cat => cat.toUpperCase()))
     const skillsSet = new Set(projects.map(p => p.skills).flat().map(fet => fet.toUpperCase()))
     setCategories([...categoriesSet])
     setSkills([...skillsSet])
@@ -173,18 +193,23 @@ export default function List() {
   }, [])
 
   const syncGithub = async () => {
-    const lastN = 2
+    const lastN = 10
     const fromN = 0
     const syncProjects = projects.slice(fromN, lastN)
-    const { projectsContributions, projectsDescription } = buildFetchData(syncProjects)
+    const { projectsContributions, projectsDescription, projectsLanguages } = buildFetchData(syncProjects)
     const resultAllContributions = Promise.all(projectsContributions)
     const resultAllDescription = Promise.all(projectsDescription)
+    const resultAllLanguages = Promise.all(projectsLanguages)
 
     const allContributions = await resultAllContributions
     assignContributions(syncProjects, allContributions)
 
     const allDescriptions = await resultAllDescription
     assignDescriptions(syncProjects, allDescriptions)
+
+    const allLanguages = await resultAllLanguages
+    assignLanguages(syncProjects, allLanguages)
+
     const mergedProjects = [...syncProjects, ...projects.slice(fromN + lastN)]
     setProjects(mergedProjects)
   }
