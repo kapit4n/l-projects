@@ -2,8 +2,8 @@
   {
     "id": 41,
     "startDate": "2018-10-18T15:25:04Z",
-    "updatedDate": "2023-05-09T02:07:38Z",
-    "contributions": 97,
+    "updatedDate": "2023-05-09T02:20:12Z",
+    "contributions": 98,
     "description": "Researching and projects on development with the traditional and top technologies (react, angular, vue, play, bootstrap).",
     "name": "l-projects",
     "dir": "https://github.com/kapit4n/l-projects",
@@ -21,11 +21,11 @@
       "reactjs"
     ],
     "language": "JavaScript",
-    "size": 5483,
+    "size": 5493,
     "openIssues": 4,
     "languages": {
-      "JavaScript": 26892,
-      "CSS": 4361,
+      "JavaScript": 26896,
+      "CSS": 4414,
       "HTML": 2095
     },
     "languageKeys": [
@@ -53,14 +53,14 @@
       "storybook",
       "typescript"
     ],
-    "contributions": 33,
+    "contributions": 37,
     "description": "Linkedin clone app to register people that is looking for jobs.",
-    "updatedDate": "2023-05-09T01:19:03Z",
+    "updatedDate": "2023-05-09T20:58:51Z",
     "language": "TypeScript",
-    "size": 11989,
+    "size": 12484,
     "openIssues": 7,
     "languages": {
-      "TypeScript": 80339,
+      "TypeScript": 86627,
       "CSS": 18431,
       "HTML": 1796,
       "JavaScript": 1739
@@ -69,6 +69,50 @@
       "TypeScript",
       "CSS",
       "HTML",
+      "JavaScript"
+    ]
+  },
+  {
+    "id": 32,
+    "startDate": "2019-10-08T22:05:45Z",
+    "updatedDate": "2023-05-11T22:55:34Z",
+    "name": "ng-next-chall",
+    "dir": "https://github.com/kapit4n/ng-next-chall",
+    "img": "https://raw.githubusercontent.com/kapit4n/ng-next-chall/master/mockups/ng-next-chall-subjects.png",
+    "contributions": 101,
+    "features": [
+      "Challenge",
+      "Tasks",
+      "Projects",
+      "Motivation",
+      "Workout"
+    ],
+    "categories": [
+      "skills",
+      "business"
+    ],
+    "skills": [
+      "angular",
+      "gin",
+      "golang",
+      "typescript"
+    ],
+    "description": "Next challenge application is a tool to register the subjects someone needs to research and practice to level up their career.",
+    "language": "TypeScript",
+    "size": 3635,
+    "openIssues": 9,
+    "languages": {
+      "TypeScript": 29079,
+      "Go": 19491,
+      "HTML": 3932,
+      "CSS": 3667,
+      "JavaScript": 1824
+    },
+    "languageKeys": [
+      "TypeScript",
+      "Go",
+      "HTML",
+      "CSS",
       "JavaScript"
     ]
   },
@@ -110,49 +154,6 @@
       "CSS",
       "HTML",
       "Dockerfile"
-    ]
-  },
-  {
-    "id": 32,
-    "startDate": "2019-10-08T22:05:45Z",
-    "updatedDate": "2023-05-05T22:04:58Z",
-    "name": "ng-next-chall",
-    "dir": "https://github.com/kapit4n/ng-next-chall",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2AOr6gWZ9UrFyDB-4uyqGn12bttwxQwORlQ&usqp=CAU",
-    "contributions": 75,
-    "features": [
-      "Challenge",
-      "Tasks",
-      "Projects",
-      "Motivation",
-      "Workout"
-    ],
-    "categories": [
-      "skills",
-      "business"
-    ],
-    "skills": [
-      "angular",
-      "golang",
-      "typescript"
-    ],
-    "description": "Angular, GO(Gin) and Bootstrap",
-    "language": "TypeScript",
-    "size": 3059,
-    "openIssues": 7,
-    "languages": {
-      "TypeScript": 22193,
-      "Go": 5251,
-      "HTML": 2513,
-      "CSS": 2180,
-      "JavaScript": 1824
-    },
-    "languageKeys": [
-      "TypeScript",
-      "Go",
-      "HTML",
-      "CSS",
-      "JavaScript"
     ]
   },
   {
