@@ -1,35 +1,74 @@
 [
   {
-    "id": 41,
-    "startDate": "2018-10-18T15:25:04Z",
-    "updatedDate": "2023-05-09T02:20:12Z",
-    "contributions": 98,
-    "description": "Researching and projects on development with the traditional and top technologies (react, angular, vue, play, bootstrap).",
-    "name": "l-projects",
-    "dir": "https://github.com/kapit4n/l-projects",
-    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png",
+    "id": 2,
+    "startDate": "2023-02-24T07:13:02Z",
+    "lastUpdate": "2020-07-18",
+    "name": "chatboot-stock",
+    "dir": "https://github.com/kapit4n/chatboot-stock",
+    "img": "https://github.com/kapit4n/chatboot-stock/raw/main/view/chatboot-stock-home.png",
     "features": [
-      "Projects view",
-      "Project planning",
-      "Project features"
+      "Real time"
     ],
     "categories": [
-      "projects"
+      "Chatboot"
     ],
     "skills": [
-      "javascript",
-      "reactjs"
+      "chatbot",
+      "golang",
+      "react",
+      "websockets"
     ],
-    "language": "JavaScript",
-    "size": 5493,
-    "openIssues": 4,
+    "contributions": 18,
+    "description": "Websocket based application to fetch stock information with a chatbot that listens the requests and enqueed all the requests on rabbitmq.",
+    "updatedDate": "2023-05-15T17:33:38Z",
+    "language": "Go",
+    "size": 6689,
+    "openIssues": 0,
     "languages": {
-      "JavaScript": 26896,
-      "CSS": 4414,
-      "HTML": 2095
+      "Go": 12711,
+      "JavaScript": 9111,
+      "CSS": 3055,
+      "HTML": 1721,
+      "Dockerfile": 1230
     },
     "languageKeys": [
+      "Go",
       "JavaScript",
+      "CSS",
+      "HTML",
+      "Dockerfile"
+    ]
+  },
+  {
+    "id": 206,
+    "startDate": "2023-03-27T20:49:06Z",
+    "updatedDate": "2023-05-03T00:24:02Z",
+    "name": "ts-books",
+    "description": "App to track the books we are reading",
+    "contributions": 16,
+    "dir": "https://github.com/kapit4n/ts-books",
+    "img": "https://github.com/kapit4n/ts-books/raw/main/mockups/ts-books-details.png?raw=true",
+    "features": [
+      "Books"
+    ],
+    "categories": [
+      "habits"
+    ],
+    "skills": [
+      "books",
+      "react",
+      "typescript"
+    ],
+    "language": "TypeScript",
+    "size": 2118,
+    "openIssues": 0,
+    "languages": {
+      "TypeScript": 16786,
+      "CSS": 2496,
+      "HTML": 1721
+    },
+    "languageKeys": [
+      "TypeScript",
       "CSS",
       "HTML"
     ]
@@ -54,7 +93,7 @@
       "typescript"
     ],
     "contributions": 37,
-    "description": "Linkedin clone app to register people that is looking for jobs.",
+    "description": "Linkedin clone application.",
     "updatedDate": "2023-05-09T20:58:51Z",
     "language": "TypeScript",
     "size": 12484,
@@ -70,6 +109,41 @@
       "CSS",
       "HTML",
       "JavaScript"
+    ]
+  },
+  {
+    "id": 41,
+    "startDate": "2018-10-18T15:25:04Z",
+    "updatedDate": "2023-05-11T23:15:55Z",
+    "contributions": 99,
+    "description": "Researching and projects on development with the traditional and top technologies (react, angular, vue, play, bootstrap).",
+    "name": "l-projects",
+    "dir": "https://github.com/kapit4n/l-projects",
+    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png",
+    "features": [
+      "Projects view",
+      "Project planning",
+      "Project features"
+    ],
+    "categories": [
+      "projects"
+    ],
+    "skills": [
+      "javascript",
+      "reactjs"
+    ],
+    "language": "JavaScript",
+    "size": 6144,
+    "openIssues": 4,
+    "languages": {
+      "JavaScript": 26896,
+      "CSS": 4414,
+      "HTML": 2095
+    },
+    "languageKeys": [
+      "JavaScript",
+      "CSS",
+      "HTML"
     ]
   },
   {
@@ -117,46 +191,6 @@
     ]
   },
   {
-    "id": 2,
-    "startDate": "2023-02-24T07:13:02Z",
-    "lastUpdate": "2020-07-18",
-    "name": "chatboot-stock",
-    "dir": "https://github.com/kapit4n/chatboot-stock",
-    "img": "https://github.com/kapit4n/chatboot-stock/raw/main/view/main-page.png",
-    "features": [
-      "Real time"
-    ],
-    "categories": [
-      "Chatboot"
-    ],
-    "skills": [
-      "chatbot",
-      "golang",
-      "react",
-      "websockets"
-    ],
-    "contributions": 13,
-    "description": "Websocket based application to fetch stock information with a chatbot that listens the requests and enqueed all the requests on rabbitmq.",
-    "updatedDate": "2023-05-04T23:54:45Z",
-    "language": "Go",
-    "size": 6689,
-    "openIssues": 0,
-    "languages": {
-      "Go": 12711,
-      "JavaScript": 8157,
-      "CSS": 2130,
-      "HTML": 1721,
-      "Dockerfile": 1230
-    },
-    "languageKeys": [
-      "Go",
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Dockerfile"
-    ]
-  },
-  {
     "id": 4,
     "startDate": "2019-04-08T06:23:01Z",
     "updatedDate": "2023-05-04T22:32:13Z",
@@ -188,40 +222,6 @@
     "languageKeys": [
       "TypeScript",
       "JavaScript"
-    ]
-  },
-  {
-    "id": 206,
-    "startDate": "2023-03-27T20:49:06Z",
-    "updatedDate": "2023-05-03T00:24:02Z",
-    "name": "ts-books",
-    "description": "App to track the books we are reading",
-    "contributions": 16,
-    "dir": "https://github.com/kapit4n/ts-books",
-    "img": "https://github.com/kapit4n/ts-books/raw/main/mockups/ts-books-details.png?raw=true",
-    "features": [
-      "Books"
-    ],
-    "categories": [
-      "habits"
-    ],
-    "skills": [
-      "books",
-      "react",
-      "typescript"
-    ],
-    "language": "TypeScript",
-    "size": 2118,
-    "openIssues": 0,
-    "languages": {
-      "TypeScript": 16786,
-      "CSS": 2496,
-      "HTML": 1721
-    },
-    "languageKeys": [
-      "TypeScript",
-      "CSS",
-      "HTML"
     ]
   },
   {
