@@ -20,6 +20,29 @@
   color: rgb(37, 33, 33)
 }
 
+.card-title {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.card-title-right {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.card-title-right img {
+  border-radius: 10px;
+}
+
+.card-title-right button {
+  border-radius: 10px;
+}
+
+
+
 .card-view:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -40,4 +63,9 @@
 
 .move-up {
   font-size: 15px;
+}
+
+.github-icon {
+  width: 30px;
+  height: 30px;
 }

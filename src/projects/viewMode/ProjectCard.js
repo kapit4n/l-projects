@@ -30,8 +30,17 @@ class ProjectCard extends Component {
                 />
               </Link>
             </figure>
-            <h3>
-              {project.name} ({project.contributions}) <button className="move-up" onClick={() => this.props.moveUp(project)}>Up</button> <a href={project.dir}>github</a>
+            <h3 className="card-title">
+              <span>
+                {project.name} ({project.contributions})
+              </span>
+              <div className="card-title-right">
+              <button className="move-up" onClick={() => this.props.moveUp(project)}>Up</button>
+                <a href={project.dir}>
+                  <img className="github-icon" src="https://w7.pngwing.com/pngs/914/758/png-transparent-github-social-media-computer-icons-logo-android-github-logo-computer-wallpaper-banner-thumbnail.png" />
+                </a>
+
+              </div>
             </h3>
             <div className="chips-container">
               {project.languageKeys.map(cat => (
