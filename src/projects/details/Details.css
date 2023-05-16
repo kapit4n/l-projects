@@ -10,3 +10,8 @@
   object-fit: fill;
   width: 100%;
 }
+
+.github-icon {
+  width: 40px;
+  height: 40px;
+}

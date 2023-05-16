@@ -27,6 +27,9 @@ export default function Details() {
     <div>
       <Link to="/">List</Link>
       <h1>{project.name}</h1>
+      <a href={`https://github.com/kapit4n/${project.name}`}>
+        <img className="github-icon" src="https://w7.pngwing.com/pngs/914/758/png-transparent-github-social-media-computer-icons-logo-android-github-logo-computer-wallpaper-banner-thumbnail.png" />
+      </a>
       <figure>
         <img className="img-rounded details-img"
           src={project.img}
