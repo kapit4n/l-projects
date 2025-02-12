@@ -6,6 +6,7 @@ import "./App.css";
 import List from './projects/list/List';
 import Details from './projects/details/Details';
 import Add from './projects/add/Add';
+import FeatureShow from './features/show'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
               <Route exact path="/" element={<List />} />
               <Route path="/details/:id" element={<Details />} />
               <Route path="/add" element={<Add />} />
+              <Route path="/projects/:projectId/features/:id" element={<FeatureShow />} />
             </Routes>
           </div>
         </div>

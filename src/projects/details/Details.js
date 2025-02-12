@@ -49,7 +49,9 @@ export default function Details() {
       </ul>
       <h3>Features</h3>
       <ul>
-        {project?.features?.map(fch => (<li key={fch}>{fch}</li>))}
+        {project?.features?.map(fch => (<li key={fch}>
+          <Link to={`/projects/${project.id}/features/1`}>{fch}</Link>
+        </li>))}
       </ul>
     </div>
   );
