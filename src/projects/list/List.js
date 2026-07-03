@@ -262,12 +262,13 @@ export default function List() {
   }, [projectsOriginal, githubService, syncService]);
 
   const handleScrape = useCallback(async () => {
-    if (process.env.REACT_APP_IS_MOCKED) return;
     setScraping(true);
     try {
-      await axios.get('http://localhost:8000/scrape');
+      const res = await axios.get('http://localhost:8000/scrape');
       await loadProjects();
+      alert(`Scraped ${res.data.count} projects from GitHub`);
     } catch (err) {
+      alert('Scrape failed. Make sure the backend is running on port 8000.');
       console.error('Scrape failed:', err);
     } finally {
       setScraping(false);
