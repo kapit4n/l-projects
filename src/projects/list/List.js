@@ -12,6 +12,7 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import SkeletonCard from '../../components/SkeletonCard/SkeletonCard';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import ScrapeReport from '../../components/ScrapeReport/ScrapeReport';
 import HexView from '../viewMode/HexView';
 import StatsView from '../viewMode/StatsView';
 
@@ -63,6 +64,7 @@ export default function List() {
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [scraping, setScraping] = useState(false);
+  const [scrapeResult, setScrapeResult] = useState(null);
 
   const projectService = useMemo(() => new ProjectService(), []);
   const githubService = useMemo(() => new GithubService(), []);
@@ -266,7 +268,7 @@ export default function List() {
     try {
       const res = await axios.get('http://localhost:8000/scrape');
       await loadProjects();
-      alert(`Scraped ${res.data.count} projects from GitHub`);
+      setScrapeResult(res.data);
     } catch (err) {
       alert('Scrape failed. Make sure the backend is running on port 8000.');
       console.error('Scrape failed:', err);
@@ -353,6 +355,13 @@ export default function List() {
           {viewMode === 'hex' && <HexView projects={filteredProjects} />}
           {viewMode === 'stats' && <StatsView projects={filteredProjects} />}
         </>
+      )}
+
+      {scrapeResult && (
+        <ScrapeReport
+          result={scrapeResult}
+          onClose={() => setScrapeResult(null)}
+        />
       )}
     </div>
   );
