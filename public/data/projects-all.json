@@ -294,7 +294,7 @@
     "description": "Researching and projects on development with the traditional and top technologies (react, angular, vue, play, bootstrap).",
     "name": "l-projects",
     "dir": "https://github.com/kapit4n/l-projects",
-    "img": "",
+    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/dashboard.png",
     "features": [],
     "categories": [
       "javascript"

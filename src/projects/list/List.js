@@ -205,8 +205,7 @@ export default function List() {
       const res = await projectService.getProjects();
       const startSlice = 0;
       const size = startSlice + 10 + 6 + 10 + 10;
-      let data = res.data.slice(startSlice, size);
-      data.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate));
+      let data = [...res.data].sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)).slice(startSlice, size);
 
       const commitData = await syncService.getAllCommits();
       data = mergeCommitData(data, commitData);
