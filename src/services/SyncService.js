@@ -6,7 +6,7 @@ export default class SyncService {
   }
 
   getUrl() {
-    if (process.env.REACT_APP_IS_MOCKED === 'true') {
+    if (process.env.REACT_APP_IS_MOCKED) {
       return null
     }
     return this.baseUrl
