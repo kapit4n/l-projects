@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import axios from 'axios';
 import ProjectService from '../../services/ProjectsService';
 import GithubService from '../../services/GithubService';
 import SyncService from '../../services/SyncService';
@@ -61,6 +62,7 @@ export default function List() {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
+  const [scraping, setScraping] = useState(false);
 
   const projectService = useMemo(() => new ProjectService(), []);
   const githubService = useMemo(() => new GithubService(), []);
@@ -195,27 +197,28 @@ export default function List() {
     setCategories([...categoriesSet]);
   }, []);
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      try {
-        const res = await projectService.getProjects();
-        const startSlice = 0;
-        const size = startSlice + 10 + 6 + 10 + 10;
-        let data = res.data.slice(startSlice, size);
+  const loadProjects = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await projectService.getProjects();
+      const startSlice = 0;
+      const size = startSlice + 10 + 6 + 10 + 10;
+      let data = res.data.slice(startSlice, size);
 
-        const commitData = await syncService.getAllCommits();
-        data = mergeCommitData(data, commitData);
+      const commitData = await syncService.getAllCommits();
+      data = mergeCommitData(data, commitData);
 
-        setProjects(data);
-        setProjectsOriginal(data);
-        loadFilters(data);
-      } finally {
-        setLoading(false);
-      }
+      setProjects(data);
+      setProjectsOriginal(data);
+      loadFilters(data);
+    } finally {
+      setLoading(false);
     }
-    fetchData();
   }, [projectService, loadFilters, syncService]);
+
+  useEffect(() => {
+    loadProjects();
+  }, [loadProjects]);
 
   const syncAllCommits = useCallback(async () => {
     setSyncing(true);
@@ -257,6 +260,19 @@ export default function List() {
       setSyncing(false);
     }
   }, [projectsOriginal, githubService, syncService]);
+
+  const handleScrape = useCallback(async () => {
+    if (process.env.REACT_APP_IS_MOCKED) return;
+    setScraping(true);
+    try {
+      await axios.get('http://localhost:8000/scrape');
+      await loadProjects();
+    } catch (err) {
+      console.error('Scrape failed:', err);
+    } finally {
+      setScraping(false);
+    }
+  }, [loadProjects]);
 
   const topTen = useCallback(() => {
     setProjects(projectsOriginal.slice(0, 10));
@@ -305,8 +321,10 @@ export default function List() {
         onSetView={setViewMode}
         onSync={syncAllCommits}
         onTopTen={topTen}
+        onScrape={handleScrape}
         currentView={viewMode}
         syncing={syncing}
+        scraping={scraping}
       />
 
       {loading ? (
