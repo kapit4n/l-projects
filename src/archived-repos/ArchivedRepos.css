@@ -1,0 +1,116 @@
+.archived-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.archived-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.archived-header-left {
+  flex: 1;
+}
+
+.archived-back-link {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.archived-back-link:hover {
+  text-decoration: underline;
+}
+
+.archived-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--color-text);
+}
+
+.archived-subtitle {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.archived-loading,
+.archived-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+}
+
+.archived-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.archived-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-card);
+  transition: var(--transition);
+}
+
+.archived-item:hover {
+  border-color: rgba(108, 76, 241, 0.15);
+}
+
+.archived-item-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  min-width: 180px;
+}
+
+.archived-item-name:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.archived-item-desc {
+  flex: 1;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.archived-unarchive-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.archived-unarchive-btn:hover {
+  background: rgba(108, 76, 241, 0.06);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}

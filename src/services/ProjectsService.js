@@ -1,4 +1,5 @@
 import axios from 'axios'
+import env from '../env'
 
 export default class ProjectService {
 
@@ -11,9 +12,9 @@ export default class ProjectService {
   }
 
   getUrl() {
-    if (process.env.REACT_APP_IS_MOCKED) {
-      return `/data/projects-all.json`
+    if (env.pullData) {
+      return 'http://localhost:8000/projects'
     }
-    return `${process.env.REACT_APP_API_URL}/projects`
+    return `/data/projects-all.json`
   }
 }

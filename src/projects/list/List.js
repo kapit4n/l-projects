@@ -18,6 +18,9 @@ import StatsView from '../viewMode/StatsView';
 
 import './List.css';
 
+const API_BASE = 'http://localhost:8000';
+const SCRAPE_API = `${API_BASE}/scrape`;
+
 const SKELETON_COUNT = 6;
 
 function applyFilterCategories(filters, projects) {
@@ -65,6 +68,9 @@ export default function List() {
   const [syncing, setSyncing] = useState(false);
   const [scraping, setScraping] = useState(false);
   const [scrapeResult, setScrapeResult] = useState(null);
+  const [showScrapeForm, setShowScrapeForm] = useState(false);
+  const [scrapeQuery, setScrapeQuery] = useState('');
+  const [scrapeLimit, setScrapeLimit] = useState(20);
 
   const projectService = useMemo(() => new ProjectService(), []);
   const githubService = useMemo(() => new GithubService(), []);
@@ -205,7 +211,10 @@ export default function List() {
       const res = await projectService.getProjects();
       const startSlice = 0;
       const size = startSlice + 10 + 6 + 10 + 10;
-      let data = [...res.data].sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)).slice(startSlice, size);
+      let data = [...res.data]
+        .filter((p) => !p.archived)
+        .sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate))
+        .slice(startSlice, size);
 
       const commitData = await syncService.getAllCommits();
       data = mergeCommitData(data, commitData);
@@ -263,10 +272,18 @@ export default function List() {
     }
   }, [projectsOriginal, githubService, syncService]);
 
-  const handleScrape = useCallback(async () => {
+  const handleOpenScrapeForm = useCallback(() => {
+    setShowScrapeForm(true);
+  }, []);
+
+  const handleScrape = useCallback(async (query, limit) => {
     setScraping(true);
+    setShowScrapeForm(false);
     try {
-      const res = await axios.get('http://localhost:8000/scrape');
+      const params = {};
+      if (query && query.trim()) params.query = query.trim();
+      if (limit && limit > 0) params.limit = limit;
+      const res = await axios.get(SCRAPE_API, { params });
       await loadProjects();
       setScrapeResult(res.data);
     } catch (err) {
@@ -276,6 +293,16 @@ export default function List() {
       setScraping(false);
     }
   }, [loadProjects]);
+
+  const handleArchive = useCallback(async (project) => {
+    try {
+      await axios.put(`${API_BASE}/projects/${encodeURIComponent(project.name)}/archive`);
+      setProjects((prev) => prev.filter((p) => p.id !== project.id));
+      setProjectsOriginal((prev) => prev.filter((p) => p.id !== project.id));
+    } catch (err) {
+      console.error('Archive failed:', err);
+    }
+  }, []);
 
   const topTen = useCallback(() => {
     setProjects(projectsOriginal.slice(0, 10));
@@ -324,7 +351,7 @@ export default function List() {
         onSetView={setViewMode}
         onSync={syncAllCommits}
         onTopTen={topTen}
-        onScrape={handleScrape}
+        onScrape={handleOpenScrapeForm}
         currentView={viewMode}
         syncing={syncing}
         scraping={scraping}
@@ -350,11 +377,65 @@ export default function List() {
       ) : (
         <>
           {viewMode === 'card' && (
-            <ProjectCard projects={filteredProjects} onMoveUp={moveUp} />
+            <ProjectCard projects={filteredProjects} onMoveUp={moveUp} onArchive={handleArchive} />
           )}
           {viewMode === 'hex' && <HexView projects={filteredProjects} />}
           {viewMode === 'stats' && <StatsView projects={filteredProjects} />}
         </>
+      )}
+
+      {showScrapeForm && (
+        <div className="scrape-overlay" onClick={() => setShowScrapeForm(false)}>
+          <div className="scrape-modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 420 }}>
+            <button className="scrape-close" onClick={() => setShowScrapeForm(false)} aria-label="Close">&times;</button>
+            <h2 className="scrape-title">Scrape Repositories</h2>
+            <p className="scrape-message">Search and scrape repos from <strong>kapit4n</strong>'s GitHub.</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 20 }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: 6, fontWeight: 500, fontSize: 13, color: 'var(--color-text-secondary)' }}>
+                  Repo name contains
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. api, dashboard, app..."
+                  value={scrapeQuery}
+                  onChange={(e) => setScrapeQuery(e.target.value)}
+                  style={{
+                    width: '100%', padding: '10px 12px', borderRadius: 8, border: '1px solid var(--color-border)',
+                    fontSize: 14, background: 'var(--color-bg)', color: 'var(--color-text)',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: 6, fontWeight: 500, fontSize: 13, color: 'var(--color-text-secondary)' }}>
+                  Number of repos
+                </label>
+                <input
+                  type="number"
+                  min={1}
+                  max={100}
+                  value={scrapeLimit}
+                  onChange={(e) => setScrapeLimit(Number(e.target.value))}
+                  style={{
+                    width: '100%', padding: '10px 12px', borderRadius: 8, border: '1px solid var(--color-border)',
+                    fontSize: 14, background: 'var(--color-bg)', color: 'var(--color-text)',
+                  }}
+                />
+              </div>
+              <button
+                onClick={() => handleScrape(scrapeQuery, scrapeLimit)}
+                disabled={scraping}
+                style={{
+                  padding: '10px 20px', borderRadius: 8, border: 'none', background: 'var(--color-primary)',
+                  color: '#fff', fontSize: 14, fontWeight: 600, cursor: scraping ? 'not-allowed' : 'pointer',
+                  opacity: scraping ? 0.7 : 1, marginTop: 4,
+                }}
+              >
+                {scraping ? 'Scraping...' : 'Start Scrape'}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {scrapeResult && (

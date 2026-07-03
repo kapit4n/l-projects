@@ -6,6 +6,7 @@ import Details from './projects/details/Details';
 import Add from './projects/add/Add';
 import FeatureShow from './features/show';
 import ScrapedRepos from './scraped-repos/ScrapedRepos';
+import ArchivedRepos from './archived-repos/ArchivedRepos';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           element={<FeatureShow />}
         />
         <Route path="/scraped-repos" element={<ScrapedRepos />} />
+        <Route path="/archived-repos" element={<ArchivedRepos />} />
       </Routes>
     );
   }

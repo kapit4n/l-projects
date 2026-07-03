@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const BACKEND_API = 'http://localhost:8000';
 const GI_DIR = path.resolve(__dirname, '../..');
 const DATA_FILE = path.resolve(__dirname, '../public/data/projects-all.json');
 
@@ -23,14 +24,10 @@ if (missing.length === 0) {
 console.log(`Missing projects (${missing.length}):`);
 missing.forEach((m) => console.log(`  - ${m}`));
 
-const maxId = existing.reduce((max, p) => Math.max(max, p.id), 0);
-let nextId = maxId + 1;
-
 const newEntries = missing.map((name) => ({
-  id: nextId++,
+  name,
   startDate: new Date().toISOString(),
   updatedDate: new Date().toISOString(),
-  name,
   dir: `https://github.com/kapit4n/${name}`,
   img: '',
   features: [],
@@ -45,8 +42,23 @@ const newEntries = missing.map((name) => ({
   languages: {},
 }));
 
-existing.push(...newEntries);
+(async () => {
+  console.log(`\nSending ${newEntries.length} missing projects to backend at ${BACKEND_API}/projects/batch ...`);
+  const res = await fetch(`${BACKEND_API}/projects/batch`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newEntries),
+  });
 
-fs.writeFileSync(DATA_FILE, JSON.stringify(existing, null, 2) + '\n');
+  if (!res.ok) {
+    throw new Error(`Backend API error ${res.status}: ${await res.text()}`);
+  }
 
-console.log(`\nAdded ${newEntries.length} projects to projects-all.json`);
+  const results = await res.json();
+  const created = results.filter(r => r.action === 'created').length;
+
+  console.log(`\nAdded ${created} projects to the database.`);
+})().catch((err) => {
+  console.error('Error:', err.message);
+  process.exit(1);
+});
