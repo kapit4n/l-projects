@@ -27,6 +27,22 @@ export default class GithubService {
     return axios.get(`https://api.github.com/repos/kapit4n/${projectName}/commits`)
   }
 
+  getReadme(projectName) {
+    return axios.get(`https://api.github.com/repos/kapit4n/${projectName}/readme`)
+  }
+
+  getTopCommits(projectName, count = 5) {
+    return axios.get(
+      `https://api.github.com/repos/kapit4n/${projectName}/commits?per_page=${count}`
+    )
+  }
+
+  getRepoContents(projectName, path = '') {
+    return axios.get(
+      `https://api.github.com/repos/kapit4n/${projectName}/contents/${path}`
+    )
+  }
+
   async getTotalCommits(projectName) {
     if (process.env.REACT_APP_IS_MOCKED === 'true') {
       return Math.floor(Math.random() * 500) + 50

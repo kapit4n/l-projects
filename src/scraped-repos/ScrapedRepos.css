@@ -1,0 +1,262 @@
+.scraped-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.scraped-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.scraped-header-left {
+  flex: 1;
+}
+
+.scraped-back-link {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.scraped-back-link:hover {
+  text-decoration: underline;
+}
+
+.scraped-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--color-text);
+}
+
+.scraped-subtitle {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.scraped-scrape-btn {
+  padding: 10px 24px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.scraped-scrape-btn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.scraped-scrape-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scraped-loading,
+.scraped-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+}
+
+.scraped-empty .scraped-scrape-btn {
+  margin-top: 16px;
+}
+
+.scraped-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+.scraped-tab {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: var(--transition);
+}
+
+.scraped-tab:hover {
+  color: var(--color-text);
+}
+
+.scraped-tab-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.scraped-sessions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scraped-session {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-card);
+}
+
+.scraped-session-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.scraped-session-header:hover {
+  background: var(--color-bg);
+}
+
+.scraped-session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scraped-session-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.scraped-session-stats {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.scraped-session-chevron {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  transition: transform 0.2s;
+}
+
+.scraped-chevron-open {
+  transform: rotate(90deg);
+}
+
+.scraped-session-body {
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.scraped-session-group {
+  margin-top: 14px;
+}
+
+.scraped-group-label {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.scraped-group-added {
+  color: var(--color-success);
+}
+
+.scraped-group-updated {
+  color: var(--color-primary);
+}
+
+.scraped-repo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.scraped-repo-chip {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.scraped-repo-chip:hover {
+  opacity: 0.8;
+}
+
+.scraped-chip-added {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.scraped-chip-updated {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.scraped-no-details {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 12px 0 0;
+}
+
+.scraped-all-repos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scraped-all-repo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-card);
+}
+
+.scraped-repo-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.scraped-repo-name:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.scraped-repo-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.scraped-status-added {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.scraped-status-updated {
+  background: var(--color-primary);
+  color: #fff;
+}

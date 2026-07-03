@@ -1,119 +1,472 @@
 [
   {
-    "id": 202,
-    "startDate": "2021-03-18T02:42:35Z",
-    "name": "denti-code",
-    "dir": "https://github.com/kapit4n/denti-code",
-    "img": "https://raw.githubusercontent.com/kapit4n/denti-code/master/screenshots/main3.gif",
-    "features": [
-      "Billing"
-    ],
-    "categories": [
-      "Health"
-    ],
-    "skills": [
-      "material-ui",
-      "react",
-      "react-context",
-      "react-hooks"
-    ],
-    "contributions": 224,
-    "description": "Dentist, react, node js, material-ui, react-hooks.",
-    "updatedDate": "2023-05-16T01:59:25Z",
+    "id": 993544116,
+    "startDate": "2025-05-31T01:42:22Z",
+    "updatedDate": "2026-07-03T15:07:44Z",
+    "name": "denti-code-appointments",
+    "dir": "https://github.com/kapit4n/denti-code-appointments",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 8,
+    "description": "",
     "languageKeys": [
-      "JavaScript",
-      "CSS",
-      "HTML"
+      "TypeScript"
     ],
-    "language": "JavaScript",
-    "size": 12896,
-    "openIssues": 32,
+    "language": "TypeScript",
+    "size": 36,
+    "openIssues": 0,
     "languages": {
-      "JavaScript": 68718,
-      "CSS": 2527,
-      "HTML": 1879
+      "TypeScript": 35873
     }
   },
   {
-    "id": 2020,
-    "startDate": "2021-05-21T16:16:46Z",
-    "name": "denti-code-server",
-    "dir": "https://github.com/kapit4n/denti-code-server",
-    "img": "https://raw.githubusercontent.com/kapit4n/denti-code-server/master/screenshots/swagger.png",
-    "features": [
-      "Billing"
+    "id": 988027598,
+    "startDate": "2025-05-22T00:24:45Z",
+    "updatedDate": "2026-07-03T15:06:51Z",
+    "name": "denti-code-patients-api",
+    "dir": "https://github.com/kapit4n/denti-code-patients-api",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 23,
+    "description": "",
+    "languageKeys": [
+      "JavaScript",
+      "TypeScript"
     ],
+    "language": "JavaScript",
+    "size": 116,
+    "openIssues": 0,
+    "languages": {
+      "JavaScript": 24247,
+      "TypeScript": 3064
+    }
+  },
+  {
+    "id": 931256339,
+    "startDate": "2025-02-12T01:08:20Z",
+    "updatedDate": "2026-07-03T15:06:19Z",
+    "name": "l-projects-services",
+    "dir": "https://github.com/kapit4n/l-projects-services",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 6,
+    "description": "",
+    "languageKeys": [
+      "Python"
+    ],
+    "language": "Python",
+    "size": 8,
+    "openIssues": 0,
+    "languages": {
+      "Python": 14147
+    }
+  },
+  {
+    "id": 1288401186,
+    "startDate": "2026-07-03T15:05:06Z",
+    "updatedDate": "2026-07-03T15:05:27Z",
+    "name": "vendei-desktop-javafx",
+    "dir": "https://github.com/kapit4n/vendei-desktop-javafx",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 5,
+    "description": "",
+    "languageKeys": [
+      "Java",
+      "Shell"
+    ],
+    "language": "Java",
+    "size": 5803,
+    "openIssues": 0,
+    "languages": {
+      "Java": 119335,
+      "Shell": 506
+    }
+  },
+  {
+    "id": 288627907,
+    "startDate": "2020-08-19T03:52:02Z",
+    "updatedDate": "2026-07-03T15:04:23Z",
+    "name": "inventory-nod",
+    "dir": "https://github.com/kapit4n/inventory-nod",
+    "img": "",
+    "features": [],
     "categories": [
-      "Health"
+      "cli"
     ],
     "skills": [
       "cli",
-      "mysql",
+      "expressjs",
       "nodejs",
-      "restful-api",
-      "sequelize",
-      "swagger"
+      "sequelize"
     ],
-    "contributions": 83,
-    "description": "node js app, ",
-    "updatedDate": "2023-05-16T02:06:56Z",
+    "contributions": 37,
+    "description": "node js api to handle products.",
     "languageKeys": [
-      "JavaScript"
+      "JavaScript",
+      "Shell"
     ],
     "language": "JavaScript",
-    "size": 591,
-    "openIssues": 8,
+    "size": 291,
+    "openIssues": 10,
     "languages": {
-      "JavaScript": 26156
+      "JavaScript": 171801,
+      "Shell": 789
     }
   },
   {
-    "id": 41,
+    "id": 1024602183,
+    "startDate": "2025-07-23T01:11:33Z",
+    "updatedDate": "2026-07-03T15:03:30Z",
+    "name": "denti-code-u2",
+    "dir": "https://github.com/kapit4n/denti-code-u2",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 38,
+    "description": "",
+    "languageKeys": [
+      "TypeScript",
+      "Shell",
+      "JavaScript",
+      "CSS"
+    ],
+    "language": "TypeScript",
+    "size": 399,
+    "openIssues": 0,
+    "languages": {
+      "TypeScript": 366532,
+      "Shell": 9096,
+      "JavaScript": 814,
+      "CSS": 59
+    }
+  },
+  {
+    "id": 1288398866,
+    "startDate": "2026-07-03T15:02:34Z",
+    "updatedDate": "2026-07-03T15:02:50Z",
+    "name": "denti-code-kt",
+    "dir": "https://github.com/kapit4n/denti-code-kt",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 13,
+    "description": "",
+    "languageKeys": [
+      "Kotlin",
+      "Shell"
+    ],
+    "language": "Kotlin",
+    "size": 1006,
+    "openIssues": 0,
+    "languages": {
+      "Kotlin": 851917,
+      "Shell": 932
+    }
+  },
+  {
+    "id": 1288397831,
+    "startDate": "2026-07-03T15:01:24Z",
+    "updatedDate": "2026-07-03T15:01:42Z",
+    "name": "denti-code-desktop",
+    "dir": "https://github.com/kapit4n/denti-code-desktop",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 2,
+    "description": "",
+    "languageKeys": [
+      "Java",
+      "CSS",
+      "Shell"
+    ],
+    "language": "Java",
+    "size": 121,
+    "openIssues": 0,
+    "languages": {
+      "Java": 199387,
+      "CSS": 7870,
+      "Shell": 1390
+    }
+  },
+  {
+    "id": 1288396821,
+    "startDate": "2026-07-03T15:00:14Z",
+    "updatedDate": "2026-07-03T15:00:34Z",
+    "name": "post-process",
+    "dir": "https://github.com/kapit4n/post-process",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 15,
+    "description": "",
+    "languageKeys": [
+      "Kotlin",
+      "Shell"
+    ],
+    "language": "Kotlin",
+    "size": 2119,
+    "openIssues": 0,
+    "languages": {
+      "Kotlin": 687244,
+      "Shell": 200
+    }
+  },
+  {
+    "id": 1288395384,
+    "startDate": "2026-07-03T14:58:33Z",
+    "updatedDate": "2026-07-03T14:58:56Z",
+    "name": "vendei-desktop",
+    "dir": "https://github.com/kapit4n/vendei-desktop",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 7,
+    "description": "",
+    "languageKeys": [
+      "Python",
+      "Shell"
+    ],
+    "language": "Python",
+    "size": 5797,
+    "openIssues": 0,
+    "languages": {
+      "Python": 167872,
+      "Shell": 958
+    }
+  },
+  {
+    "id": 158091231,
+    "startDate": "2018-11-18T14:16:48Z",
+    "name": "ng-vendei-full",
+    "dir": "https://github.com/kapit4n/ng-vendei-full",
+    "img": "",
+    "features": [],
+    "categories": [
+      "angular"
+    ],
+    "skills": [
+      "angular",
+      "authentication",
+      "forms",
+      "rest-client",
+      "shopping-cart"
+    ],
+    "contributions": 151,
+    "description": "Point of sell",
+    "updatedDate": "2026-07-03T14:56:38Z",
+    "languageKeys": [
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Shell",
+      "JavaScript"
+    ],
+    "language": "TypeScript",
+    "size": 14755,
+    "openIssues": 14,
+    "languages": {
+      "TypeScript": 362321,
+      "HTML": 121504,
+      "CSS": 80800,
+      "Shell": 6274,
+      "JavaScript": 1716
+    }
+  },
+  {
+    "id": 153646124,
     "startDate": "2018-10-18T15:25:04Z",
-    "updatedDate": "2023-05-16T00:36:04Z",
-    "contributions": 101,
+    "updatedDate": "2026-07-03T01:15:40Z",
+    "contributions": 120,
     "description": "Researching and projects on development with the traditional and top technologies (react, angular, vue, play, bootstrap).",
     "name": "l-projects",
     "dir": "https://github.com/kapit4n/l-projects",
-    "img": "https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png",
-    "features": [
-      "Projects view",
-      "Project planning",
-      "Project features"
-    ],
+    "img": "",
+    "features": [],
     "categories": [
-      "projects"
+      "javascript"
     ],
     "skills": [
       "javascript",
       "reactjs"
     ],
     "language": "JavaScript",
-    "size": 6152,
-    "openIssues": 4,
+    "size": 8885,
+    "openIssues": 12,
     "languages": {
-      "JavaScript": 26896,
-      "CSS": 4414,
-      "HTML": 2095
+      "JavaScript": 59581,
+      "CSS": 20059,
+      "HTML": 2095,
+      "Shell": 706
     },
     "languageKeys": [
       "JavaScript",
       "CSS",
-      "HTML"
+      "HTML",
+      "Shell"
     ]
   },
   {
-    "id": 208,
+    "id": 994454057,
+    "startDate": "2025-06-02T00:36:27Z",
+    "updatedDate": "2026-04-10T03:03:28Z",
+    "name": "denti-code-api-gateway",
+    "dir": "https://github.com/kapit4n/denti-code-api-gateway",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 8,
+    "description": "",
+    "languageKeys": [
+      "TypeScript",
+      "Shell"
+    ],
+    "language": "TypeScript",
+    "size": 34,
+    "openIssues": 0,
+    "languages": {
+      "TypeScript": 16624,
+      "Shell": 395
+    }
+  },
+  {
+    "id": 1015766440,
+    "startDate": "2025-07-08T02:31:50Z",
+    "updatedDate": "2026-03-27T17:49:19Z",
+    "name": "denti-code-auth-srv",
+    "dir": "https://github.com/kapit4n/denti-code-auth-srv",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 6,
+    "description": "",
+    "languageKeys": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "language": "TypeScript",
+    "size": 147,
+    "openIssues": 0,
+    "languages": {
+      "TypeScript": 53524,
+      "JavaScript": 836
+    }
+  },
+  {
+    "id": 1062239740,
+    "startDate": "2025-09-23T02:10:35Z",
+    "updatedDate": "2025-09-27T00:53:14Z",
+    "name": "denti-code-chart-srv",
+    "dir": "https://github.com/kapit4n/denti-code-chart-srv",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 2,
+    "description": "",
+    "languageKeys": [
+      "Java"
+    ],
+    "language": "Java",
+    "size": 6,
+    "openIssues": 0,
+    "languages": {
+      "Java": 10269
+    }
+  },
+  {
+    "id": 1030029901,
+    "startDate": "2025-08-01T01:28:49Z",
+    "updatedDate": "2025-08-01T01:32:03Z",
+    "name": "denti-code-broker",
+    "dir": "https://github.com/kapit4n/denti-code-broker",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 1,
+    "description": "",
+    "languageKeys": [
+      "Python"
+    ],
+    "language": "Python",
+    "size": 2,
+    "openIssues": 0,
+    "languages": {
+      "Python": 4554
+    }
+  },
+  {
+    "id": 989390613,
+    "startDate": "2025-05-24T02:18:21Z",
+    "updatedDate": "2025-07-11T03:12:57Z",
+    "name": "denti-code-clinic-provider-api",
+    "dir": "https://github.com/kapit4n/denti-code-clinic-provider-api",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 8,
+    "description": "",
+    "languageKeys": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "language": "TypeScript",
+    "size": 240,
+    "openIssues": 0,
+    "languages": {
+      "TypeScript": 38177,
+      "JavaScript": 836
+    }
+  },
+  {
+    "id": 590273997,
+    "startDate": "2023-01-18T02:50:23Z",
+    "updatedDate": "2023-05-31T13:24:56Z",
+    "name": "python-workout-100K",
+    "dir": "https://github.com/kapit4n/python-workout-100K",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 5,
+    "description": "",
+    "languageKeys": [
+      "Python"
+    ],
+    "language": "Python",
+    "size": 3,
+    "openIssues": 0,
+    "languages": {
+      "Python": 1777
+    }
+  },
+  {
+    "id": 274542512,
     "startDate": "2020-06-24T01:06:35Z",
     "lastUpdate": "2023-02-07",
     "name": "project-one",
     "dir": "https://github.com/kapit4n/project-one",
-    "img": "https://github.com/kapit4n/project-one/blob/develop/ui/ui-progress/project-one-home.png?raw=true",
-    "features": [
-      "Tasks"
-    ],
+    "img": "",
+    "features": [],
     "categories": [
-      "habits"
+      "angular10"
     ],
     "skills": [
       "angular10",
@@ -142,6 +495,147 @@
       "JavaScript",
       "Dockerfile"
     ]
+  },
+  {
+    "id": 84760601,
+    "startDate": "2017-03-12T22:00:59Z",
+    "updatedDate": "2017-11-29T01:36:36Z",
+    "name": "lightInv",
+    "dir": "https://github.com/kapit4n/lightInv",
+    "img": "",
+    "features": [],
+    "categories": [
+      "jinja2"
+    ],
+    "skills": [
+      "jinja2",
+      "python"
+    ],
+    "contributions": 55,
+    "description": "Inventory example with python, jinja",
+    "languageKeys": [
+      "HTML",
+      "Python"
+    ],
+    "language": "HTML",
+    "size": 1694,
+    "openIssues": 0,
+    "languages": {
+      "HTML": 72910,
+      "Python": 30198
+    }
+  },
+  {
+    "id": 348918874,
+    "startDate": "2021-03-18T02:42:35Z",
+    "name": "denti-code",
+    "dir": "https://github.com/kapit4n/denti-code",
+    "img": "",
+    "features": [],
+    "categories": [
+      "material-ui"
+    ],
+    "skills": [
+      "material-ui",
+      "react",
+      "react-context",
+      "react-hooks"
+    ],
+    "contributions": 0,
+    "description": "Dentist, react, node js, material-ui, react-hooks.",
+    "updatedDate": "2026-02-11T13:10:38Z",
+    "languageKeys": [],
+    "language": "JavaScript",
+    "size": 11853,
+    "openIssues": 40,
+    "languages": {}
+  },
+  {
+    "id": 369591285,
+    "startDate": "2021-05-21T16:16:46Z",
+    "name": "denti-code-server",
+    "dir": "https://github.com/kapit4n/denti-code-server",
+    "img": "",
+    "features": [],
+    "categories": [
+      "cli"
+    ],
+    "skills": [
+      "cli",
+      "mysql",
+      "nodejs",
+      "restful-api",
+      "sequelize",
+      "swagger"
+    ],
+    "contributions": 0,
+    "description": "node js app, ",
+    "updatedDate": "2025-05-19T03:06:57Z",
+    "languageKeys": [],
+    "language": "JavaScript",
+    "size": 715,
+    "openIssues": 8,
+    "languages": {}
+  },
+  {
+    "id": 86870610,
+    "startDate": "2017-04-01T00:33:50Z",
+    "updatedDate": "2017-04-06T17:09:50Z",
+    "name": "hi-stock-auto",
+    "dir": "https://github.com/kapit4n/hi-stock-auto",
+    "img": "",
+    "features": [],
+    "categories": [
+      "eclipse"
+    ],
+    "skills": [
+      "eclipse",
+      "java",
+      "selenium"
+    ],
+    "contributions": 0,
+    "description": "Project to test hi-stock functionality",
+    "languageKeys": [],
+    "language": "Java",
+    "size": 35,
+    "openIssues": 0,
+    "languages": {}
+  },
+  {
+    "id": 84892293,
+    "startDate": "2017-03-14T01:39:20Z",
+    "updatedDate": "2017-03-14T01:39:56Z",
+    "name": "java-projects",
+    "dir": "https://github.com/kapit4n/java-projects",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 0,
+    "description": "",
+    "languageKeys": [],
+    "language": "Java",
+    "size": 1056,
+    "openIssues": 1,
+    "languages": {}
+  },
+  {
+    "id": 11950142,
+    "startDate": "2013-08-07T13:06:21Z",
+    "updatedDate": "2016-12-10T00:59:05Z",
+    "name": "gae-java-examples",
+    "dir": "https://github.com/kapit4n/gae-java-examples",
+    "img": "",
+    "features": [],
+    "categories": [],
+    "skills": [],
+    "contributions": 0,
+    "description": "This is cuple of examples using with ",
+    "languageKeys": [],
+    "language": "Java",
+    "size": 13,
+    "openIssues": 0,
+    "languages": {}
   },
   {
     "id": 2,
@@ -530,29 +1024,6 @@
     "languageKeys": []
   },
   {
-    "id": 201,
-    "startDate": "2018-11-18T14:16:48Z",
-    "name": "ng-vendei-full",
-    "dir": "https://github.com/kapit4n/ng-vendei-full",
-    "img": "https://github.com/kapit4n/ng-vendei/raw/develop/mockups/vendei_shopping_cart_004.png",
-    "features": [
-      "Shopping cart",
-      "Submit Order"
-    ],
-    "categories": [
-      "Football"
-    ],
-    "skills": [
-      "Angular",
-      "TypeScript",
-      "Bootstrap"
-    ],
-    "contributions": 100,
-    "description": "Join all vendei features",
-    "updatedDate": "2023-02-04T15:34:04Z",
-    "languageKeys": []
-  },
-  {
     "id": 1010,
     "startDate": "2018-10-24T17:37:37Z",
     "name": "football-two-adm",
@@ -641,28 +1112,6 @@
     "contributions": 16,
     "description": "Share videos with others.",
     "updatedDate": "2022-01-06T01:13:41Z",
-    "languageKeys": []
-  },
-  {
-    "id": 214,
-    "startDate": "2019-04-08T06:23:01Z",
-    "lastUpdate": "2023-04-01",
-    "name": "products-view-rn",
-    "dir": "https://github.com/kapit4n/products-view-rn",
-    "img": "https://raw.githubusercontent.com/kapit4n/products-view-rn/develop/assets/images/reactn-products-view.png",
-    "features": [
-      "Inventory"
-    ],
-    "categories": [
-      "Inventory"
-    ],
-    "skills": [
-      "React native",
-      "Pages"
-    ],
-    "contributions": 24,
-    "description": "Mobile application related to have information from the store.",
-    "updatedDate": "2021-05-31T14:45:52Z",
     "languageKeys": []
   },
   {
@@ -900,119 +1349,11 @@
     "languageKeys": []
   },
   {
-    "id": 2021,
-    "startDate": "2026-07-03T00:58:07.198Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-api-gateway",
-    "dir": "https://github.com/kapit4n/denti-code-api-gateway",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2022,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-appointments",
-    "dir": "https://github.com/kapit4n/denti-code-appointments",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2023,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-auth-srv",
-    "dir": "https://github.com/kapit4n/denti-code-auth-srv",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
     "id": 2024,
     "startDate": "2026-07-03T00:58:07.199Z",
     "updatedDate": "2026-07-03T00:58:07.199Z",
     "name": "denti-code-broker-srv",
     "dir": "https://github.com/kapit4n/denti-code-broker-srv",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2025,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-chart-srv",
-    "dir": "https://github.com/kapit4n/denti-code-chart-srv",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2026,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-clinic-provider-api",
-    "dir": "https://github.com/kapit4n/denti-code-clinic-provider-api",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2027,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-desktop",
-    "dir": "https://github.com/kapit4n/denti-code-desktop",
     "img": "",
     "features": [],
     "categories": [],
@@ -1044,65 +1385,11 @@
     "languages": {}
   },
   {
-    "id": 2029,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-kt",
-    "dir": "https://github.com/kapit4n/denti-code-kt",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2030,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-patients-api",
-    "dir": "https://github.com/kapit4n/denti-code-patients-api",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
     "id": 2031,
     "startDate": "2026-07-03T00:58:07.199Z",
     "updatedDate": "2026-07-03T00:58:07.199Z",
     "name": "denti-code-react",
     "dir": "https://github.com/kapit4n/denti-code-react",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2032,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "denti-code-u2",
-    "dir": "https://github.com/kapit4n/denti-code-u2",
     "img": "",
     "features": [],
     "categories": [],
@@ -1134,101 +1421,11 @@
     "languages": {}
   },
   {
-    "id": 2034,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "inventory-nod",
-    "dir": "https://github.com/kapit4n/inventory-nod",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2035,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "l-projects-services",
-    "dir": "https://github.com/kapit4n/l-projects-services",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2036,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "post-process",
-    "dir": "https://github.com/kapit4n/post-process",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
     "id": 2037,
     "startDate": "2026-07-03T00:58:07.199Z",
     "updatedDate": "2026-07-03T00:58:07.199Z",
     "name": "sell-go",
     "dir": "https://github.com/kapit4n/sell-go",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2038,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "vendei-desktop",
-    "dir": "https://github.com/kapit4n/vendei-desktop",
-    "img": "",
-    "features": [],
-    "categories": [],
-    "skills": [],
-    "contributions": 0,
-    "description": "",
-    "languageKeys": [],
-    "language": "",
-    "size": 0,
-    "openIssues": 0,
-    "languages": {}
-  },
-  {
-    "id": 2039,
-    "startDate": "2026-07-03T00:58:07.199Z",
-    "updatedDate": "2026-07-03T00:58:07.199Z",
-    "name": "vendei-desktop-javafx",
-    "dir": "https://github.com/kapit4n/vendei-desktop-javafx",
     "img": "",
     "features": [],
     "categories": [],

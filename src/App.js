@@ -5,6 +5,7 @@ import List from './projects/list/List';
 import Details from './projects/details/Details';
 import Add from './projects/add/Add';
 import FeatureShow from './features/show';
+import ScrapedRepos from './scraped-repos/ScrapedRepos';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           path="/projects/:projectId/features/:id"
           element={<FeatureShow />}
         />
+        <Route path="/scraped-repos" element={<ScrapedRepos />} />
       </Routes>
     );
   }

@@ -4,6 +4,44 @@ import DateFromNow from '../DateFromNow';
 import TechnologyBadge from '../TechnologyBadge/TechnologyBadge';
 import './ProjectCard.css';
 
+const BACKEND_LANGS = new Set(['python', 'go', 'java', 'ruby', 'php', 'rust', 'c#', 'c++', 'cpp', 'kotlin'])
+const UI_LANGS = new Set(['typescript', 'javascript', 'dart', 'html', 'css'])
+
+function isBackendProject(project) {
+  const lang = (project.language || '').toLowerCase()
+  const skills = (project.skills || []).map(s => s.toLowerCase())
+  const cats = (project.categories || []).map(c => c.toLowerCase())
+  const all = [...skills, ...cats, lang]
+  if (all.some(t => ['angular', 'react', 'vue', 'mobile', 'ios', 'android', 'ui', 'frontend', 'flutter'].includes(t))) return false
+  if (all.some(t => ['api', 'cli', 'backend', 'server', 'service', 'graphql'].includes(t))) return true
+  if (BACKEND_LANGS.has(lang)) return true
+  if (UI_LANGS.has(lang)) return false
+  return true
+}
+
+const CardPlaceholder = React.memo(function CardPlaceholder({ isBackend }) {
+  return (
+    <div className={`card-placeholder ${isBackend ? 'placeholder-backend' : 'placeholder-ui'}`}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        {isBackend ? (
+          <>
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </>
+        ) : (
+          <>
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </>
+        )}
+      </svg>
+      <span className="card-placeholder-label">{isBackend ? 'API' : 'UI'}</span>
+    </div>
+  )
+})
+
 function ProjectActions({ project, onMoveUp }) {
   return (
     <div className="project-actions">
@@ -36,12 +74,17 @@ const ProjectCardInner = React.memo(function ProjectCardInner({ project, onMoveU
   const languageKeys = project.languageKeys || [];
   const skills = project.skills || [];
   const features = project.features || [];
+  const [imgError, setImgError] = React.useState(false)
 
   return (
     <article className="project-card">
       <Link to={`/details/${project.id}`} className="project-card-image-link" aria-label={`View ${project.name} details`}>
         <div className="project-card-image">
-          <img src={project.img} alt={project.name} loading="lazy" />
+          {project.img && !imgError ? (
+            <img src={project.img} alt={project.name} loading="lazy" onError={() => setImgError(true)} />
+          ) : (
+            <CardPlaceholder isBackend={isBackendProject(project)} />
+          )}
         </div>
       </Link>
 
