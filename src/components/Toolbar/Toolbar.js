@@ -9,6 +9,7 @@ export default function Toolbar({
   onSync,
   onTopTen,
   currentView,
+  syncing,
 }) {
   return (
     <div className="toolbar" role="toolbar" aria-label="Project actions">
@@ -75,12 +76,18 @@ export default function Toolbar({
 
       <div className="toolbar-divider" />
 
-      <button className="toolbar-btn" onClick={onSync} aria-label="Sync with GitHub">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M9 2C5.13401 2 2 5.13401 2 9M2 9H5.5M2 9L3.5 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M9 16C12.866 16 16 12.866 16 9M16 9H12.5M16 9L14.5 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        <span>Sync</span>
+      <button className={`toolbar-btn ${syncing ? 'toolbar-btn-syncing' : ''}`} onClick={onSync} disabled={syncing} aria-label="Sync all commits with GitHub">
+        {syncing ? (
+          <svg className="toolbar-spinner" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2" strokeDasharray="40" strokeLinecap="round"/>
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2C5.13401 2 2 5.13401 2 9M2 9H5.5M2 9L3.5 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9 16C12.866 16 16 12.866 16 9M16 9H12.5M16 9L14.5 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        )}
+        <span>{syncing ? 'Syncing...' : 'Sync All'}</span>
       </button>
 
       <button className="toolbar-btn" onClick={onTopTen} aria-label="Show top 10 projects">

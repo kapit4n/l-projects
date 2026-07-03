@@ -36,6 +36,20 @@
   color: var(--color-primary);
 }
 
+.toolbar-btn-syncing {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.toolbar-spinner {
+  animation: toolbar-spin 0.8s linear infinite;
+}
+
+@keyframes toolbar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .toolbar-divider {
   width: 1px;
   height: 24px;

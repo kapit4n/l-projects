@@ -26,4 +26,26 @@ export default class GithubService {
   getCommits(projectName) {
     return axios.get(`https://api.github.com/repos/kapit4n/${projectName}/commits`)
   }
+
+  async getTotalCommits(projectName) {
+    if (process.env.REACT_APP_IS_MOCKED === 'true') {
+      return Math.floor(Math.random() * 500) + 50
+    }
+    try {
+      const res = await axios.get(
+        `https://api.github.com/repos/kapit4n/${projectName}/commits?per_page=1`,
+        { headers: { Accept: 'application/vnd.github.v3+json' } }
+      )
+      const link = res.headers['link']
+      if (!link) {
+        if (Array.isArray(res.data)) return res.data.length
+        return 0
+      }
+      const match = link.match(/page=(\d+)>; rel="last"/)
+      if (match) return parseInt(match[1], 10)
+      return res.data.length
+    } catch {
+      return 0
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import ProjectService from '../../services/ProjectsService';
 import GithubService from '../../services/GithubService';
+import SyncService from '../../services/SyncService';
 
 import DashboardHeader from '../../components/DashboardHeader/DashboardHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -37,6 +38,20 @@ function applyFilterSkills(filters, projects) {
   );
 }
 
+function mergeCommitData(projects, commitData) {
+  if (!commitData || commitData.length === 0) return projects;
+  const map = {};
+  commitData.forEach((c) => {
+    map[c.project_name.toLowerCase()] = c.total_commits;
+  });
+  return projects.map((p) => {
+    if (p.name && map[p.name.toLowerCase()] !== undefined) {
+      return { ...p, totalCommits: map[p.name.toLowerCase()] };
+    }
+    return p;
+  });
+}
+
 export default function List() {
   const [projects, setProjects] = useState([]);
   const [projectsOriginal, setProjectsOriginal] = useState([]);
@@ -45,13 +60,15 @@ export default function List() {
   const [selectedCats, setSelectedCats] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
 
   const projectService = useMemo(() => new ProjectService(), []);
   const githubService = useMemo(() => new GithubService(), []);
+  const syncService = useMemo(() => new SyncService(), []);
 
   const totalProjects = projects.length;
   const totalCommits = useMemo(
-    () => projects.reduce((prev, curr) => prev + (curr.contributions || 0), 0),
+    () => projects.reduce((prev, curr) => prev + (curr.totalCommits || curr.contributions || 0), 0),
     [projects]
   );
 
@@ -185,7 +202,11 @@ export default function List() {
         const res = await projectService.getProjects();
         const startSlice = 0;
         const size = startSlice + 10 + 6 + 10 + 10;
-        const data = res.data.slice(startSlice, size);
+        let data = res.data.slice(startSlice, size);
+
+        const commitData = await syncService.getAllCommits();
+        data = mergeCommitData(data, commitData);
+
         setProjects(data);
         setProjectsOriginal(data);
         loadFilters(data);
@@ -194,28 +215,48 @@ export default function List() {
       }
     }
     fetchData();
-  }, [projectService, loadFilters]);
+  }, [projectService, loadFilters, syncService]);
 
-  const syncGithub = useCallback(async () => {
-    const lastN = 1;
-    const fromN = 0;
-    const syncProjects = projects.slice(fromN, lastN);
-    const { projectsContributions, projectsDescription, projectsLanguages } =
-      buildFetchData(syncProjects);
+  const syncAllCommits = useCallback(async () => {
+    setSyncing(true);
+    try {
+      const allProjects = projectsOriginal;
+      const results = [];
 
-    const [allContributions, allDescriptions, allLanguages] =
-      await Promise.all([
-        Promise.all(projectsContributions),
-        Promise.all(projectsDescription),
-        Promise.all(projectsLanguages),
-      ]);
+      for (const p of allProjects) {
+        const total = await githubService.getTotalCommits(p.name);
+        results.push({ project_name: p.name, total_commits: total });
+      }
 
-    assignContributions(syncProjects, allContributions);
-    assignDescriptions(syncProjects, allDescriptions);
-    assignLanguages(syncProjects, allLanguages);
+      await syncService.saveCommitsBatch(results);
 
-    setProjects([...syncProjects, ...projects.slice(fromN + lastN)]);
-  }, [projects, buildFetchData, assignContributions, assignDescriptions, assignLanguages]);
+      const commitMap = {};
+      results.forEach((r) => {
+        commitMap[r.project_name.toLowerCase()] = r.total_commits;
+      });
+
+      setProjects((prev) =>
+        prev.map((p) => {
+          const key = p.name && p.name.toLowerCase();
+          if (key && commitMap[key] !== undefined) {
+            return { ...p, totalCommits: commitMap[key] };
+          }
+          return p;
+        })
+      );
+      setProjectsOriginal((prev) =>
+        prev.map((p) => {
+          const key = p.name && p.name.toLowerCase();
+          if (key && commitMap[key] !== undefined) {
+            return { ...p, totalCommits: commitMap[key] };
+          }
+          return p;
+        })
+      );
+    } finally {
+      setSyncing(false);
+    }
+  }, [projectsOriginal, githubService, syncService]);
 
   const topTen = useCallback(() => {
     setProjects(projectsOriginal.slice(0, 10));
@@ -262,9 +303,10 @@ export default function List() {
         onSortAsc={sortAsc}
         onSortDesc={sortDesc}
         onSetView={setViewMode}
-        onSync={syncGithub}
+        onSync={syncAllCommits}
         onTopTen={topTen}
         currentView={viewMode}
+        syncing={syncing}
       />
 
       {loading ? (

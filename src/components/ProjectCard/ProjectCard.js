@@ -52,7 +52,7 @@ const ProjectCardInner = React.memo(function ProjectCardInner({ project, onMoveU
               {project.name}
             </Link>
           </h3>
-          <span className="project-card-commits">{project.contributions} commits</span>
+          <span className="project-card-commits">{project.totalCommits || project.contributions || 0} commits</span>
         </div>
 
         <div className="project-card-badges">
