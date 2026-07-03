@@ -206,6 +206,7 @@ export default function List() {
       const startSlice = 0;
       const size = startSlice + 10 + 6 + 10 + 10;
       let data = res.data.slice(startSlice, size);
+      data.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate));
 
       const commitData = await syncService.getAllCommits();
       data = mergeCommitData(data, commitData);
