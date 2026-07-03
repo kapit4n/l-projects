@@ -1,251 +1,298 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import ProjectService from '../../services/ProjectsService';
+import GithubService from '../../services/GithubService';
 
-import HexView from '../viewMode/HexView'
-import CardView from '../viewMode/ProjectCard'
-import StatsView from '../viewMode/StatsView'
-import SkillsComp from "./ProjectSkills";
-import ProjectService from '../../services/ProjectsService'
-import GithubService from '../../services/GithubService'
+import DashboardHeader from '../../components/DashboardHeader/DashboardHeader';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import FilterChips from '../../components/FilterChips/FilterChips';
+import StatsCards from '../../components/StatsCards/StatsCards';
+import Toolbar from '../../components/Toolbar/Toolbar';
+import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import SkeletonCard from '../../components/SkeletonCard/SkeletonCard';
+import EmptyState from '../../components/EmptyState/EmptyState';
+import HexView from '../viewMode/HexView';
+import StatsView from '../viewMode/StatsView';
 
-import './List.css'
-import ProjectCategory from './ProjectCategory';
-import ListActions from './ListActions';
+import './List.css';
 
-export default function List() {
+const SKELETON_COUNT = 6;
 
-  // move project to another place
-  const [projects, setProjects] = React.useState([]);
-  const [viewMode, setViewMode] = React.useState("card")
-  const [projectsOriginal, setProjectsOriginal] = React.useState([]);
-  const projectService = new ProjectService()
-
-  const [categories, setCategories] = React.useState([]);
-  const [selectedCats, setSelectedCats] = React.useState([]);
-
-  const [skills, setSkills] = React.useState([]);
-  const [selectedSkills, setSelectedSkills] = React.useState([]);
-  const githubService = new GithubService()
-
-  const totalProjects = React.useMemo(() => {
-    return projects.length
-  }, [projects])
-
-  const totalCommits = React.useMemo(() => {
-    return projects.reduce((prev, curr) => prev + curr.contributions, 0)
-  }, [projects])
-
-  const assignDescriptions = (projects, allDescriptions) => {
-    for (let i = 0; i < allDescriptions.length; i++) {
-      const description = allDescriptions[i]
-      if (description.data && description.data.description) {
-        const resultDescription = description.data.description;
-        const pushedAt = description.data.pushed_at;
-        const createdAt = description.data.created_at
-
-        const topics = description.data.topics
-        const language = description.data.language
-        const size = description.data.size
-        const openIssues = description.data.open_issues
-
-        projects[i].description = resultDescription
-        projects[i].startDate = createdAt
-        projects[i].updatedDate = pushedAt
-
-        projects[i].skills = topics
-        projects[i].language = language
-        projects[i].size = size
-        projects[i].openIssues = openIssues
-
-      }
-    }
-  }
-
-  const assignContributions = (projects, allContributions) => {
-    for (let i = 0; i < allContributions.length; i++) {
-      const contribution = allContributions[i]
-      if (contribution.data[0] && contribution.data[0].contributions) {
-        const countData = contribution.data[0].contributions;
-        projects[i].contributions = countData
-      }
-    }
-  }
-
-  const assignLanguages = (projects, allLanguages) => {
-    for (let i = 0; i < allLanguages.length; i++) {
-      const contribution = allLanguages[i]
-      if (contribution.data) {
-        const languages = contribution.data;
-        projects[i].languages = languages
-      }
-    }
-  }
-
-  const buildFetchData = (projects) => {
-
-    const projectsContributions = []
-    const projectsDescription = []
-    const projectsLanguages = []
-
-    projects.forEach(p => {
-      const fetchDescription = githubService.getDescriptions(p.name)
-      const fetchContributions = githubService.getContributions(p.name)
-      const fetchLanguages = githubService.getLanguages(p.name)
-      projectsContributions.push(fetchContributions)
-      projectsDescription.push(fetchDescription)
-      projectsLanguages.push(fetchLanguages)
-    })
-
-    return { projectsDescription, projectsContributions, projectsLanguages }
-  }
-
-  const exportProjects = () => {
-
-    let toExportProjects = [...projects]
-    toExportProjects = [...toExportProjects.map(p => ({ ...p, languageKeys: p.languages ? Object.keys(p.languages) : [] }))]
-
-    const jsonProjects = `data:text/json;chatset=utf-8,${encodeURIComponent(
-      JSON.stringify(toExportProjects)
-    )}`
-
-    const link = document.createElement("a")
-    link.href = jsonProjects
-    link.download = "projects.json"
-
-    link.click()
-  }
-
-  const addCategory = (category) => {
-    const filters = [...selectedCats, category];
-    setSelectedCats(filters);
-    const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
-    setProjects(result);
-  }
-
-  const dropCategory = (category) => {
-    const filters = [...selectedCats.filter(x => x !== category)];
-    setSelectedCats(filters)
-    const result = applyFilterCategories(filters, applyFilterSkills(selectedSkills, projectsOriginal));
-    setProjects(result);
-  }
-
-  const applyFilterCategories = (filters, projectsOriginal) => {
-    let projects = projectsOriginal;
-    if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.languageKeys.find(z => z.toUpperCase().includes(y.toUpperCase()))));
-    }
-    return projects;
-  }
-
-  const applyFilterSkills = (filters, projectsOriginal) => {
-    let projects = projectsOriginal;
-    if (filters.length > 0) {
-      projects = projectsOriginal.filter(x => filters.find(y => x.skills.find(z => z.toUpperCase().includes(y.toUpperCase()))));
-    }
-    setSelectedSkills(filters);
-    return projects;
-  }
-
-  const changedElement = (selected) => {
-    setSelectedSkills(selected);
-    const result = applyFilterCategories(selectedCats, applyFilterSkills(selected, projectsOriginal));
-    setProjects(result);
-  }
-
-  const sortAsc = () => {
-    const sortedProjects = [...projects]
-    sortedProjects.sort((a, b) => new Date(b.updatedDate) > new Date(a.updatedDate) ? -1 : 1)
-    setProjects(sortedProjects)
-  }
-
-  const sortDesc = () => {
-    const sortedProjects = [...projects]
-    sortedProjects.sort((a, b) => new Date(a.updatedDate) > new Date(b.updatedDate) ? -1 : 1)
-    setProjects(sortedProjects)
-  }
-
-  const loadFilters = (projects) => {
-    const categoriesSet = new Set(projects.map(p => {
-
-      if (p.languageKeys) {
-        return p.languageKeys
-      }
-      return []
-    }).flat().map(cat => cat.toUpperCase()))
-    const skillsSet = new Set(projects.map(p => p.skills).flat().map(fet => fet.toUpperCase()))
-    setCategories([...categoriesSet])
-    setSkills([...skillsSet])
-  }
-
-  React.useEffect(() => {
-    async function fetchData() {
-      const res = await projectService.getProjects()
-      const startSlice = 0
-      const size = startSlice + 10 + 6 + 10 + 10
-      const projects = res.data.slice(startSlice, size);
-      const projectsOriginal = res.data.slice(startSlice, size);
-      setProjects(projects)
-      setProjectsOriginal(projectsOriginal)
-      loadFilters(projects)
-    }
-
-    fetchData()
-  }, [])
-
-  const syncGithub = async () => {
-    const lastN = 1
-    const fromN = 0
-    const syncProjects = projects.slice(fromN, lastN)
-    const { projectsContributions, projectsDescription, projectsLanguages } = buildFetchData(syncProjects)
-    const resultAllContributions = Promise.all(projectsContributions)
-    const resultAllDescription = Promise.all(projectsDescription)
-    const resultAllLanguages = Promise.all(projectsLanguages)
-
-    const allContributions = await resultAllContributions
-    assignContributions(syncProjects, allContributions)
-
-    const allDescriptions = await resultAllDescription
-    assignDescriptions(syncProjects, allDescriptions)
-
-    const allLanguages = await resultAllLanguages
-    assignLanguages(syncProjects, allLanguages)
-
-    const mergedProjects = [...syncProjects, ...projects.slice(fromN + lastN)]
-    setProjects(mergedProjects)
-  }
-
-  const topTen = () => {
-    const topTen = projectsOriginal.slice(0, 10)
-    setProjects(topTen)
-  }
-
-  const moveUp = (project) => {
-    const movedProjects = [project, ...projects.filter(p => p.id !== project.id)]
-    setProjects(movedProjects)
-  }
-
-  return (
-    <div className="container">
-      <ProjectCategory {...{ categories, addCategory, dropCategory, selectedCats }} />
-      <div>
-        <SkillsComp skills={skills} changedElement={changedElement} />
-      </div>
-      <div>
-        <ListActions {...{ setViewMode, exportProjects, sortAsc, sortDesc, syncGithub, totalProjects, totalCommits, topTen }} />
-        <div className="projects-list-totals">
-          <Link to="/add">Add</Link>
-        </div>
-        {viewMode === 'card' && (
-          <CardView projects={projects} moveUp={moveUp} />
-        )}
-        {viewMode === 'hex' && (
-          <HexView projects={projects} />
-        )}
-        {viewMode === 'stats' && (
-          <StatsView projects={projects} />
-        )}
-      </div>
-    </div >
-  )
+function applyFilterCategories(filters, projects) {
+  if (filters.length === 0) return projects;
+  return projects.filter((x) =>
+    filters.find((y) =>
+      (x.languageKeys || []).find(
+        (z) => z.toUpperCase().includes(y.toUpperCase())
+      )
+    )
+  );
 }
 
+function applyFilterSkills(filters, projects) {
+  if (filters.length === 0) return projects;
+  return projects.filter((x) =>
+    filters.find((y) =>
+      (x.skills || []).find((z) => z.toUpperCase().includes(y.toUpperCase()))
+    )
+  );
+}
+
+export default function List() {
+  const [projects, setProjects] = useState([]);
+  const [projectsOriginal, setProjectsOriginal] = useState([]);
+  const [viewMode, setViewMode] = useState('card');
+  const [categories, setCategories] = useState([]);
+  const [selectedCats, setSelectedCats] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  const projectService = useMemo(() => new ProjectService(), []);
+  const githubService = useMemo(() => new GithubService(), []);
+
+  const totalProjects = projects.length;
+  const totalCommits = useMemo(
+    () => projects.reduce((prev, curr) => prev + (curr.contributions || 0), 0),
+    [projects]
+  );
+
+  const assignDescriptions = useCallback((projects, allDescriptions) => {
+    for (let i = 0; i < allDescriptions.length; i++) {
+      const desc = allDescriptions[i];
+      if (desc.data && desc.data.description) {
+        projects[i].description = desc.data.description;
+        projects[i].startDate = desc.data.created_at;
+        projects[i].updatedDate = desc.data.pushed_at;
+        projects[i].skills = desc.data.topics;
+        projects[i].language = desc.data.language;
+        projects[i].size = desc.data.size;
+        projects[i].openIssues = desc.data.open_issues;
+      }
+    }
+  }, []);
+
+  const assignContributions = useCallback((projects, allContributions) => {
+    for (let i = 0; i < allContributions.length; i++) {
+      const contrib = allContributions[i];
+      if (contrib.data[0] && contrib.data[0].contributions) {
+        projects[i].contributions = contrib.data[0].contributions;
+      }
+    }
+  }, []);
+
+  const assignLanguages = useCallback((projects, allLanguages) => {
+    for (let i = 0; i < allLanguages.length; i++) {
+      const lang = allLanguages[i];
+      if (lang.data) {
+        projects[i].languages = lang.data;
+      }
+    }
+  }, []);
+
+  const buildFetchData = useCallback(
+    (projects) => {
+      const projectsContributions = [];
+      const projectsDescription = [];
+      const projectsLanguages = [];
+
+      projects.forEach((p) => {
+        projectsContributions.push(githubService.getContributions(p.name));
+        projectsDescription.push(githubService.getDescriptions(p.name));
+        projectsLanguages.push(githubService.getLanguages(p.name));
+      });
+
+      return {
+        projectsContributions,
+        projectsDescription,
+        projectsLanguages,
+      };
+    },
+    [githubService]
+  );
+
+  const exportProjects = useCallback(() => {
+    const toExport = projects.map((p) => ({
+      ...p,
+      languageKeys: p.languages ? Object.keys(p.languages) : [],
+    }));
+    const json = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify(toExport)
+    )}`;
+    const link = document.createElement('a');
+    link.href = json;
+    link.download = 'projects.json';
+    link.click();
+  }, [projects]);
+
+  const addCategory = useCallback(
+    (category) => {
+      const filters = [...selectedCats, category];
+      setSelectedCats(filters);
+      const result = applyFilterCategories(
+        filters,
+        applyFilterSkills([], projectsOriginal)
+      );
+      setProjects(result);
+    },
+    [selectedCats, projectsOriginal]
+  );
+
+  const dropCategory = useCallback(
+    (category) => {
+      const filters = selectedCats.filter((x) => x !== category);
+      setSelectedCats(filters);
+      const result = applyFilterCategories(filters, projectsOriginal);
+      setProjects(result);
+    },
+    [selectedCats, projectsOriginal]
+  );
+
+  const sortAsc = useCallback(() => {
+    setProjects((prev) =>
+      [...prev].sort(
+        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)
+      )
+    );
+  }, []);
+
+  const sortDesc = useCallback(() => {
+    setProjects((prev) =>
+      [...prev].sort(
+        (a, b) => new Date(a.updatedDate) - new Date(b.updatedDate)
+      )
+    );
+  }, []);
+
+  const loadFilters = useCallback((projects) => {
+    const categoriesSet = new Set(
+      projects
+        .map((p) => (p.languageKeys ? p.languageKeys : []))
+        .flat()
+        .map((cat) => cat.toUpperCase())
+    );
+    const skillsSet = new Set(
+      projects
+        .map((p) => p.skills)
+        .flat()
+        .map((fet) => fet.toUpperCase())
+    );
+    setCategories([...categoriesSet]);
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const res = await projectService.getProjects();
+        const startSlice = 0;
+        const size = startSlice + 10 + 6 + 10 + 10;
+        const data = res.data.slice(startSlice, size);
+        setProjects(data);
+        setProjectsOriginal(data);
+        loadFilters(data);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [projectService, loadFilters]);
+
+  const syncGithub = useCallback(async () => {
+    const lastN = 1;
+    const fromN = 0;
+    const syncProjects = projects.slice(fromN, lastN);
+    const { projectsContributions, projectsDescription, projectsLanguages } =
+      buildFetchData(syncProjects);
+
+    const [allContributions, allDescriptions, allLanguages] =
+      await Promise.all([
+        Promise.all(projectsContributions),
+        Promise.all(projectsDescription),
+        Promise.all(projectsLanguages),
+      ]);
+
+    assignContributions(syncProjects, allContributions);
+    assignDescriptions(syncProjects, allDescriptions);
+    assignLanguages(syncProjects, allLanguages);
+
+    setProjects([...syncProjects, ...projects.slice(fromN + lastN)]);
+  }, [projects, buildFetchData, assignContributions, assignDescriptions, assignLanguages]);
+
+  const topTen = useCallback(() => {
+    setProjects(projectsOriginal.slice(0, 10));
+  }, [projectsOriginal]);
+
+  const moveUp = useCallback((project) => {
+    setProjects((prev) => [project, ...prev.filter((p) => p.id !== project.id)]);
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    if (!searchQuery.trim()) return projects;
+    const q = searchQuery.toLowerCase();
+    return projects.filter(
+      (p) =>
+        (p.name && p.name.toLowerCase().includes(q)) ||
+        (p.description && p.description.toLowerCase().includes(q)) ||
+        (p.skills || []).some((s) => s.toLowerCase().includes(q)) ||
+        (p.languageKeys || []).some((l) => l.toLowerCase().includes(q))
+    );
+  }, [projects, searchQuery]);
+
+  return (
+    <div className="dashboard">
+      <DashboardHeader totalProjects={totalProjects} />
+
+      <SearchBar value={searchQuery} onChange={setSearchQuery} />
+
+      <div className="dashboard-filters-row">
+        <FilterChips
+          categories={categories}
+          selectedCats={selectedCats}
+          onAdd={addCategory}
+          onDrop={dropCategory}
+        />
+      </div>
+
+      <StatsCards
+        totalProjects={totalProjects}
+        totalCommits={totalCommits}
+      />
+
+      <Toolbar
+        onExport={exportProjects}
+        onSortAsc={sortAsc}
+        onSortDesc={sortDesc}
+        onSetView={setViewMode}
+        onSync={syncGithub}
+        onTopTen={topTen}
+        currentView={viewMode}
+      />
+
+      {loading ? (
+        <div className="project-grid">
+          {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+      ) : filteredProjects.length === 0 ? (
+        <EmptyState
+          title="No projects found"
+          description={
+            searchQuery
+              ? 'Try adjusting your search or filters.'
+              : 'Create your first project to get started.'
+          }
+          actionLabel="Add Project"
+          actionLink="/add"
+        />
+      ) : (
+        <>
+          {viewMode === 'card' && (
+            <ProjectCard projects={filteredProjects} onMoveUp={moveUp} />
+          )}
+          {viewMode === 'hex' && <HexView projects={filteredProjects} />}
+          {viewMode === 'stats' && <StatsView projects={filteredProjects} />}
+        </>
+      )}
+    </div>
+  );
+}

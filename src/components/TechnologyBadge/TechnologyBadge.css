@@ -1,0 +1,15 @@
+.tech-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 999px;
+  white-space: nowrap;
+  line-height: 1.4;
+  transition: var(--transition);
+}
+
+.tech-badge:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.95);
+}

@@ -1,7 +1,15 @@
+.dashboard {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
 
-.projects-list-totals {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-  align-items: center;
+.dashboard-filters-row {
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 20px 16px;
+  }
 }
