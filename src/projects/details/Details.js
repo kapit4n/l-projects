@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import ProjectService from '../../services/ProjectsService';
 import TechnologyBadge from '../../components/TechnologyBadge/TechnologyBadge';
 import MomentProject from '../../components/DateFromNow';
+import FeatureSlider from '../../components/FeatureSlider/FeatureSlider';
 
 import './Details.css'
 
@@ -140,6 +141,7 @@ export default function Details() {
   const [scrapedImg, setScrapedImg] = React.useState(null)
   const [imgError, setImgError] = React.useState(false)
   const [scraping, setScraping] = React.useState(false)
+  const [featuresData, setFeaturesData] = React.useState([])
 
   React.useEffect(() => {
     const service = new ProjectService()
@@ -175,6 +177,7 @@ export default function Details() {
           try { setCommits(JSON.parse(d.top_commits || '[]')) } catch { setCommits([]) }
           setReadme(d.readme || null)
           setScrapedImg(d.img || null)
+          setFeaturesData(d.features_data || [])
           if (d.architecture) {
             setArchitecture({ path: 'ARCHITECTURE.md', content: d.architecture })
           }
@@ -189,6 +192,7 @@ export default function Details() {
           try { setCommits(JSON.parse(d.top_commits || '[]')) } catch { setCommits([]) }
           setReadme(d.readme || null)
           setScrapedImg(d.img || null)
+          setFeaturesData(d.features_data || [])
           if (d.architecture) {
             setArchitecture({ path: 'ARCHITECTURE.md', content: d.architecture })
           }
@@ -216,6 +220,7 @@ export default function Details() {
         try { setCommits(JSON.parse(d.top_commits || '[]')) } catch { setCommits([]) }
         setReadme(d.readme || null)
         setScrapedImg(d.img || null)
+        setFeaturesData(d.features_data || [])
         if (d.architecture) {
           setArchitecture({ path: 'ARCHITECTURE.md', content: d.architecture })
         }
@@ -495,6 +500,8 @@ export default function Details() {
           </div>
         </section>
       )}
+
+      <FeatureSlider features={featuresData} />
     </div>
   );
 }
