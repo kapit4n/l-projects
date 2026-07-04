@@ -15,7 +15,7 @@ const ArrowRight = () => (
   </svg>
 );
 
-export default function FeatureSlider({ features }) {
+function Slider({ features }) {
   const [current, setCurrent] = React.useState(0);
   const [descriptions, setDescriptions] = React.useState({});
 
@@ -48,36 +48,68 @@ export default function FeatureSlider({ features }) {
   const next = () => setCurrent((c) => (c === total - 1 ? 0 : c + 1));
 
   return (
-    <section className="detail-section feature-slider-section">
-      <h3 className="detail-section-title">Feature Screenshots</h3>
-      <div className="feature-slider">
-        <div className="feature-slider-viewport">
-          <div className="feature-slider-image-wrap">
-            <img src={feature.img} alt={feature.name} />
-          </div>
-          {desc && (
-            <div className="feature-slider-desc">
-              <ReactMarkdown>{desc}</ReactMarkdown>
-            </div>
-          )}
+    <div className="feature-slider">
+      <div className="feature-slider-viewport">
+        <div className="feature-slider-image-wrap">
+          <img src={feature.img} alt={feature.name} />
         </div>
-
-        {total > 1 && (
-          <>
-            <button className="feature-slider-btn feature-slider-btn-prev" onClick={prev}><ArrowLeft /></button>
-            <button className="feature-slider-btn feature-slider-btn-next" onClick={next}><ArrowRight /></button>
-            <div className="feature-slider-dots">
-              {features.map((_, i) => (
-                <button
-                  key={i}
-                  className={`feature-slider-dot${i === current ? ' active' : ''}`}
-                  onClick={() => goTo(i)}
-                />
-              ))}
-            </div>
-          </>
+        {desc && (
+          <div className="feature-slider-desc">
+            <ReactMarkdown>{desc}</ReactMarkdown>
+          </div>
         )}
       </div>
+
+      {total > 1 && (
+        <>
+          <button className="feature-slider-btn feature-slider-btn-prev" onClick={prev}><ArrowLeft /></button>
+          <button className="feature-slider-btn feature-slider-btn-next" onClick={next}><ArrowRight /></button>
+          <div className="feature-slider-dots">
+            {features.map((_, i) => (
+              <button
+                key={i}
+                className={`feature-slider-dot${i === current ? ' active' : ''}`}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default function FeatureSlider({ features }) {
+  const [activeTab, setActiveTab] = React.useState(0);
+  const raw = features || [];
+  const groups = raw.length && !raw[0].features
+    ? [{ group: '', features: raw }]
+    : raw;
+
+  if (!groups.length) return null;
+
+  const hasMultipleGroups = groups.length > 1;
+  const currentGroup = groups[activeTab];
+
+  return (
+    <section className="detail-section feature-slider-section">
+      <h3 className="detail-section-title">Feature Screenshots</h3>
+      {hasMultipleGroups && (
+        <div className="feature-slider-tabs">
+          {groups.map((g, i) => (
+            <button
+              key={g.group || i}
+              className={`feature-slider-tab${i === activeTab ? ' active' : ''}`}
+              onClick={() => setActiveTab(i)}
+            >
+              {g.group || 'General'}
+            </button>
+          ))}
+        </div>
+      )}
+      {currentGroup && (
+        <Slider features={currentGroup.features} />
+      )}
     </section>
   );
 }
