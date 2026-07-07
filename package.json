@@ -6,6 +6,7 @@
     "axios": "^1.6.0",
     "chart.js": "^4.2.1",
     "moment": "^2.29.4",
+    "notebookjs": "^0.8.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-bootstrap-typeahead": "^6.1.2",

@@ -15,9 +15,25 @@ const ArrowRight = () => (
   </svg>
 );
 
+const PlayIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+    <polygon points="6 3 20 12 6 21 6 3" />
+  </svg>
+);
+
+const PauseIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+    <rect x="6" y="4" width="4" height="16" />
+    <rect x="14" y="4" width="4" height="16" />
+  </svg>
+);
+
 function Slider({ features }) {
   const [current, setCurrent] = React.useState(0);
+  const [autoplay, setAutoplay] = React.useState(false);
   const [descriptions, setDescriptions] = React.useState({});
+  const timerRef = React.useRef(null);
+  const total = features?.length || 0;
 
   React.useEffect(() => {
     const fetchDescs = async () => {
@@ -37,10 +53,23 @@ function Slider({ features }) {
     if (features?.length) fetchDescs();
   }, [features]);
 
+  React.useEffect(() => {
+    if (autoplay && total > 1) {
+      timerRef.current = setInterval(() => {
+        setCurrent((c) => (c === total - 1 ? 0 : c + 1));
+      }, 3000);
+    }
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [autoplay, current, total]);
+
   if (!features?.length) return null;
 
   const feature = features[current];
-  const total = features.length;
   const desc = descriptions[feature.name] || '';
 
   const goTo = (index) => setCurrent(index);
@@ -64,14 +93,23 @@ function Slider({ features }) {
         <>
           <button className="feature-slider-btn feature-slider-btn-prev" onClick={prev}><ArrowLeft /></button>
           <button className="feature-slider-btn feature-slider-btn-next" onClick={next}><ArrowRight /></button>
-          <div className="feature-slider-dots">
-            {features.map((_, i) => (
-              <button
-                key={i}
-                className={`feature-slider-dot${i === current ? ' active' : ''}`}
-                onClick={() => goTo(i)}
-              />
-            ))}
+          <div className="feature-slider-controls">
+            <div className="feature-slider-dots">
+              {features.map((_, i) => (
+                <button
+                  key={i}
+                  className={`feature-slider-dot${i === current ? ' active' : ''}`}
+                  onClick={() => goTo(i)}
+                />
+              ))}
+            </div>
+            <button
+              className="feature-slider-autoplay-btn"
+              onClick={() => setAutoplay((a) => !a)}
+              title={autoplay ? 'Pause autoplay' : 'Start autoplay'}
+            >
+              {autoplay ? <PauseIcon /> : <PlayIcon />}
+            </button>
           </div>
         </>
       )}

@@ -379,6 +379,11 @@
   overflow-y: auto;
 }
 
+.detail-section-arch {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
 .detail-readme {
   font-size: 14px;
   line-height: 1.7;
@@ -493,6 +498,28 @@
   padding: 1px 5px;
   border-radius: 4px;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.detail-docs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.detail-docs-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .detail-scrape-btn {
