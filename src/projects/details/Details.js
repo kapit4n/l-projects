@@ -136,8 +136,6 @@ export default function Details() {
   const [commitsLoading, setCommitsLoading] = React.useState(false)
   const [readme, setReadme] = React.useState(null)
   const [readmeLoading, setReadmeLoading] = React.useState(false)
-  const [architecture, setArchitecture] = React.useState(null)
-  const [architectureLoading, setArchitectureLoading] = React.useState(false)
   const [scrapedImg, setScrapedImg] = React.useState(null)
   const [imgError, setImgError] = React.useState(false)
   const [scraping, setScraping] = React.useState(false)
@@ -168,7 +166,6 @@ export default function Details() {
 
     setCommitsLoading(true)
     setReadmeLoading(true)
-    setArchitectureLoading(true)
 
     axios.get(`${API}/repo-details/${projectName}`)
       .then(res => {
@@ -178,9 +175,6 @@ export default function Details() {
           setReadme(d.readme || null)
           setScrapedImg(d.img || null)
           setFeaturesData(d.features_data || [])
-          if (d.architecture) {
-            setArchitecture({ path: 'ARCHITECTURE.md', content: d.architecture })
-          }
         }
       })
       .catch(() => {
@@ -193,16 +187,12 @@ export default function Details() {
           setReadme(d.readme || null)
           setScrapedImg(d.img || null)
           setFeaturesData(d.features_data || [])
-          if (d.architecture) {
-            setArchitecture({ path: 'ARCHITECTURE.md', content: d.architecture })
-          }
         }
       })
       .catch(() => {})
       .finally(() => {
         setCommitsLoading(false)
         setReadmeLoading(false)
-        setArchitectureLoading(false)
       })
   }, [projectName])
 
@@ -211,7 +201,6 @@ export default function Details() {
     setScraping(true)
     setCommitsLoading(true)
     setReadmeLoading(true)
-    setArchitectureLoading(true)
     setImgError(false)
     try {
       const res = await axios.post(`http://localhost:8000/repo-details/${projectName}/fetch`)
@@ -221,9 +210,6 @@ export default function Details() {
         setReadme(d.readme || null)
         setScrapedImg(d.img || null)
         setFeaturesData(d.features_data || [])
-        if (d.architecture) {
-          setArchitecture({ path: 'ARCHITECTURE.md', content: d.architecture })
-        }
       }
     } catch {
       console.error('Failed to fetch repo details')
@@ -231,7 +217,6 @@ export default function Details() {
       setScraping(false)
       setCommitsLoading(false)
       setReadmeLoading(false)
-      setArchitectureLoading(false)
     }
   }, [projectName])
 
@@ -490,27 +475,6 @@ export default function Details() {
           <div className="detail-readme">
             <ReactMarkdown>
               {readme}
-            </ReactMarkdown>
-          </div>
-        </section>
-      )}
-
-      {architectureLoading && (
-        <section className="detail-section">
-          <h3 className="detail-section-title">Architecture</h3>
-          <div className="detail-loading-pulse" />
-        </section>
-      )}
-      {!architectureLoading && architecture && (
-        <section className="detail-section">
-          <h3 className="detail-section-title">Architecture</h3>
-          <div className="detail-arch-meta">
-            Source: <code>{architecture.path}</code>
-            {architecture.section && <span> &middot; Section: <code>{architecture.section}</code></span>}
-          </div>
-          <div className="detail-readme detail-section-arch">
-            <ReactMarkdown>
-              {architecture.content}
             </ReactMarkdown>
           </div>
         </section>
