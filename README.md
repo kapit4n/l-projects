@@ -2,7 +2,7 @@
 
 Project portfolio management system that tracks open-source and professional projects. Scrapes GitHub repositories, stores metadata, and presents an interactive dashboard with analysis capabilities.
 
-![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png)
+![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/features/dashboard/main.png)
 
 ## Features
 
