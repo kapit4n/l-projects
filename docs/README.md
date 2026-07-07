@@ -1,42 +1,40 @@
-Projects management system.
+# Projects Dashboard
+
+Project portfolio management system that tracks open-source and professional projects. Scrapes GitHub repositories, stores metadata, and presents an interactive dashboard with analysis capabilities.
 
 ![Home](https://raw.githubusercontent.com/kapit4n/l-projects/master/mockups/l-projects-home.png)
 
-# Description
-This project has all the projects worked in open source way.
-Have some kind of track all the project where you worked
-can help you to see where you are and with that you can 
-see where you are like software developer on my case
-because when I see the project where I worked I could 
-say that I have some progress with some technology 
-and have some kind of diary of your software development
-skills and have some kind of stats and mark some goals for 
-next steps.
+## Features
 
-# Features
-## Projects list page
-This is the main page where is all the project worked, there can be related to 
-open source project or projects where you worked for the companies where 
-you worked like full time job.
+- **Projects List** — Search, filter, and browse all projects with cards or hex view
+- **Project Details** — View README, architecture docs, screenshots, commits, and feature slider
+- **Documentation Browser** — Explore project documentation files (.md) in a dedicated reader
+- **Analysis Notebook** — Built-in Jupyter notebook viewer with project data analysis
+- **GitHub Scraping** — Auto-fetch repo metadata, README, screenshots, and docs
+- **Stats & Charts** — Language distribution, contribution metrics, and trends
 
-## Stats page
-These stats will show us the progress of each technology or project
-that we want to see like a chart and analyse it for future desicions
+## Tech Stack
 
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 18, react-router-dom, Chart.js, react-markdown |
+| Backend | FastAPI (Python 3.11), SQLAlchemy, SQLite |
+| Gateway | FastAPI reverse proxy (httpx) |
+| Scraping | GitHub API v3 |
 
-## Project details
-Project detail is the information displayed to the user to review 
-how was the progress of the project, which goals where been successed and 
-if there is something to analyze there to continue with the progress of the 
-project.
+## Quick Start
 
-## Configurations
-Themes, Priorities.
+```bash
+./start.sh                    # starts backend services + frontend
+# or manually:
+cd ../l-projects-services && source lservices/bin/activate
+(cd gateway && uvicorn main:app --reload --port 8000) &
+(cd projects && uvicorn main:app --reload --port 8001) &
+# then:
+cd ../l-projects && npm start
+```
 
+## Documentation
 
-# Tasks
-[] Create details page
-[] Analyze the stats ideas for the projects
-[] Add the last updated date to sort them by recent updated
-[] Add priorities to projects
-[] 
+- [Architecture & Tech Stack](./architecture.md) — System design, DB schema, data flow
+- [Tech Stack & Roadmap](./tech-stack.md) — Proposed improvements and priority matrix
