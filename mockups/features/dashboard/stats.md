@@ -1,12 +1,10 @@
-## Stats Cards
+**Statistics View**
 
-Aggregated statistics displayed at the top of the dashboard showing key metrics about the project portfolio.
+Data-focused view mode that presents the project portfolio as aggregated statistics. Displays total projects, total commits, language distribution, and other key metrics in a clean tabular format.
 
-**Metrics displayed:**
-- Total number of projects tracked
-- Total contributions across all projects
-- Primary language breakdown
-- Size and open issues aggregated
-- Quick visual reference for portfolio health
-
-These stats update automatically when projects are added or scraped.
+**Metrics shown:**
+- Total projects tracked in the portfolio
+- Total commits aggregated across all repositories
+- Primary language breakdown with project counts
+- Size and open issues summaries
+- Useful for quick portfolio health assessment

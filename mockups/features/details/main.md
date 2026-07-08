@@ -1,17 +1,16 @@
-## Project Details Page
+**Project Details Page**
 
-Detailed view of a single project showing all metadata, documentation, and repository information.
+Comprehensive view of a single project showing all metadata, GitHub integration, documentation, and repository information.
 
-**Sections:**
-- **Header** — project name, GitHub link, scrape button, and docs link
+**Sections (top to bottom):**
+- **Header** — project name, GitHub link, Docs link, Scrape button
 - **Meta** — creation date, last updated date
-- **Screenshot** — main project image or placeholder (backend vs UI)
-- **Stats** — contributions, size, open issues, primary language
+- **Screenshot** — scraped project image or auto-generated placeholder (backend vs UI)
+- **Stats** — contributions, size (KB), open issues, primary language
 - **About** — project description
 - **Languages** — language breakdown with byte sizes
-- **Categories** — project category tags (Full-Stack, Backend, etc.)
+- **Categories** — project category tags
 - **Skills** — technology skill badges
-- **Features** — quick links to feature analysis pages
-- **Recent Commits** — last 5 commits with author, message, and SHA
 - **Feature Slider** — interactive screenshots carousel with autoplay
-- **README** — full rendered README with markdown formatting
+- **Recent Commits** — last 5 commits with author, SHA, message, date
+- **README** — full rendered markdown

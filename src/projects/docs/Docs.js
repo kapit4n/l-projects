@@ -19,18 +19,27 @@ export default function Docs() {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`http://localhost:8000/repo-details/${name}/docs`)
-      .then((res) => {
-        if (!res.ok) throw new Error('No documents found');
-        return res.json();
-      })
-      .then((data) => {
+    async function loadDocs() {
+      setLoading(true);
+      setError(null);
+      try {
+        let res = await fetch(`http://localhost:8000/repo-details/${name}/docs`);
+        let data = res.ok ? await res.json() : { documents: [] };
+        if (!res.ok || !data.documents?.length) {
+          await fetch(`http://localhost:8000/repo-details/${name}/fetch`, { method: 'POST' });
+          res = await fetch(`http://localhost:8000/repo-details/${name}/docs`);
+          if (!res.ok) throw new Error('No documents found');
+          data = await res.json();
+        }
         const sorted = (data.documents || []).sort((a, b) => a.path.localeCompare(b.path));
         setDocuments(sorted);
         if (sorted.length > 0) setSelected(sorted[0]);
-      })
-      .catch(setError)
-      .finally(() => setLoading(false));
+      } catch {
+        setError('No documents found');
+      }
+      setLoading(false);
+    }
+    loadDocs();
   }, [name]);
 
   if (loading) {

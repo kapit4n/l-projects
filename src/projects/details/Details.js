@@ -167,33 +167,35 @@ export default function Details() {
     setCommitsLoading(true)
     setReadmeLoading(true)
 
-    axios.get(`${API}/repo-details/${projectName}`)
-      .then(res => {
+    async function loadRepoDetails() {
+      try {
+        const res = await axios.get(`${API}/repo-details/${projectName}`);
         if (res.data) {
-          const d = res.data
-          try { setCommits(JSON.parse(d.top_commits || '[]')) } catch { setCommits([]) }
-          setReadme(d.readme || null)
-          setScrapedImg(d.img || null)
-          setFeaturesData(d.features_data || [])
+          const d = res.data;
+          const hasData = d.readme || d.top_commits || (d.features_data && d.features_data.length > 0);
+          if (hasData) {
+            try { setCommits(JSON.parse(d.top_commits || '[]')); } catch { setCommits([]); }
+            setReadme(d.readme || null);
+            setScrapedImg(d.img || null);
+            setFeaturesData(d.features_data || []);
+            return;
+          }
         }
-      })
-      .catch(() => {
-        return axios.post(`${API}/repo-details/${projectName}/fetch`)
-      })
-      .then(res => {
-        if (res && res.data) {
-          const d = res.data
-          try { setCommits(JSON.parse(d.top_commits || '[]')) } catch { setCommits([]) }
-          setReadme(d.readme || null)
-          setScrapedImg(d.img || null)
-          setFeaturesData(d.features_data || [])
+      } catch {}
+      try {
+        const res = await axios.post(`${API}/repo-details/${projectName}/fetch`);
+        if (res.data) {
+          const d = res.data;
+          try { setCommits(JSON.parse(d.top_commits || '[]')); } catch { setCommits([]); }
+          setReadme(d.readme || null);
+          setScrapedImg(d.img || null);
+          setFeaturesData(d.features_data || []);
         }
-      })
-      .catch(() => {})
-      .finally(() => {
-        setCommitsLoading(false)
-        setReadmeLoading(false)
-      })
+      } catch {}
+      setCommitsLoading(false);
+      setReadmeLoading(false);
+    }
+    loadRepoDetails();
   }, [projectName])
 
   const handleScrape = React.useCallback(async () => {

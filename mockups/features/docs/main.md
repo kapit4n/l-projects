@@ -1,14 +1,14 @@
-## Documentation Browser
+**Documentation Browser**
 
-Dedicated page for browsing project documentation files discovered during scraping. All `.md`, `.mdx`, and `.rst` files are fetched from the repository and displayed in a reader layout.
+Dedicated page for browsing project documentation files discovered during scraping. All markdown, MDX, and RST files from the repository are listed in a sidebar and rendered in the main content area.
 
 **Layout:**
-- **Sidebar** — list of all documents found in the repo, sorted by path
+- **Sidebar** — sorted list of document filenames with full paths
 - **Content area** — selected document rendered with full markdown support
-- **Navigation** — back link to the project details page
+- **Header** — back link to the project detail page
 
 **Supported formats:**
-- GitHub-flavored markdown
-- Tables, code blocks with syntax highlighting
-- Images, blockquotes, nested lists
-- Inline HTML
+- GitHub-flavored markdown with headings, code blocks, tables
+- Images with rounded corners
+- Blockquotes with accent styling
+- Inline and fenced code blocks

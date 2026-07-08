@@ -14,6 +14,11 @@ cd "$PROJ_DIR/l-projects-services"
 # activate venv
 source lservices/bin/activate
 
+# export GITHUB_TOKEN for authenticated API calls (optional, but recommended)
+if [ -z "${GITHUB_TOKEN}" ] && [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
+fi
+
 # start each service from its own directory
 (cd projects && uvicorn main:app --reload --port 8001) &
 (cd features && uvicorn main:app --reload --port 8002) &
