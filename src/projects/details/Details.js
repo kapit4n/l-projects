@@ -140,6 +140,46 @@ export default function Details() {
   const [imgError, setImgError] = React.useState(false)
   const [scraping, setScraping] = React.useState(false)
   const [featuresData, setFeaturesData] = React.useState([])
+  const [scrapeLog, setScrapeLog] = React.useState([])
+  const [showScrapeLog, setShowScrapeLog] = React.useState(false)
+
+  function buildScrapeLog(d, source = 'manual') {
+    const log = [];
+    const now = new Date().toLocaleString();
+    const from = source === 'auto' ? '(cached)' : '(GitHub)';
+
+    const commits = (() => { try { return JSON.parse(d.top_commits || '[]'); } catch { return []; } })();
+    const commitAuthors = [...new Set(commits.map(c => c.author || c.commit?.author?.name).filter(Boolean))];
+    const commitDetail = commits.length > 0
+      ? `${commits.length} commits from ${commitAuthors.join(', ')} ${from}`
+      : `No commits found ${from}`;
+    log.push({ item: 'Commits', ok: commits.length > 0, detail: commitDetail });
+
+    log.push({ item: 'README', ok: !!d.readme, detail: d.readme
+      ? `README (${d.readme.length} chars) ${from}`
+      : `No README found ${from}` });
+
+    const imgLabel = d.img ? d.img.split('/').pop() || 'screenshot' : 'No screenshot found';
+    log.push({ item: 'Screenshot', ok: !!d.img, detail: d.img
+      ? `${imgLabel} ${from}`
+      : `No screenshot found ${from}` });
+
+    const features = d.features_data || [];
+    const totalFeatures = features.reduce((s, g) => s + (g.features?.length || 0), 0);
+    const featureGroups = features.map(g => g.label || g.name || 'unnamed').filter(Boolean);
+    log.push({ item: 'Features', ok: totalFeatures > 0, detail: totalFeatures > 0
+      ? `${totalFeatures} slides in ${features.length} groups (${featureGroups.join(', ')}) ${from}`
+      : `No feature data found ${from}` });
+
+    const docs = d.documents || [];
+    const docTypes = [...new Set(docs.map(doc => doc.path?.split('.').pop()).filter(Boolean))].join(', ');
+    log.push({ item: 'Documents', ok: docs.length > 0, detail: docs.length > 0
+      ? `${docs.length} files (${docTypes}) ${from}`
+      : `No documents found ${from}` });
+
+    log.timestamp = now;
+    return log;
+  }
 
   React.useEffect(() => {
     const service = new ProjectService()
@@ -178,18 +218,7 @@ export default function Details() {
             setReadme(d.readme || null);
             setScrapedImg(d.img || null);
             setFeaturesData(d.features_data || []);
-            return;
           }
-        }
-      } catch {}
-      try {
-        const res = await axios.post(`${API}/repo-details/${projectName}/fetch`);
-        if (res.data) {
-          const d = res.data;
-          try { setCommits(JSON.parse(d.top_commits || '[]')); } catch { setCommits([]); }
-          setReadme(d.readme || null);
-          setScrapedImg(d.img || null);
-          setFeaturesData(d.features_data || []);
         }
       } catch {}
       setCommitsLoading(false);
@@ -201,6 +230,7 @@ export default function Details() {
   const handleScrape = React.useCallback(async () => {
     if (!projectName) return
     setScraping(true)
+    setShowScrapeLog(false)
     setCommitsLoading(true)
     setReadmeLoading(true)
     setImgError(false)
@@ -212,11 +242,17 @@ export default function Details() {
         setReadme(d.readme || null)
         setScrapedImg(d.img || null)
         setFeaturesData(d.features_data || [])
+        const log = buildScrapeLog(d);
+        log.push({ item: 'Scrape', ok: true, detail: 'Completed successfully' });
+        setScrapeLog(log);
+      } else {
+        setScrapeLog([{ item: 'Scrape', ok: false, detail: 'No data returned' }]);
       }
     } catch {
-      console.error('Failed to fetch repo details')
+      setScrapeLog([{ item: 'Scrape', ok: false, detail: 'Failed to fetch repo details' }]);
     } finally {
       setScraping(false)
+      setShowScrapeLog(true)
       setCommitsLoading(false)
       setReadmeLoading(false)
     }
@@ -297,6 +333,36 @@ export default function Details() {
           )}
         </div>
       </header>
+
+      {showScrapeLog && scrapeLog.length > 0 && (
+        <div className="detail-scrape-log">
+          <div className="detail-scrape-log-header">
+            <span className="detail-scrape-log-title">Scrape Report</span>
+            <span className="detail-scrape-log-time">
+              {scrapeLog.timestamp || 'just now'}
+            </span>
+            <button className="detail-scrape-log-close" onClick={() => setShowScrapeLog(false)}>&times;</button>
+          </div>
+          <div className="detail-scrape-log-body">
+            {scrapeLog.filter(l => l.item !== 'Scrape').map((entry, i) => (
+              <div key={i} className={`detail-scrape-log-item ${entry.ok ? 'log-ok' : 'log-miss'}`}>
+                <span className="detail-scrape-log-icon">{entry.ok ? '\u2713' : '\u2717'}</span>
+                <span className="detail-scrape-log-item-name">{entry.item}</span>
+                <span className="detail-scrape-log-detail">{entry.detail}</span>
+              </div>
+            ))}
+            <div className={`detail-scrape-log-item ${scrapeLog.find(l => l.item === 'Auto-fetch' || l.item === 'Scrape')?.ok ? 'log-ok' : 'log-miss'}`}>
+              <span className="detail-scrape-log-icon">
+                {scrapeLog.find(l => l.item === 'Auto-fetch' || l.item === 'Scrape')?.ok ? '\u2713' : '\u2717'}
+              </span>
+              <span className="detail-scrape-log-item-name">Status</span>
+              <span className="detail-scrape-log-detail">
+                {scrapeLog.find(l => l.item === 'Auto-fetch' || l.item === 'Scrape')?.detail}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {(() => {
         const imgSrc = scrapedImg || project.img
