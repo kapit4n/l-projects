@@ -4,6 +4,14 @@
   padding: 32px 24px;
 }
 
+.dashboard-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin: 20px 0 0;
+}
+
 .dashboard-filters-row {
   margin-top: 24px;
 }

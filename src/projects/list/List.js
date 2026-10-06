@@ -86,6 +86,8 @@ export default function List() {
     for (let i = 0; i < allDescriptions.length; i++) {
       const desc = allDescriptions[i];
       if (desc.data && desc.data.description) {
+        projects[i].shortDescription = desc.data.description.slice(0, 200);
+        projects[i].extendedDescription = desc.data.description;
         projects[i].description = desc.data.description;
         projects[i].startDate = desc.data.created_at;
         projects[i].updatedDate = desc.data.pushed_at;
@@ -318,6 +320,8 @@ export default function List() {
     return projects.filter(
       (p) =>
         (p.name && p.name.toLowerCase().includes(q)) ||
+        (p.shortDescription && p.shortDescription.toLowerCase().includes(q)) ||
+        (p.extendedDescription && p.extendedDescription.toLowerCase().includes(q)) ||
         (p.description && p.description.toLowerCase().includes(q)) ||
         (p.skills || []).some((s) => s.toLowerCase().includes(q)) ||
         (p.languageKeys || []).some((l) => l.toLowerCase().includes(q))
@@ -327,6 +331,10 @@ export default function List() {
   return (
     <div className="dashboard">
       <DashboardHeader totalProjects={totalProjects} />
+
+      <p className="dashboard-description">
+        This dashboard presents a collection of software development projects — including APIs, CLI tools, web apps, and data analysis notebooks — built with Python, Go, TypeScript, Dart, and more. Each project showcases practical implementations across frontend, backend, and mobile platforms using modern frameworks and real-world tooling.
+      </p>
 
       <SearchBar value={searchQuery} onChange={setSearchQuery} />
 

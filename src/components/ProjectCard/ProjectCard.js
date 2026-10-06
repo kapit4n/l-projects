@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import DateFromNow from '../DateFromNow';
 import TechnologyBadge from '../TechnologyBadge/TechnologyBadge';
@@ -42,9 +42,63 @@ const CardPlaceholder = React.memo(function CardPlaceholder({ isBackend }) {
   )
 })
 
+function buildProjectScript(project) {
+  const parts = [`${project.name}.`]
+  parts.push(project.shortDescription || project.description || deriveDescription(project))
+  const features = project.features || []
+  if (features.length) parts.push(`Features include ${features.slice(0, 5).join(', ')}.`)
+  return parts.join(' ')
+}
+
+function SpeakButton({ project }) {
+  const [speaking, setSpeaking] = useState(false)
+
+  const toggleSpeech = useCallback(() => {
+    if (speaking) {
+      window.speechSynthesis.cancel()
+      setSpeaking(false)
+      return
+    }
+    const text = buildProjectScript(project)
+    const utterance = new SpeechSynthesisUtterance(text)
+    utterance.rate = 0.9
+    utterance.pitch = 1
+    utterance.onend = () => setSpeaking(false)
+    utterance.onerror = () => setSpeaking(false)
+    window.speechSynthesis.cancel()
+    window.speechSynthesis.speak(utterance)
+    setSpeaking(true)
+  }, [project, speaking])
+
+  return (
+    <button
+      className={`action-btn ${speaking ? 'action-btn-speaking' : ''}`}
+      onClick={toggleSpeech}
+      aria-label={speaking ? `Stop speaking ${project.name}` : `Listen to ${project.name}`}
+      title={speaking ? 'Stop' : 'Listen'}
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {speaking ? (
+          <>
+            <rect x="6" y="4" width="4" height="16" />
+            <rect x="14" y="4" width="4" height="16" />
+          </>
+        ) : (
+          <>
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+          </>
+        )}
+      </svg>
+    </button>
+  )
+}
+
 function ProjectActions({ project, onMoveUp, onArchive }) {
   return (
     <div className="project-actions">
+      <SpeakButton project={project} />
       <button
         className="action-btn action-btn-primary"
         onClick={() => onMoveUp(project)}
@@ -84,11 +138,135 @@ function ProjectActions({ project, onMoveUp, onArchive }) {
   );
 }
 
+const PURPOSE_MAP = {
+  appointments: 'managing dental appointments',
+  patients: 'managing patient records',
+  'patients-api': 'providing a patient management API',
+  desktop: 'providing a desktop interface',
+  'api-gateway': 'routing API requests as a gateway',
+  'auth-srv': 'handling authentication',
+  'chart-srv': 'managing dental charts',
+  broker: 'handling message brokering',
+  'broker-srv': 'handling message brokering',
+  'clinic-provider': 'managing clinic provider data',
+  'go-next': 'providing a Go backend',
+  react: 'providing a React frontend',
+  'inventory-nod': 'managing inventory via a Node.js API',
+  inventory: 'managing inventory',
+  'light-inv': 'tracking inventory',
+  'post-process': 'processing data after collection',
+  'vendei-desktop': 'powering a point-of-sale desktop app',
+  'vendei-full': 'powering a full point-of-sale application',
+  vendei: 'powering sales and point-of-sale operations',
+  'sell-go': 'handling sales with Go',
+  'finlendx': 'managing financial lending',
+  'hi-stock': 'automating stock market workflows',
+  'chatboot-stock': 'providing stock information via a chatbot',
+  'ts-books': 'tracking books you are reading',
+  'ts-node-books': 'managing book records via an API',
+  'products-view': 'displaying product information',
+  'sport-new': 'delivering sports news',
+  'ng-school-events': 'managing school events and notifications',
+  'school-events': 'managing school events',
+  'l-tracking': 'tracking time on projects',
+  'focus-point': 'helping users stay focused on tasks',
+  'football-two': 'managing football championships and teams',
+  'football-adm': 'administering football leagues and matches',
+  'react-seller': 'managing product sales and inventory',
+  'react-seller-admin': 'administering product sales',
+  'v-video': 'sharing videos with others',
+  'top-news': 'browsing top news headlines',
+  mockupero: 'managing design mockups collaboratively',
+  'mockupero-api': 'providing a REST API for mockups',
+  'to-buy-it': 'maintaining a shopping list',
+  'store-review': 'reviewing store inventory on mobile',
+  'react-code-x1': 'exploring React development',
+  'project-one': 'registering and tracking tasks',
+  'project-two': 'building a social network clone',
+  'ng-next-chall': 'tracking career development subjects',
+  'next-challenge': 'tracking career development subjects',
+  'python-workout': 'practicing Python coding exercises',
+  'java-projects': 'exploring Java development projects',
+  'gae-java-examples': 'demonstrating Google App Engine with Java',
+  'ts-books-app': 'tracking books',
+}
+
+const DOMAIN_MAP = {
+  denti: 'dental practice management',
+  dental: 'dental practice management',
+  inventory: 'inventory management',
+  stock: 'stock market and inventory',
+  vendei: 'sales and retail',
+  sell: 'sales and retail',
+  finlend: 'financial lending',
+  lending: 'financial lending',
+  football: 'sports management',
+  school: 'education management',
+  sport: 'sports news and updates',
+  book: 'book tracking and management',
+  product: 'product catalog and sales',
+  shop: 'e-commerce and shopping',
+  store: 'retail and store management',
+  mockup: 'design and prototyping',
+  video: 'video sharing and streaming',
+  news: 'news aggregation',
+  focus: 'productivity and focus',
+  tracking: 'time and activity tracking',
+  chat: 'messaging and chatbots',
+}
+
+function deriveDescription(project) {
+  const rawName = project.name || ''
+  const nameLower = rawName.toLowerCase()
+
+  const skills = (project.skills || []).map((s) => s.toLowerCase())
+  const cats = (project.categories || []).map((c) => c.toLowerCase().trim())
+  const lang = (project.language || '').toLowerCase()
+  const allHints = [...skills, ...cats, lang]
+
+  const typeKw = { api: 'API', cli: 'CLI tool', ui: 'UI component', frontend: 'frontend app', backend: 'backend service', mobile: 'mobile app', ios: 'iOS app', android: 'Android app', desktop: 'desktop app', web: 'web app', service: 'microservice', server: 'backend server' }
+  const typeMatch = allHints.find((h) => typeKw[h])
+  const typeLabel = typeMatch ? typeKw[typeMatch] : ''
+
+  const readableName = rawName.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+
+  const purpose = Object.entries(PURPOSE_MAP).find(([k]) => nameLower.includes(k))
+  const domain = Object.entries(DOMAIN_MAP).find(([k]) => nameLower.includes(k))
+
+  const parts = [readableName]
+
+  if (purpose) {
+    parts.push(`is a project focused on ${purpose[1]}`)
+  } else if (typeLabel) {
+    parts.push(`is a ${typeLabel}`)
+    if (domain) parts.push(`for ${domain[1]}`)
+  } else {
+    parts.push('is a software project')
+    if (domain) parts.push(`for ${domain[1]}`)
+  }
+
+  if (cats.length) {
+    const extraCats = cats.filter((c) => !typeKw[c])
+    if (extraCats.length) parts.push(`in the ${extraCats.join(', ')} category`)
+  }
+
+  const extraTags = [...new Set([...skills])].filter((t) => !typeKw[t])
+  if (extraTags.length) parts.push(`built with ${extraTags.join(', ')}`)
+
+  if (lang && !extraTags.some((t) => t.includes(lang))) {
+    parts.push(`using ${lang}`)
+  }
+
+  return parts.filter(Boolean).join(' ') + '.'
+}
+
 const ProjectCardInner = React.memo(function ProjectCardInner({ project, onMoveUp, onArchive }) {
   const languageKeys = project.languageKeys || [];
   const skills = project.skills || [];
   const features = project.features || [];
   const [imgError, setImgError] = React.useState(false)
+
+  const displayDescription = project.shortDescription || project.description || deriveDescription(project)
 
   return (
     <article className="project-card">
@@ -143,8 +321,8 @@ const ProjectCardInner = React.memo(function ProjectCardInner({ project, onMoveU
           )}
         </div>
 
-        {project.description && (
-          <p className="project-card-description">{project.description}</p>
+        {displayDescription && (
+          <p className="project-card-description">{displayDescription}</p>
         )}
 
         {features.length > 0 && (

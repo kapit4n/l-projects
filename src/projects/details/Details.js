@@ -413,10 +413,10 @@ export default function Details() {
         )}
       </div>
 
-      {project.description && (
+      {(project.extendedDescription || project.description) && (
         <section className="detail-section">
           <h3 className="detail-section-title">About</h3>
-          <p className="detail-description">{project.description}</p>
+          <p className="detail-description">{project.extendedDescription || project.description}</p>
         </section>
       )}
 

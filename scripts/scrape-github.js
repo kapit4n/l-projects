@@ -37,6 +37,8 @@ function parseRepo(repo) {
     categories: topics && topics.length ? [topics[0]] : [],
     skills: topics || [],
     contributions: 0,
+    shortDescription: (description || '').slice(0, 200),
+    extendedDescription: description || '',
     description: description || '',
     languageKeys: language ? [language] : [],
     language: language || '',
